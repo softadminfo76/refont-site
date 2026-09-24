@@ -7,7 +7,7 @@
                     <div class="ve-footer-brand">
                         <a href="{{ route('home') }}" class="ve-footer-logo">
                             <img src="{{ asset('img/bg-img/logo.png') }}" alt="HORINFO" class="ve-logo-img">
-                            <span class="ve-logo-text">HOR<strong>INFO</strong></span>
+                            <span class="ve-logo-text">  HOR<strong>INFO</strong></span>
                         </a>
                         <p>Des solutions informatiques sur mesure pour accompagner la transformation numérique des organisations depuis 1999.</p>
                         <div class="ve-social">

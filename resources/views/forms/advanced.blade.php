@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
-  <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE v4 | Dashboard</title>
+    <title>AdminLTE 4 | Advanced Form Elements</title>
 
     <!--begin::Theme Init (prevents flash of incorrect theme on load, #6043)-->
     <script>
@@ -54,7 +53,7 @@
     <!--end::Accessibility Meta Tags-->
 
     <!--begin::Primary Meta Tags-->
-    <meta name="title" content="AdminLTE v4 | Dashboard" />
+    <meta name="title" content="AdminLTE 4 | Advanced Form Elements" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -103,26 +102,20 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
 
-    <!-- apexcharts -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
-      integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0="
+      href="https://cdn.jsdelivr.net/npm/tom-select@2.6.1/dist/css/tom-select.bootstrap5.min.css"
+      integrity="sha384-qNqaCnsmyTrYVwmqv4/4PcwMK8ZFAQnYPpVjWor+6cX6rKsPhebzu8vO2J3s+VZg"
       crossorigin="anonymous"
     />
-
-    <!-- jsvectormap -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
-      integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
+      href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css"
+      integrity="sha384-RkASv+6KfBMW9eknReJIJ6b3UnjKOKC5bOUaNgIY778NFbQ8MtWq9Lr/khUgqtTt"
       crossorigin="anonymous"
     />
   </head>
-  <!--end::Head-->
-  <!--begin::Body-->
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-    <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->
       <nav class="app-header navbar navbar-expand bg-body">
@@ -149,7 +142,7 @@
               </a>
             </li>
             <li class="nav-item d-none d-md-block">
-              <a href="./docs/introduction.html" class="nav-link">
+              <a href="../docs/introduction.html" class="nav-link">
                 <i class="bi bi-book me-1" aria-hidden="true"></i>
                 Documentation
               </a>
@@ -161,7 +154,7 @@
           <form
             class="navbar-search d-none d-md-block ms-3"
             role="search"
-            action="./pages/search-results.html"
+            action="../pages/search-results.html"
           >
             <label for="navbar-search-input" class="visually-hidden">Search</label>
             <div class="navbar-search-field">
@@ -523,8 +516,8 @@
               data-accordion="false"
               id="navigation"
             >
-              <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Dashboard
@@ -533,7 +526,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link active">
+                    <a href="{{ route('dashboard') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Dashboard v1</p>
                     </a>
@@ -553,7 +546,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.starter') }}" class="nav-link">
+                <a href="{{ route('starter') }}" class="nav-link">
                   <i class="nav-icon bi bi-file-earmark"></i>
                   <p>Starter Page</p>
                 </a>
@@ -754,8 +747,8 @@
                 </ul>
               </li>
 
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+              <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon bi bi-pencil-square"></i>
                   <p>
                     Forms
@@ -788,7 +781,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('forms.advanced') }}" class="nav-link">
+                    <a href="{{ route('forms.advanced') }}" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Advanced Elements</p>
                     </a>
@@ -1124,7 +1117,7 @@
             <!-- Docs CTA (bottom of sidebar) -->
             <div class="p-3 mt-3 border-top border-secondary border-opacity-25">
               <a
-                href="./docs/introduction.html"
+                href="../docs/introduction.html"
                 class="btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2"
               >
                 <i class="bi bi-book" aria-hidden="true"></i>
@@ -1136,492 +1129,335 @@
         <!--end::Sidebar Wrapper-->
       </aside>
       <!--end::Sidebar-->
-      <!--begin::App Main-->
       <main class="app-main">
-        <!--begin::App Content Header-->
         <div class="app-content-header">
-          <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
             <div class="row">
               <div class="col-sm-6">
-                <h1 class="mb-0 fs-3">Dashboard</h1>
+                <h1 class="mb-0 fs-3">Advanced Elements</h1>
               </div>
               <div class="col-sm-6">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Advanced Elements</li>
                   </ol>
                 </nav>
               </div>
             </div>
-            <!--end::Row-->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content Header-->
-        <!--begin::App Content-->
         <div class="app-content">
-          <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
-              <!--begin::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 1-->
-                <div class="small-box text-bg-primary">
-                  <div class="inner">
-                    <h3>150</h3>
-
-                    <p>New Orders</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"
-                    ></path>
-                  </svg>
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="callout callout-info">
+                  AdminLTE deliberately doesn't bundle form widgets. The controls on this page use
+                  the recommended third-party integrations &mdash;
                   <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
+                    href="https://tom-select.js.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="callout-link"
+                    >Tom Select</a
                   >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 1-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 2-->
-                <div class="small-box text-bg-success">
-                  <div class="inner">
-                    <h3>53<sup class="fs-5">%</sup></h3>
-
-                    <p>Bounce Rate</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"
-                    ></path>
-                  </svg>
+                  and
                   <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
+                    href="https://flatpickr.js.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="callout-link"
+                    >Flatpickr</a
+                  >. See the
+                  <a href="../docs/integrations.html" class="callout-link"
+                    >Recommended Integrations</a
                   >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
+                  page for the full list with install snippets.
                 </div>
-                <!--end::Small Box Widget 2-->
               </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 3-->
-                <div class="small-box text-bg-warning">
-                  <div class="inner">
-                    <h3>44</h3>
 
-                    <p>User Registrations</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 3-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 4-->
-                <div class="small-box text-bg-danger">
-                  <div class="inner">
-                    <h3>65</h3>
-
-                    <p>Unique Visitors</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
-                    ></path>
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 4-->
-              </div>
-              <!--end::Col-->
-            </div>
-            <!--end::Row-->
-            <!--begin::Row-->
-            <div class="row">
-              <!-- Start col -->
-              <div class="col-lg-7 connectedSortable">
-                <div class="card mb-4">
+              <!-- Tom Select -->
+              <div class="col-md-6">
+                <div class="card card-primary card-outline mb-4">
                   <div class="card-header">
-                    <h3 class="card-title">Sales Value</h3>
+                    <div class="card-title">Tom Select</div>
                   </div>
-
                   <div class="card-body">
-                    <div id="revenue-chart"></div>
-                  </div>
-                </div>
-                <!-- /.card -->
-
-                <!-- DIRECT CHAT -->
-                <div class="card direct-chat direct-chat-primary mb-4">
-                  <div class="card-header">
-                    <h3 class="card-title">Direct Chat</h3>
-
-                    <div class="card-tools">
-                      <span title="3 New Messages" class="badge text-bg-primary"> 3 </span>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
+                    <div class="mb-4">
+                      <label for="country" class="form-label">Single select with search</label>
+                      <select
+                        id="country"
+                        class="form-control"
+                        aria-label="Single select with search"
                       >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        title="Contacts"
-                        data-lte-toggle="chat-pane"
+                        <option value="">Select a country&hellip;</option>
+                        <option>Australia</option>
+                        <option>Brazil</option>
+                        <option>Canada</option>
+                        <option>France</option>
+                        <option>Germany</option>
+                        <option>Italy</option>
+                        <option>Japan</option>
+                        <option>Latvia</option>
+                        <option>Netherlands</option>
+                        <option>Spain</option>
+                        <option>United Kingdom</option>
+                        <option>United States</option>
+                      </select>
+                      <div class="form-text">
+                        Start typing to filter the list; the &times; button clears the selection
+                        (<code>clear_button</code>).
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <label for="post-tags" class="form-label">Multi-select with tags</label>
+                      <select
+                        id="post-tags"
+                        class="form-control"
+                        aria-label="Multi-select with tags"
+                        multiple
                       >
-                        <i class="bi bi-chat-text-fill"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        aria-label="Remove card"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
+                        <option value="bootstrap" selected>Bootstrap</option>
+                        <option value="javascript" selected>JavaScript</option>
+                        <option value="css">CSS</option>
+                        <option value="accessibility">Accessibility</option>
+                        <option value="performance">Performance</option>
+                        <option value="tooling">Tooling</option>
+                      </select>
+                      <div class="form-text">
+                        Type to filter, press Enter to create a new tag, use the &times; button to
+                        remove one.
+                      </div>
+                    </div>
+                    <div>
+                      <label for="reviewer" class="form-label">Remote data with pagination</label>
+                      <select
+                        id="reviewer"
+                        class="form-control"
+                        aria-label="Remote data with pagination"
+                      ></select>
+                      <div class="form-text">
+                        Backed by 72 records behind a stubbed endpoint. Typing is debounced
+                        (<code>loadThrottle</code>), stale requests are cancelled with
+                        <code>AbortController</code>, and scrolling to the bottom of the list pulls
+                        the next page (<code>virtual_scroll</code>).
+                      </div>
                     </div>
                   </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <!-- Conversations are loaded here -->
-                    <div
-                      class="direct-chat-messages"
-                      role="log"
-                      tabindex="0"
-                      aria-label="Chat messages"
+                  <div class="card-footer text-body-secondary small">
+                    Powered by
+                    <a
+                      href="https://tom-select.js.org/"
+                      target="_blank"
+                      rel="noopener"
+                      class="link-body-emphasis"
+                      >Tom Select</a
                     >
-                      <!-- Message. Default to the start -->
-                      <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-start"> Alexander Pierce </span>
-                          <span class="direct-chat-timestamp float-end"> 23 Jan 2:00 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          Is this template really for free? That's unbelievable!
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message to the end -->
-                      <div class="direct-chat-msg end">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-end"> Sarah Bullock </span>
-                          <span class="direct-chat-timestamp float-start"> 23 Jan 2:05 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">You better believe it!</div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message. Default to the start -->
-                      <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-start"> Alexander Pierce </span>
-                          <span class="direct-chat-timestamp float-end"> 23 Jan 5:37 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          Working with AdminLTE on a great new app! Wanna join?
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message to the end -->
-                      <div class="direct-chat-msg end">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-end"> Sarah Bullock </span>
-                          <span class="direct-chat-timestamp float-start"> 23 Jan 6:10 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">I would love to.</div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-                    </div>
-                    <!-- /.direct-chat-messages-->
-
-                    <!-- Contacts are loaded here -->
-                    <div class="direct-chat-contacts">
-                      <ul class="contacts-list">
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Count Dracula
-                                <small class="contacts-list-date float-end"> 2/28/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> How have you been? I was... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user7-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Sarah Doe
-                                <small class="contacts-list-date float-end"> 2/23/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> I will be waiting for... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Nadia Jolie
-                                <small class="contacts-list-date float-end"> 2/20/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> I'll call you back at... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user5-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Nora S. Vans
-                                <small class="contacts-list-date float-end"> 2/10/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Where is your new... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user6-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                John K.
-                                <small class="contacts-list-date float-end"> 1/27/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Can I take a look at... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user8-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Kenneth M.
-                                <small class="contacts-list-date float-end"> 1/4/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Never mind I found... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                      </ul>
-                      <!-- /.contacts-list -->
-                    </div>
-                    <!-- /.direct-chat-pane -->
+                    &mdash; vanilla JS, no jQuery required.
                   </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
-                    <form action="#" method="post">
-                      <div class="input-group">
-                        <input
-                          type="text"
-                          name="message"
-                          placeholder="Type Message ..."
-                          class="form-control"
-                        />
-                        <span class="input-group-append">
-                          <button type="button" class="btn btn-primary">Send</button>
-                        </span>
-                      </div>
-                    </form>
-                  </div>
-                  <!-- /.card-footer-->
                 </div>
-                <!-- /.direct-chat -->
               </div>
-              <!-- /.Start col -->
 
-              <!-- Start col -->
-              <div class="col-lg-5 connectedSortable">
-                <div class="card text-white bg-primary bg-gradient border-primary mb-4">
-                  <div class="card-header border-0">
-                    <h3 class="card-title">Sales Value</h3>
-                    <div class="card-tools">
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-sm"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
-                      >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                    </div>
+              <!-- Flatpickr -->
+              <div class="col-md-6">
+                <div class="card card-success card-outline mb-4">
+                  <div class="card-header">
+                    <div class="card-title">Flatpickr</div>
                   </div>
                   <div class="card-body">
-                    <div id="world-map" style="height: 220px"></div>
-                  </div>
-                  <div class="card-footer border-0">
-                    <!--begin::Row-->
-                    <div class="row">
-                      <div class="col-4 text-center">
-                        <div id="sparkline-1" class="text-dark"></div>
-                        <div class="text-white">Visitors</div>
-                      </div>
-                      <div class="col-4 text-center">
-                        <div id="sparkline-2" class="text-dark"></div>
-                        <div class="text-white">Online</div>
-                      </div>
-                      <div class="col-4 text-center">
-                        <div id="sparkline-3" class="text-dark"></div>
-                        <div class="text-white">Sales</div>
-                      </div>
+                    <div class="mb-4">
+                      <label for="delivery-date" class="form-label">Date picker</label>
+                      <input
+                        type="text"
+                        id="delivery-date"
+                        class="form-control"
+                        placeholder="Select a delivery date"
+                      />
                     </div>
-                    <!--end::Row-->
+                    <div class="mb-4">
+                      <label for="meeting-start" class="form-label">Date &amp; time picker</label>
+                      <input
+                        type="text"
+                        id="meeting-start"
+                        class="form-control"
+                        placeholder="Select date and time"
+                      />
+                    </div>
+                    <div class="mb-4">
+                      <label for="report-period" class="form-label">Range picker</label>
+                      <input
+                        type="text"
+                        id="report-period"
+                        class="form-control"
+                        placeholder="Select a reporting period"
+                      />
+                      <div class="form-text">Pick a start date, then an end date.</div>
+                    </div>
+                    <div>
+                      <label for="reminder-time" class="form-label">Time picker</label>
+                      <input
+                        type="text"
+                        id="reminder-time"
+                        class="form-control"
+                        placeholder="Select a time"
+                      />
+                    </div>
+                  </div>
+                  <div class="card-footer text-body-secondary small">
+                    Powered by
+                    <a
+                      href="https://flatpickr.js.org/"
+                      target="_blank"
+                      rel="noopener"
+                      class="link-body-emphasis"
+                      >Flatpickr</a
+                    >
+                    &mdash; vanilla JS, no jQuery required.
                   </div>
                 </div>
               </div>
-              <!-- /.Start col -->
+
+              <!-- Select2 → Tom Select -->
+              <div class="col-12" id="select2">
+                <div class="card card-secondary card-outline mb-4">
+                  <div class="card-header">
+                    <div class="card-title">Coming from Select2?</div>
+                  </div>
+                  <div class="card-body">
+                    <p>
+                      <a href="https://select2.org/" target="_blank" rel="noopener noreferrer"
+                        >Select2</a
+                      >
+                      is still maintained, but it is still a jQuery plugin &mdash; there is no
+                      jQuery-free build. Tom Select covers the same feature set in roughly
+                      <strong>20&nbsp;kB gzip</strong>, against Select2's
+                      <strong>~50&nbsp;kB</strong> once jQuery is counted. The API maps across
+                      almost one-to-one:
+                    </p>
+                    <div
+                      class="table-responsive"
+                      tabindex="0"
+                      role="region"
+                      aria-label="Select2 to Tom Select API mapping"
+                    >
+                      <table class="table table-sm table-striped align-middle mb-0">
+                        <caption class="visually-hidden">
+                          Select2 options and methods mapped to their Tom Select equivalents
+                        </caption>
+                        <thead>
+                          <tr>
+                            <th scope="col" style="width: 50%">Select2</th>
+                            <th scope="col">Tom Select</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><code>$("#x").select2()</code></td>
+                            <td><code>new TomSelect("#x")</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>tags: true</code></td>
+                            <td><code>create: true</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>allowClear: true</code></td>
+                            <td><code>plugins: ["clear_button"]</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>closeOnSelect: false</code></td>
+                            <td><code>closeAfterSelect: false</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>maximumSelectionLength: 3</code></td>
+                            <td><code>maxItems: 3</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>minimumInputLength: 2</code></td>
+                            <td><code>shouldLoad: (q) =&gt; q.length &gt;= 2</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>ajax: &#123; url, delay: 250 &#125;</code></td>
+                            <td>
+                              <code>load(query, callback)</code> + <code>loadThrottle: 250</code>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><code>ajax.processResults</code></td>
+                            <td>
+                              <code>valueField</code> / <code>labelField</code> /
+                              <code>searchField</code>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>infinite scroll (<code>pagination.more</code>)</td>
+                            <td>
+                              <code>plugins: ["virtual_scroll"]</code> + <code>setNextUrl()</code>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><code>templateResult</code> / <code>templateSelection</code></td>
+                            <td><code>render: &#123; option, item &#125;</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>dropdownParent: $("#modal")</code></td>
+                            <td class="text-body-secondary">
+                              Not needed &mdash; the dropdown renders inline
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><code>$("#x").val("2").trigger("change")</code></td>
+                            <td><code>ts.setValue("2")</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>$("#x").val()</code></td>
+                            <td><code>ts.getValue()</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>.on("select2:select", fn)</code></td>
+                            <td><code>ts.on("item_add", fn)</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>.on("change", fn)</code></td>
+                            <td><code>ts.on("change", fn)</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>$("#x").select2("open")</code></td>
+                            <td><code>ts.open()</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>$("#x").prop("disabled", true)</code></td>
+                            <td><code>ts.disable()</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>$("#x").select2("destroy")</code></td>
+                            <td><code>ts.destroy()</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>$("#x").empty().select2(&#123; data &#125;)</code></td>
+                            <td><code>ts.clearOptions(); ts.addOptions(data)</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="card-footer text-body-secondary small">
+                    Locked into Select2 for now? AdminLTE ships a styling-only
+                    <a
+                      href="../docs/integrations.html#select2-compatibility-theme"
+                      class="link-body-emphasis"
+                      >Select2 compatibility theme</a
+                    >
+                    that makes it match Bootstrap 5.3 &mdash; including dark mode and dropdowns
+                    inside modals. No jQuery is added to AdminLTE itself; you bring the plugin, we
+                    style it.
+                  </div>
+                </div>
+              </div>
             </div>
-            <!-- /.row (main row) -->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content-->
       </main>
-      <!--end::App Main-->
       <!--begin::Footer-->
       <footer class="app-footer">
         <!--begin::To the end-->
@@ -1637,8 +1473,6 @@
       </footer>
       <!--end::Footer-->
     </div>
-    <!--end::App Wrapper-->
-    <!--begin::Script-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
@@ -1726,199 +1560,177 @@
      in <head> stays inline, because it must run before first paint. -->
     <!--end::Color Mode Toggle-->
 
-    <!-- OPTIONAL SCRIPTS -->
-
-    <!-- sortablejs -->
     <script
-      src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
+      src="https://cdn.jsdelivr.net/npm/tom-select@2.6.1/dist/js/tom-select.complete.min.js"
+      integrity="sha384-OgdLxftmuTHirLYFRbvXsKJxgSVqpU4ZdZ07tRiBC+Z4GjtQ5Al0uika0gtMfeQw"
       crossorigin="anonymous"
     ></script>
-    <!-- sortablejs -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"
+      integrity="sha384-5JqMv4L/Xa0hfvtF06qboNdhvuYXUku9ZrhZh3bSk8VXF0A/RuSLHpLsSV9Zqhl6"
+      crossorigin="anonymous"
+    ></script>
     <script>
-      new Sortable(document.querySelector('.connectedSortable'), {
-        group: 'shared',
-        handle: '.card-header',
-      });
+      document.addEventListener('DOMContentLoaded', () => {
+        // Tom Select: single select with search and a clear button
+        new TomSelect('#country', {
+          plugins: ['clear_button'],
+          sortField: { field: 'text', direction: 'asc' },
+        });
 
-      const cardHeaders = document.querySelectorAll('.connectedSortable .card-header');
-      cardHeaders.forEach((cardHeader) => {
-        cardHeader.style.cursor = 'move';
+        // Tom Select: multi-select with removable tags (type to add new ones)
+        new TomSelect('#post-tags', {
+          plugins: ['remove_button'],
+          create: true,
+          persist: false,
+        });
+
+        // Tom Select: remote data, the way you'd wire a select backed by a table
+        // with thousands of rows. Only the matching page is ever loaded.
+        const PAGE_SIZE = 12;
+        const FIRST_NAMES = [
+          'Olivia',
+          'Liam',
+          'Emma',
+          'Noah',
+          'Ava',
+          'Ethan',
+          'Sofia',
+          'Lucas',
+          'Mia',
+          'Mateo',
+          'Isla',
+          'Arjun',
+          'Nora',
+          'Hugo',
+          'Yuki',
+          'Amara',
+          'Elena',
+          'Omar',
+          'Freya',
+          'Diego',
+          'Leila',
+          'Jonas',
+          'Priya',
+          'Marek',
+        ];
+        const TEAMS = ['Frontend', 'Backend', 'Design'];
+        // Stands in for a database table.
+        const REVIEWERS = FIRST_NAMES.flatMap((first, index) =>
+          ['Bennett', 'Carter', 'Dawson'].map((last, offset) => ({
+            id: index * 3 + offset + 1,
+            name: `${first} ${last}`,
+            team: TEAMS[(index + offset) % TEAMS.length],
+          })),
+        );
+
+        // Stand-in for a real endpoint. To go live, replace the whole body with:
+        //   return fetch(url, { signal }).then((response) => response.json())
+        // The { results, next } response shape is what the loader below expects
+        // — and it's the same shape Select2's `ajax.processResults` users return.
+        function fetchReviewers(url, signal) {
+          const params = new URLSearchParams(url.slice(url.indexOf('?') + 1));
+          const query = (params.get('q') || '').toLowerCase();
+          const page = Number(params.get('page') || 1);
+
+          return new Promise((resolve, reject) => {
+            const timer = setTimeout(() => {
+              const matches = REVIEWERS.filter((person) =>
+                `${person.name} ${person.team}`.toLowerCase().includes(query),
+              );
+              const start = (page - 1) * PAGE_SIZE;
+              const hasMore = start + PAGE_SIZE < matches.length;
+              resolve({
+                results: matches.slice(start, start + PAGE_SIZE),
+                next: hasMore
+                  ? `/api/reviewers?q=${encodeURIComponent(query)}&page=${page + 1}`
+                  : null,
+              });
+            }, 400);
+
+            signal.addEventListener('abort', () => {
+              clearTimeout(timer);
+              reject(new DOMException('Aborted', 'AbortError'));
+            });
+          });
+        }
+
+        let inFlight = null;
+
+        new TomSelect('#reviewer', {
+          valueField: 'id',
+          labelField: 'name',
+          searchField: ['name', 'team'],
+          placeholder: 'Type to search 72 people…',
+          preload: 'focus',
+          // Tom Select debounces `load` for you — no hand-rolled timer needed.
+          loadThrottle: 300,
+          // Pages in the next batch when the dropdown is scrolled to the bottom.
+          plugins: ['virtual_scroll'],
+          firstUrl: (query) => `/api/reviewers?q=${encodeURIComponent(query)}&page=1`,
+          // Tom Select invokes `load` with the instance as `this`; that's how
+          // the virtual_scroll plugin hands over getUrl() and setNextUrl().
+          /* eslint-disable unicorn/no-this-outside-of-class */
+          async load(query, callback) {
+            // Cancel the request already in flight, so a slow response for "an"
+            // can't land after the fast one for "anna".
+            if (inFlight) {
+              inFlight.abort();
+            }
+            inFlight = new AbortController();
+
+            try {
+              const json = await fetchReviewers(this.getUrl(query), inFlight.signal);
+              if (json.next) {
+                this.setNextUrl(query, json.next);
+              }
+              callback(json.results);
+            } catch (error) {
+              // An aborted request was replaced by a newer one — let that one
+              // resolve the dropdown instead of clearing it here.
+              if (error.name !== 'AbortError') {
+                callback();
+              }
+            }
+          },
+          /* eslint-enable unicorn/no-this-outside-of-class */
+          render: {
+            option: (data, escape) =>
+              `<div class="d-flex justify-content-between align-items-center">
+                 <span>${escape(data.name)}</span>
+                 <span class="badge text-bg-secondary">${escape(data.team)}</span>
+               </div>`,
+            loading_more: () => '<div class="p-2 text-body-secondary small">Loading more…</div>',
+            no_more_results: () =>
+              '<div class="p-2 text-body-secondary small">End of results</div>',
+          },
+        });
+
+        // Flatpickr: date picker
+        flatpickr('#delivery-date', {
+          dateFormat: 'Y-m-d',
+        });
+
+        // Flatpickr: date & time picker
+        flatpickr('#meeting-start', {
+          enableTime: true,
+          dateFormat: 'Y-m-d H:i',
+        });
+
+        // Flatpickr: range picker
+        flatpickr('#report-period', {
+          mode: 'range',
+          dateFormat: 'Y-m-d',
+        });
+
+        // Flatpickr: time-only picker
+        flatpickr('#reminder-time', {
+          enableTime: true,
+          noCalendar: true,
+          dateFormat: 'H:i',
+          time_24hr: true,
+        });
       });
     </script>
-    <!-- apexcharts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
-      integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8="
-      crossorigin="anonymous"
-    ></script>
-    <!-- ChartJS -->
-    <script>
-      // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-      // IT'S ALL JUST JUNK FOR DEMO
-      // ++++++++++++++++++++++++++++++++++++++++++
-
-      const sales_chart_options = {
-        series: [
-          {
-            name: 'Digital Goods',
-            data: [28, 48, 40, 19, 86, 27, 90],
-          },
-          {
-            name: 'Electronics',
-            data: [65, 59, 80, 81, 56, 55, 40],
-          },
-        ],
-        chart: {
-          id: 'revenue-chart',
-          height: 300,
-          type: 'area',
-          toolbar: {
-            show: false,
-          },
-        },
-        legend: {
-          show: false,
-        },
-        colors: ['#0d6efd', '#20c997'],
-        dataLabels: {
-          enabled: false,
-        },
-        stroke: {
-          curve: 'smooth',
-        },
-        xaxis: {
-          type: 'datetime',
-          categories: [
-            '2023-01-01',
-            '2023-02-01',
-            '2023-03-01',
-            '2023-04-01',
-            '2023-05-01',
-            '2023-06-01',
-            '2023-07-01',
-          ],
-        },
-        tooltip: {
-          x: {
-            format: 'MMMM yyyy',
-          },
-        },
-      };
-
-      const sales_chart = new ApexCharts(
-        document.querySelector('#revenue-chart'),
-        sales_chart_options,
-      );
-      sales_chart.render();
-    </script>
-    <!-- jsvectormap -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"
-      integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"
-      integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY="
-      crossorigin="anonymous"
-    ></script>
-    <!-- jsvectormap -->
-    <script>
-      // World map by jsVectorMap
-      new jsVectorMap({
-        selector: '#world-map',
-        map: 'world',
-      });
-
-      // Sparkline charts
-      const option_sparkline1 = {
-        series: [
-          {
-            data: [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021],
-          },
-        ],
-        chart: {
-          id: 'sparkline-1',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline1 = new ApexCharts(document.querySelector('#sparkline-1'), option_sparkline1);
-      sparkline1.render();
-
-      const option_sparkline2 = {
-        series: [
-          {
-            data: [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921],
-          },
-        ],
-        chart: {
-          id: 'sparkline-2',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline2 = new ApexCharts(document.querySelector('#sparkline-2'), option_sparkline2);
-      sparkline2.render();
-
-      const option_sparkline3 = {
-        series: [
-          {
-            data: [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21],
-          },
-        ],
-        chart: {
-          id: 'sparkline-3',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
-      sparkline3.render();
-    </script>
-    <!--end::Script-->
   </body>
-  <!--end::Body-->
 </html>

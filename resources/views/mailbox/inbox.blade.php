@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
-  <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE v4 | Dashboard</title>
+    <title>AdminLTE 4 | Mailbox</title>
 
     <!--begin::Theme Init (prevents flash of incorrect theme on load, #6043)-->
     <script>
@@ -54,7 +53,7 @@
     <!--end::Accessibility Meta Tags-->
 
     <!--begin::Primary Meta Tags-->
-    <meta name="title" content="AdminLTE v4 | Dashboard" />
+    <meta name="title" content="AdminLTE 4 | Mailbox" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -102,27 +101,8 @@
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
-
-    <!-- apexcharts -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
-      integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0="
-      crossorigin="anonymous"
-    />
-
-    <!-- jsvectormap -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
-      integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
-      crossorigin="anonymous"
-    />
   </head>
-  <!--end::Head-->
-  <!--begin::Body-->
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-    <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->
       <nav class="app-header navbar navbar-expand bg-body">
@@ -149,7 +129,7 @@
               </a>
             </li>
             <li class="nav-item d-none d-md-block">
-              <a href="./docs/introduction.html" class="nav-link">
+              <a href="../docs/introduction.html" class="nav-link">
                 <i class="bi bi-book me-1" aria-hidden="true"></i>
                 Documentation
               </a>
@@ -161,7 +141,7 @@
           <form
             class="navbar-search d-none d-md-block ms-3"
             role="search"
-            action="./pages/search-results.html"
+            action="../pages/search-results.html"
           >
             <label for="navbar-search-input" class="visually-hidden">Search</label>
             <div class="navbar-search-field">
@@ -523,8 +503,8 @@
               data-accordion="false"
               id="navigation"
             >
-              <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Dashboard
@@ -533,7 +513,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link active">
+                    <a href="{{ route('dashboard') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Dashboard v1</p>
                     </a>
@@ -553,7 +533,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.starter') }}" class="nav-link">
+                <a href="{{ route('starter') }}" class="nav-link">
                   <i class="nav-icon bi bi-file-earmark"></i>
                   <p>Starter Page</p>
                 </a>
@@ -724,8 +704,8 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+              <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon bi bi-envelope"></i>
                   <p>
                     Mailbox
@@ -734,7 +714,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{ route('mailbox.inbox') }}" class="nav-link">
+                    <a href="{{ route('mailbox.inbox') }}" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Inbox</p>
                     </a>
@@ -1124,7 +1104,7 @@
             <!-- Docs CTA (bottom of sidebar) -->
             <div class="p-3 mt-3 border-top border-secondary border-opacity-25">
               <a
-                href="./docs/introduction.html"
+                href="../docs/introduction.html"
                 class="btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2"
               >
                 <i class="bi bi-book" aria-hidden="true"></i>
@@ -1136,492 +1116,458 @@
         <!--end::Sidebar Wrapper-->
       </aside>
       <!--end::Sidebar-->
-      <!--begin::App Main-->
       <main class="app-main">
-        <!--begin::App Content Header-->
         <div class="app-content-header">
-          <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
             <div class="row">
               <div class="col-sm-6">
-                <h1 class="mb-0 fs-3">Dashboard</h1>
+                <h1 class="mb-0 fs-3">Mailbox</h1>
               </div>
               <div class="col-sm-6">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item active" aria-current="page">Inbox</li>
                   </ol>
                 </nav>
               </div>
             </div>
-            <!--end::Row-->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content Header-->
-        <!--begin::App Content-->
         <div class="app-content">
-          <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
-              <!--begin::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 1-->
-                <div class="small-box text-bg-primary">
-                  <div class="inner">
-                    <h3>150</h3>
-
-                    <p>New Orders</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 1-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 2-->
-                <div class="small-box text-bg-success">
-                  <div class="inner">
-                    <h3>53<sup class="fs-5">%</sup></h3>
-
-                    <p>Bounce Rate</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 2-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 3-->
-                <div class="small-box text-bg-warning">
-                  <div class="inner">
-                    <h3>44</h3>
-
-                    <p>User Registrations</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 3-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 4-->
-                <div class="small-box text-bg-danger">
-                  <div class="inner">
-                    <h3>65</h3>
-
-                    <p>Unique Visitors</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
-                    ></path>
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 4-->
-              </div>
-              <!--end::Col-->
-            </div>
-            <!--end::Row-->
-            <!--begin::Row-->
-            <div class="row">
-              <!-- Start col -->
-              <div class="col-lg-7 connectedSortable">
-                <div class="card mb-4">
+            <div class="row g-3">
+              <!-- Folder sidebar -->
+              <div class="col-lg-3">
+                <a href="{{ route('mailbox.compose') }}" class="btn btn-primary w-100 mb-3">
+                  <i class="bi bi-pencil-square me-1" aria-hidden="true"></i>
+                  Compose
+                </a>
+                <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Sales Value</h3>
+                    <h3 class="card-title">Folders</h3>
                   </div>
-
-                  <div class="card-body">
-                    <div id="revenue-chart"></div>
+                  <div class="card-body p-0">
+                    <ul class="nav nav-pills flex-column mb-0">
+                      <li class="nav-item">
+                        <a
+                          href="{{ route('mailbox.inbox') }}"
+                          class="nav-link active rounded-0 d-flex justify-content-between"
+                        >
+                          <span> <i class="bi bi-inbox me-2" aria-hidden="true"></i>Inbox </span>
+                          <span class="badge text-bg-primary">3</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0">
+                          <i class="bi bi-send me-2" aria-hidden="true"></i>Sent
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0 d-flex justify-content-between">
+                          <span>
+                            <i class="bi bi-file-earmark me-2" aria-hidden="true"></i>
+                            Drafts
+                          </span>
+                          <span class="badge text-bg-secondary">2</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0">
+                          <i class="bi bi-star me-2" aria-hidden="true"></i>Starred
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0">
+                          <i class="bi bi-archive me-2" aria-hidden="true"></i>Archive
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0">
+                          <i class="bi bi-exclamation-octagon me-2" aria-hidden="true"></i>
+                          Spam
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0">
+                          <i class="bi bi-trash me-2" aria-hidden="true"></i>Trash
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-                <!-- /.card -->
-
-                <!-- DIRECT CHAT -->
-                <div class="card direct-chat direct-chat-primary mb-4">
+                <div class="card mt-3">
                   <div class="card-header">
-                    <h3 class="card-title">Direct Chat</h3>
+                    <h3 class="card-title">Labels</h3>
+                  </div>
+                  <div class="card-body p-0">
+                    <ul class="nav flex-column mb-0">
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i
+                            class="bi bi-circle-fill text-primary me-2"
+                            style="font-size: 0.6rem"
+                            aria-hidden="true"
+                          ></i>
+                          Customers
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i
+                            class="bi bi-circle-fill text-success me-2"
+                            style="font-size: 0.6rem"
+                            aria-hidden="true"
+                          ></i>
+                          Billing
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i
+                            class="bi bi-circle-fill text-warning me-2"
+                            style="font-size: 0.6rem"
+                            aria-hidden="true"
+                          ></i>
+                          Internal
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
+              <!-- Inbox list -->
+              <div class="col-lg-9">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Inbox</h3>
                     <div class="card-tools">
-                      <span title="3 New Messages" class="badge text-bg-primary"> 3 </span>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
-                      >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        title="Contacts"
-                        data-lte-toggle="chat-pane"
-                      >
-                        <i class="bi bi-chat-text-fill"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        aria-label="Remove card"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <!-- Conversations are loaded here -->
-                    <div
-                      class="direct-chat-messages"
-                      role="log"
-                      tabindex="0"
-                      aria-label="Chat messages"
-                    >
-                      <!-- Message. Default to the start -->
-                      <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-start"> Alexander Pierce </span>
-                          <span class="direct-chat-timestamp float-end"> 23 Jan 2:00 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          Is this template really for free? That's unbelievable!
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message to the end -->
-                      <div class="direct-chat-msg end">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-end"> Sarah Bullock </span>
-                          <span class="direct-chat-timestamp float-start"> 23 Jan 2:05 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">You better believe it!</div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message. Default to the start -->
-                      <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-start"> Alexander Pierce </span>
-                          <span class="direct-chat-timestamp float-end"> 23 Jan 5:37 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          Working with AdminLTE on a great new app! Wanna join?
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message to the end -->
-                      <div class="direct-chat-msg end">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-end"> Sarah Bullock </span>
-                          <span class="direct-chat-timestamp float-start"> 23 Jan 6:10 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">I would love to.</div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-                    </div>
-                    <!-- /.direct-chat-messages-->
-
-                    <!-- Contacts are loaded here -->
-                    <div class="direct-chat-contacts">
-                      <ul class="contacts-list">
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Count Dracula
-                                <small class="contacts-list-date float-end"> 2/28/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> How have you been? I was... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user7-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Sarah Doe
-                                <small class="contacts-list-date float-end"> 2/23/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> I will be waiting for... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Nadia Jolie
-                                <small class="contacts-list-date float-end"> 2/20/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> I'll call you back at... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user5-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Nora S. Vans
-                                <small class="contacts-list-date float-end"> 2/10/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Where is your new... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user6-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                John K.
-                                <small class="contacts-list-date float-end"> 1/27/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Can I take a look at... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user8-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Kenneth M.
-                                <small class="contacts-list-date float-end"> 1/4/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Never mind I found... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                      </ul>
-                      <!-- /.contacts-list -->
-                    </div>
-                    <!-- /.direct-chat-pane -->
-                  </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
-                    <form action="#" method="post">
-                      <div class="input-group">
-                        <input
-                          type="text"
-                          name="message"
-                          placeholder="Type Message ..."
-                          class="form-control"
-                        />
-                        <span class="input-group-append">
-                          <button type="button" class="btn btn-primary">Send</button>
+                      <div class="input-group input-group-sm" style="width: 16rem">
+                        <span class="input-group-text">
+                          <i class="bi bi-search" aria-hidden="true"></i>
                         </span>
+                        <input
+                          type="search"
+                          class="form-control"
+                          placeholder="Search mail&hellip;"
+                          aria-label="Search mail"
+                        />
                       </div>
-                    </form>
+                    </div>
                   </div>
-                  <!-- /.card-footer-->
-                </div>
-                <!-- /.direct-chat -->
-              </div>
-              <!-- /.Start col -->
-
-              <!-- Start col -->
-              <div class="col-lg-5 connectedSortable">
-                <div class="card text-white bg-primary bg-gradient border-primary mb-4">
-                  <div class="card-header border-0">
-                    <h3 class="card-title">Sales Value</h3>
-                    <div class="card-tools">
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-sm"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
+                  <div class="card-body p-0">
+                    <div class="d-flex align-items-center px-3 py-2 border-bottom">
+                      <div class="form-check mb-0">
+                        <input class="form-check-input" type="checkbox" id="select-all" />
+                        <label class="form-check-label visually-hidden" for="select-all">
+                          Select all
+                        </label>
+                      </div>
+                      <div class="btn-group btn-group-sm ms-3">
+                        <button class="btn btn-outline-secondary" type="button" title="Refresh">
+                          <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary" type="button" title="Archive">
+                          <i class="bi bi-archive" aria-hidden="true"></i>
+                        </button>
+                        <button
+                          class="btn btn-outline-secondary"
+                          type="button"
+                          title="Mark as spam"
+                        >
+                          <i class="bi bi-exclamation-octagon" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary" type="button" title="Delete">
+                          <i class="bi bi-trash" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <span class="ms-auto text-secondary small"> 1&ndash;8 of 8 </span>
+                    </div>
+                    <ul class="list-group list-group-flush mb-0">
+                      <li
+                        class="list-group-item d-flex align-items-center gap-2 fw-semibold bg-body-secondary"
                       >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div id="world-map" style="height: 220px"></div>
-                  </div>
-                  <div class="card-footer border-0">
-                    <!--begin::Row-->
-                    <div class="row">
-                      <div class="col-4 text-center">
-                        <div id="sparkline-1" class="text-dark"></div>
-                        <div class="text-white">Visitors</div>
-                      </div>
-                      <div class="col-4 text-center">
-                        <div id="sparkline-2" class="text-dark"></div>
-                        <div class="text-white">Online</div>
-                      </div>
-                      <div class="col-4 text-center">
-                        <div id="sparkline-3" class="text-dark"></div>
-                        <div class="text-white">Sales</div>
-                      </div>
-                    </div>
-                    <!--end::Row-->
+                        <div class="form-check mb-0">
+                          <input class="form-check-input" type="checkbox" id="msg-0" />
+                          <label class="form-check-label visually-hidden" for="msg-0">
+                            Select message from Olivia Bennett
+                          </label>
+                        </div>
+                        <button
+                          class="btn btn-link p-0 text-warning lh-1"
+                          type="button"
+                          title="Starred"
+                          aria-label="Starred"
+                        >
+                          <i class="bi bi-star-fill" aria-hidden="true"></i>
+                        </button>
+                        <a
+                          href="{{ route('mailbox.read') }}"
+                          class="flex-grow-1 d-flex flex-column flex-md-row gap-md-3 text-decoration-none text-body"
+                          style="min-width: 0"
+                        >
+                          <span class="text-truncate" style="min-width: 9rem">
+                            Olivia Bennett
+                          </span>
+                          <span class="flex-grow-1 text-truncate" style="min-width: 0">
+                            <span class="badge text-bg-primary me-2"> &middot; </span>
+                            Re: design system v2.4 sign-off
+                            <span class="fw-normal text-secondary">
+                              &nbsp;&mdash; Approved — a few small notes on the success state for
+                              forms.
+                            </span>
+                          </span>
+                          <span class="text-secondary small text-md-end" style="min-width: 5rem">
+                            10:42 AM
+                          </span>
+                        </a>
+                      </li>
+                      <li
+                        class="list-group-item d-flex align-items-center gap-2 fw-semibold bg-body-secondary"
+                      >
+                        <div class="form-check mb-0">
+                          <input class="form-check-input" type="checkbox" id="msg-1" />
+                          <label class="form-check-label visually-hidden" for="msg-1">
+                            Select message from GitHub
+                          </label>
+                        </div>
+                        <button
+                          class="btn btn-link p-0 text-warning lh-1"
+                          type="button"
+                          title="Star"
+                          aria-label="Star"
+                        >
+                          <i class="bi bi-star" aria-hidden="true"></i>
+                        </button>
+                        <a
+                          href="{{ route('mailbox.read') }}"
+                          class="flex-grow-1 d-flex flex-column flex-md-row gap-md-3 text-decoration-none text-body"
+                          style="min-width: 0"
+                        >
+                          <span class="text-truncate" style="min-width: 9rem"> GitHub </span>
+                          <span class="flex-grow-1 text-truncate" style="min-width: 0">
+                            <span class="badge text-bg-secondary me-2"> &middot; </span>
+                            [fullcalendar/fullcalendar] PR #6912 merged
+                            <span class="fw-normal text-secondary">
+                              &nbsp;&mdash; Allow custom render hooks for time grid axis labels.
+                            </span>
+                          </span>
+                          <span class="text-secondary small text-md-end" style="min-width: 5rem">
+                            9:08 AM
+                          </span>
+                        </a>
+                      </li>
+                      <li
+                        class="list-group-item d-flex align-items-center gap-2 fw-semibold bg-body-secondary"
+                      >
+                        <div class="form-check mb-0">
+                          <input class="form-check-input" type="checkbox" id="msg-2" />
+                          <label class="form-check-label visually-hidden" for="msg-2">
+                            Select message from Stripe
+                          </label>
+                        </div>
+                        <button
+                          class="btn btn-link p-0 text-warning lh-1"
+                          type="button"
+                          title="Star"
+                          aria-label="Star"
+                        >
+                          <i class="bi bi-star" aria-hidden="true"></i>
+                        </button>
+                        <a
+                          href="{{ route('mailbox.read') }}"
+                          class="flex-grow-1 d-flex flex-column flex-md-row gap-md-3 text-decoration-none text-body"
+                          style="min-width: 0"
+                        >
+                          <span class="text-truncate" style="min-width: 9rem"> Stripe </span>
+                          <span class="flex-grow-1 text-truncate" style="min-width: 0">
+                            <span class="badge text-bg-success me-2"> &middot; </span>
+                            Your May invoice is ready
+                            <span class="fw-normal text-secondary">
+                              &nbsp;&mdash; Invoice INV-2026-00428 totaling $108.31 has been issued.
+                            </span>
+                          </span>
+                          <span class="text-secondary small text-md-end" style="min-width: 5rem">
+                            8:15 AM
+                          </span>
+                        </a>
+                      </li>
+                      <li class="list-group-item d-flex align-items-center gap-2">
+                        <div class="form-check mb-0">
+                          <input class="form-check-input" type="checkbox" id="msg-3" />
+                          <label class="form-check-label visually-hidden" for="msg-3">
+                            Select message from Marcus Reyes
+                          </label>
+                        </div>
+                        <button
+                          class="btn btn-link p-0 text-warning lh-1"
+                          type="button"
+                          title="Starred"
+                          aria-label="Starred"
+                        >
+                          <i class="bi bi-star-fill" aria-hidden="true"></i>
+                        </button>
+                        <a
+                          href="{{ route('mailbox.read') }}"
+                          class="flex-grow-1 d-flex flex-column flex-md-row gap-md-3 text-decoration-none text-body"
+                          style="min-width: 0"
+                        >
+                          <span class="text-truncate" style="min-width: 9rem"> Marcus Reyes </span>
+                          <span class="flex-grow-1 text-truncate" style="min-width: 0">
+                            <span class="badge text-bg-info me-2"> &middot; </span>
+                            Lunch on Thursday?
+                            <span class="fw-normal text-secondary">
+                              &nbsp;&mdash; Free around 1pm at the usual place. Let me know.
+                            </span>
+                          </span>
+                          <span class="text-secondary small text-md-end" style="min-width: 5rem">
+                            Yesterday
+                          </span>
+                        </a>
+                      </li>
+                      <li class="list-group-item d-flex align-items-center gap-2">
+                        <div class="form-check mb-0">
+                          <input class="form-check-input" type="checkbox" id="msg-4" />
+                          <label class="form-check-label visually-hidden" for="msg-4">
+                            Select message from Linear
+                          </label>
+                        </div>
+                        <button
+                          class="btn btn-link p-0 text-warning lh-1"
+                          type="button"
+                          title="Star"
+                          aria-label="Star"
+                        >
+                          <i class="bi bi-star" aria-hidden="true"></i>
+                        </button>
+                        <a
+                          href="{{ route('mailbox.read') }}"
+                          class="flex-grow-1 d-flex flex-column flex-md-row gap-md-3 text-decoration-none text-body"
+                          style="min-width: 0"
+                        >
+                          <span class="text-truncate" style="min-width: 9rem"> Linear </span>
+                          <span class="flex-grow-1 text-truncate" style="min-width: 0">
+                            <span class="badge text-bg-warning me-2"> &middot; </span>
+                            [ADM-441] Calendar drag-and-drop not working on Safari iOS
+                            <span class="fw-normal text-secondary">
+                              &nbsp;&mdash; Reproduces consistently on iOS 18.4 in Safari and
+                              Chrome.
+                            </span>
+                          </span>
+                          <span class="text-secondary small text-md-end" style="min-width: 5rem">
+                            Yesterday
+                          </span>
+                        </a>
+                      </li>
+                      <li class="list-group-item d-flex align-items-center gap-2">
+                        <div class="form-check mb-0">
+                          <input class="form-check-input" type="checkbox" id="msg-5" />
+                          <label class="form-check-label visually-hidden" for="msg-5">
+                            Select message from Vercel
+                          </label>
+                        </div>
+                        <button
+                          class="btn btn-link p-0 text-warning lh-1"
+                          type="button"
+                          title="Star"
+                          aria-label="Star"
+                        >
+                          <i class="bi bi-star" aria-hidden="true"></i>
+                        </button>
+                        <a
+                          href="{{ route('mailbox.read') }}"
+                          class="flex-grow-1 d-flex flex-column flex-md-row gap-md-3 text-decoration-none text-body"
+                          style="min-width: 0"
+                        >
+                          <span class="text-truncate" style="min-width: 9rem"> Vercel </span>
+                          <span class="flex-grow-1 text-truncate" style="min-width: 0">
+                            <span class="badge text-bg-success me-2"> &middot; </span>
+                            Deployment succeeded — production
+                            <span class="fw-normal text-secondary">
+                              &nbsp;&mdash; main@a3c91fb deployed to production in 47s.
+                            </span>
+                          </span>
+                          <span class="text-secondary small text-md-end" style="min-width: 5rem">
+                            May 16
+                          </span>
+                        </a>
+                      </li>
+                      <li class="list-group-item d-flex align-items-center gap-2">
+                        <div class="form-check mb-0">
+                          <input class="form-check-input" type="checkbox" id="msg-6" />
+                          <label class="form-check-label visually-hidden" for="msg-6">
+                            Select message from Sara Khan
+                          </label>
+                        </div>
+                        <button
+                          class="btn btn-link p-0 text-warning lh-1"
+                          type="button"
+                          title="Star"
+                          aria-label="Star"
+                        >
+                          <i class="bi bi-star" aria-hidden="true"></i>
+                        </button>
+                        <a
+                          href="{{ route('mailbox.read') }}"
+                          class="flex-grow-1 d-flex flex-column flex-md-row gap-md-3 text-decoration-none text-body"
+                          style="min-width: 0"
+                        >
+                          <span class="text-truncate" style="min-width: 9rem"> Sara Khan </span>
+                          <span class="flex-grow-1 text-truncate" style="min-width: 0">
+                            <span class="badge text-bg-primary me-2"> &middot; </span>
+                            Customer interview notes — Acme Corp
+                            <span class="fw-normal text-secondary">
+                              &nbsp;&mdash; Three big themes: onboarding friction, billing
+                              visibility, mobile.
+                            </span>
+                          </span>
+                          <span class="text-secondary small text-md-end" style="min-width: 5rem">
+                            May 15
+                          </span>
+                        </a>
+                      </li>
+                      <li class="list-group-item d-flex align-items-center gap-2">
+                        <div class="form-check mb-0">
+                          <input class="form-check-input" type="checkbox" id="msg-7" />
+                          <label class="form-check-label visually-hidden" for="msg-7">
+                            Select message from AWS
+                          </label>
+                        </div>
+                        <button
+                          class="btn btn-link p-0 text-warning lh-1"
+                          type="button"
+                          title="Star"
+                          aria-label="Star"
+                        >
+                          <i class="bi bi-star" aria-hidden="true"></i>
+                        </button>
+                        <a
+                          href="{{ route('mailbox.read') }}"
+                          class="flex-grow-1 d-flex flex-column flex-md-row gap-md-3 text-decoration-none text-body"
+                          style="min-width: 0"
+                        >
+                          <span class="text-truncate" style="min-width: 9rem"> AWS </span>
+                          <span class="flex-grow-1 text-truncate" style="min-width: 0">
+                            <span class="badge text-bg-danger me-2"> &middot; </span>
+                            Your monthly bill summary
+                            <span class="fw-normal text-secondary">
+                              &nbsp;&mdash; Total charges for April 2026: $312.94. View in console.
+                            </span>
+                          </span>
+                          <span class="text-secondary small text-md-end" style="min-width: 5rem">
+                            May 14
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
-              <!-- /.Start col -->
             </div>
-            <!-- /.row (main row) -->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content-->
       </main>
-      <!--end::App Main-->
       <!--begin::Footer-->
       <footer class="app-footer">
         <!--begin::To the end-->
@@ -1637,8 +1583,6 @@
       </footer>
       <!--end::Footer-->
     </div>
-    <!--end::App Wrapper-->
-    <!--begin::Script-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
@@ -1725,200 +1669,5 @@
      module (since 4.1) — no page script needed. Only the no-flash snippet
      in <head> stays inline, because it must run before first paint. -->
     <!--end::Color Mode Toggle-->
-
-    <!-- OPTIONAL SCRIPTS -->
-
-    <!-- sortablejs -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- sortablejs -->
-    <script>
-      new Sortable(document.querySelector('.connectedSortable'), {
-        group: 'shared',
-        handle: '.card-header',
-      });
-
-      const cardHeaders = document.querySelectorAll('.connectedSortable .card-header');
-      cardHeaders.forEach((cardHeader) => {
-        cardHeader.style.cursor = 'move';
-      });
-    </script>
-    <!-- apexcharts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
-      integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8="
-      crossorigin="anonymous"
-    ></script>
-    <!-- ChartJS -->
-    <script>
-      // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-      // IT'S ALL JUST JUNK FOR DEMO
-      // ++++++++++++++++++++++++++++++++++++++++++
-
-      const sales_chart_options = {
-        series: [
-          {
-            name: 'Digital Goods',
-            data: [28, 48, 40, 19, 86, 27, 90],
-          },
-          {
-            name: 'Electronics',
-            data: [65, 59, 80, 81, 56, 55, 40],
-          },
-        ],
-        chart: {
-          id: 'revenue-chart',
-          height: 300,
-          type: 'area',
-          toolbar: {
-            show: false,
-          },
-        },
-        legend: {
-          show: false,
-        },
-        colors: ['#0d6efd', '#20c997'],
-        dataLabels: {
-          enabled: false,
-        },
-        stroke: {
-          curve: 'smooth',
-        },
-        xaxis: {
-          type: 'datetime',
-          categories: [
-            '2023-01-01',
-            '2023-02-01',
-            '2023-03-01',
-            '2023-04-01',
-            '2023-05-01',
-            '2023-06-01',
-            '2023-07-01',
-          ],
-        },
-        tooltip: {
-          x: {
-            format: 'MMMM yyyy',
-          },
-        },
-      };
-
-      const sales_chart = new ApexCharts(
-        document.querySelector('#revenue-chart'),
-        sales_chart_options,
-      );
-      sales_chart.render();
-    </script>
-    <!-- jsvectormap -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"
-      integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"
-      integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY="
-      crossorigin="anonymous"
-    ></script>
-    <!-- jsvectormap -->
-    <script>
-      // World map by jsVectorMap
-      new jsVectorMap({
-        selector: '#world-map',
-        map: 'world',
-      });
-
-      // Sparkline charts
-      const option_sparkline1 = {
-        series: [
-          {
-            data: [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021],
-          },
-        ],
-        chart: {
-          id: 'sparkline-1',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline1 = new ApexCharts(document.querySelector('#sparkline-1'), option_sparkline1);
-      sparkline1.render();
-
-      const option_sparkline2 = {
-        series: [
-          {
-            data: [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921],
-          },
-        ],
-        chart: {
-          id: 'sparkline-2',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline2 = new ApexCharts(document.querySelector('#sparkline-2'), option_sparkline2);
-      sparkline2.render();
-
-      const option_sparkline3 = {
-        series: [
-          {
-            data: [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21],
-          },
-        ],
-        chart: {
-          id: 'sparkline-3',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
-      sparkline3.render();
-    </script>
-    <!--end::Script-->
   </body>
-  <!--end::Body-->
 </html>

@@ -32,6 +32,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; color: var(--ve-dark); }
 /* ============================================================
    NAVBAR
    ============================================================ */
+
 .ve-header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -61,8 +62,15 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; color: var(--ve-dark); }
   display:flex; align-items:center; justify-content:center;
   font-family:'Poppins',sans-serif; font-weight:900; font-size:20px;
 }
-.ve-logo-text { font-family:'Poppins',sans-serif; font-size:20px; color:var(--ve-dark); font-weight:600; }
-.ve-logo-text strong { color: var(--ve-gold); font-weight:900; }
+.ve-logo-text {
+    color:  #95C9E1;
+    font-weight: 700;
+}
+
+.ve-logo-text strong {
+    color: #EFC53D;
+    font-weight: 800;
+}
 
 /* Nav links */
 .ve-nav ul { list-style:none; margin:0; padding:0; display:flex; gap:6px; }
@@ -374,7 +382,6 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; color: var(--ve-dark); }
 
 .ve-footer-brand p { font-size:14px; color:rgba(255,255,255,0.5); line-height:1.8; margin:18px 0 24px; }
 .ve-footer-bottom-inner { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:14px; }
-.ve-footer-logo .ve-logo-text { color: #ffffff; }
 .ve-footer-logo .ve-logo-img { border-radius: 50%; }
 
 

@@ -3,7 +3,7 @@
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE v4 | Dashboard</title>
+    <title>AdminLTE 4 | Search Results</title>
 
     <!--begin::Theme Init (prevents flash of incorrect theme on load, #6043)-->
     <script>
@@ -54,7 +54,7 @@
     <!--end::Accessibility Meta Tags-->
 
     <!--begin::Primary Meta Tags-->
-    <meta name="title" content="AdminLTE v4 | Dashboard" />
+    <meta name="title" content="AdminLTE 4 | Search Results" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -102,22 +102,6 @@
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
-
-    <!-- apexcharts -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
-      integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0="
-      crossorigin="anonymous"
-    />
-
-    <!-- jsvectormap -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
-      integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
-      crossorigin="anonymous"
-    />
   </head>
   <!--end::Head-->
   <!--begin::Body-->
@@ -149,7 +133,7 @@
               </a>
             </li>
             <li class="nav-item d-none d-md-block">
-              <a href="./docs/introduction.html" class="nav-link">
+              <a href="../docs/introduction.html" class="nav-link">
                 <i class="bi bi-book me-1" aria-hidden="true"></i>
                 Documentation
               </a>
@@ -161,7 +145,7 @@
           <form
             class="navbar-search d-none d-md-block ms-3"
             role="search"
-            action="./pages/search-results.html"
+            action="../pages/search-results.html"
           >
             <label for="navbar-search-input" class="visually-hidden">Search</label>
             <div class="navbar-search-field">
@@ -523,8 +507,8 @@
               data-accordion="false"
               id="navigation"
             >
-              <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Dashboard
@@ -533,7 +517,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link active">
+                    <a href="{{ route('dashboard') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Dashboard v1</p>
                     </a>
@@ -553,7 +537,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.starter') }}" class="nav-link">
+                <a href="{{ route('starter') }}" class="nav-link">
                   <i class="nav-icon bi bi-file-earmark"></i>
                   <p>Starter Page</p>
                 </a>
@@ -843,8 +827,8 @@
               </li>
 
               <li class="nav-header">PAGES</li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+              <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon bi bi-file-earmark-text"></i>
                   <p>
                     Pages
@@ -907,7 +891,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('pages.search-results') }}" class="nav-link">
+                    <a href="{{ route('pages.search-results') }}" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Search Results</p>
                     </a>
@@ -1124,7 +1108,7 @@
             <!-- Docs CTA (bottom of sidebar) -->
             <div class="p-3 mt-3 border-top border-secondary border-opacity-25">
               <a
-                href="./docs/introduction.html"
+                href="../docs/introduction.html"
                 class="btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2"
               >
                 <i class="bi bi-book" aria-hidden="true"></i>
@@ -1145,13 +1129,13 @@
             <!--begin::Row-->
             <div class="row">
               <div class="col-sm-6">
-                <h1 class="mb-0 fs-3">Dashboard</h1>
+                <h1 class="mb-0 fs-3">Search Results</h1>
               </div>
               <div class="col-sm-6">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item active" aria-current="page">Search Results</li>
                   </ol>
                 </nav>
               </div>
@@ -1166,456 +1150,340 @@
           <!--begin::Container-->
           <div class="container-fluid">
             <!--begin::Row-->
-            <div class="row">
-              <!--begin::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 1-->
-                <div class="small-box text-bg-primary">
-                  <div class="inner">
-                    <h3>150</h3>
-
-                    <p>New Orders</p>
+            <div class="row g-4">
+              <!--begin::Results-->
+              <div class="col-lg-8">
+                <!--begin::Search Form-->
+                <form class="mb-3" role="search" action="#">
+                  <label for="results-query" class="visually-hidden"> Search </label>
+                  <div class="input-group">
+                    <input
+                      type="search"
+                      id="results-query"
+                      class="form-control form-control-lg"
+                      value="invoice"
+                      placeholder="Search pages, users and files"
+                    />
+                    <button class="btn btn-primary" type="submit">
+                      <i class="bi bi-search me-1" aria-hidden="true"></i>
+                      Search
+                    </button>
                   </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 1-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 2-->
-                <div class="small-box text-bg-success">
-                  <div class="inner">
-                    <h3>53<sup class="fs-5">%</sup></h3>
+                </form>
+                <!--end::Search Form-->
 
-                    <p>Bounce Rate</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 2-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 3-->
-                <div class="small-box text-bg-warning">
-                  <div class="inner">
-                    <h3>44</h3>
+                <p class="text-body-secondary" aria-live="polite">
+                  <strong>128</strong> results for <strong>&ldquo;invoice&rdquo;</strong> &middot;
+                  0.21 seconds
+                </p>
 
-                    <p>User Registrations</p>
+                <!--begin::Result List-->
+                <div class="card">
+                  <!--begin::Type Tabs-->
+                  <div class="card-header p-0 pt-1">
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link active"
+                          type="button"
+                          role="tab"
+                          aria-selected="true"
+                        >
+                          All
+                          <span class="badge text-bg-secondary ms-1"> 128 </span>
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" type="button" role="tab" aria-selected="false">
+                          Pages
+                          <span class="badge text-bg-secondary ms-1"> 64 </span>
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" type="button" role="tab" aria-selected="false">
+                          Users
+                          <span class="badge text-bg-secondary ms-1"> 41 </span>
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" type="button" role="tab" aria-selected="false">
+                          Files
+                          <span class="badge text-bg-secondary ms-1"> 18 </span>
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" type="button" role="tab" aria-selected="false">
+                          Projects
+                          <span class="badge text-bg-secondary ms-1"> 5 </span>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
+                  <!--end::Type Tabs-->
+                  <div class="card-body p-0">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item py-3">
+                        <div class="d-flex gap-3">
+                          <span
+                            class="badge text-bg-primary flex-shrink-0 d-flex align-items-center"
+                            style="height: 2rem; width: 2rem; justify-content: center"
+                          >
+                            <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+                          </span>
+                          <div class="flex-grow-1 overflow-hidden">
+                            <h2 class="fs-5 mb-1">
+                              <a
+                                href="{{ route('pages.invoice') }}"
+                                class="link-body-emphasis link-underline-opacity-0 link-underline-opacity-100-hover"
+                              >
+                                Invoice #A-1042
+                              </a>
+                            </h2>
+                            <p class="fs-7 text-success mb-1 text-truncate">/pages/invoice.html</p>
+                            <p class="mb-1">
+                              Issued 2 August 2026 to Colorlib Ltd. Contains 4 line items totalling
+                              $2,310.00, due in 14 days.
+                            </p>
+                            <p class="fs-7 text-secondary mb-0">
+                              <span class="badge text-bg-light me-1"> Page </span>
+                              Updated 3 hours ago
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item py-3">
+                        <div class="d-flex gap-3">
+                          <span
+                            class="badge text-bg-primary flex-shrink-0 d-flex align-items-center"
+                            style="height: 2rem; width: 2rem; justify-content: center"
+                          >
+                            <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+                          </span>
+                          <div class="flex-grow-1 overflow-hidden">
+                            <h2 class="fs-5 mb-1">
+                              <a
+                                href="{{ route('pages.settings') }}"
+                                class="link-body-emphasis link-underline-opacity-0 link-underline-opacity-100-hover"
+                              >
+                                Invoice template settings
+                              </a>
+                            </h2>
+                            <p class="fs-7 text-success mb-1 text-truncate">/pages/settings.html</p>
+                            <p class="mb-1">
+                              Configure the default invoice footer, tax rate and payment terms
+                              applied to every new invoice.
+                            </p>
+                            <p class="fs-7 text-secondary mb-0">
+                              <span class="badge text-bg-light me-1"> Page </span>
+                              Updated 5 days ago
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item py-3">
+                        <div class="d-flex gap-3">
+                          <span
+                            class="badge text-bg-info flex-shrink-0 d-flex align-items-center"
+                            style="height: 2rem; width: 2rem; justify-content: center"
+                          >
+                            <i class="bi bi-person" aria-hidden="true"></i>
+                          </span>
+                          <div class="flex-grow-1 overflow-hidden">
+                            <h2 class="fs-5 mb-1">
+                              <a
+                                href="{{ route('pages.profile') }}"
+                                class="link-body-emphasis link-underline-opacity-0 link-underline-opacity-100-hover"
+                              >
+                                Alexander Pierce
+                              </a>
+                            </h2>
+                            <p class="fs-7 text-success mb-1 text-truncate">/pages/profile.html</p>
+                            <p class="mb-1">
+                              Billing administrator · Raised 18 invoices this quarter ·
+                              alexander.pierce@example.com
+                            </p>
+                            <p class="fs-7 text-secondary mb-0">
+                              <span class="badge text-bg-light me-1"> User </span>
+                              Active 12 minutes ago
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item py-3">
+                        <div class="d-flex gap-3">
+                          <span
+                            class="badge text-bg-secondary flex-shrink-0 d-flex align-items-center"
+                            style="height: 2rem; width: 2rem; justify-content: center"
+                          >
+                            <i class="bi bi-paperclip" aria-hidden="true"></i>
+                          </span>
+                          <div class="flex-grow-1 overflow-hidden">
+                            <h2 class="fs-5 mb-1">
+                              <a
+                                href="{{ route('pages.file-manager') }}"
+                                class="link-body-emphasis link-underline-opacity-0 link-underline-opacity-100-hover"
+                              >
+                                invoice-archive-2025.zip
+                              </a>
+                            </h2>
+                            <p class="fs-7 text-success mb-1 text-truncate">
+                              /pages/file-manager.html
+                            </p>
+                            <p class="mb-1">
+                              Archive · 48.2 MB · Uploaded by Nadia Carmichael to Finance / Archive.
+                            </p>
+                            <p class="fs-7 text-secondary mb-0">
+                              <span class="badge text-bg-light me-1"> File </span>
+                              Uploaded 12 Jan 2026
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item py-3">
+                        <div class="d-flex gap-3">
+                          <span
+                            class="badge text-bg-success flex-shrink-0 d-flex align-items-center"
+                            style="height: 2rem; width: 2rem; justify-content: center"
+                          >
+                            <i class="bi bi-kanban" aria-hidden="true"></i>
+                          </span>
+                          <div class="flex-grow-1 overflow-hidden">
+                            <h2 class="fs-5 mb-1">
+                              <a
+                                href="{{ route('pages.projects') }}"
+                                class="link-body-emphasis link-underline-opacity-0 link-underline-opacity-100-hover"
+                              >
+                                Invoicing rebuild
+                              </a>
+                            </h2>
+                            <p class="fs-7 text-success mb-1 text-truncate">/pages/projects.html</p>
+                            <p class="mb-1">
+                              6 of 11 tasks complete. Blocked on the payment-provider migration;
+                              next milestone 30 September.
+                            </p>
+                            <p class="fs-7 text-secondary mb-0">
+                              <span class="badge text-bg-light me-1"> Project </span>
+                              3 open tasks
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <!--end::Small Box Widget 3-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 4-->
-                <div class="small-box text-bg-danger">
-                  <div class="inner">
-                    <h3>65</h3>
+                <!--end::Result List-->
 
-                    <p>Unique Visitors</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
-                    ></path>
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 4-->
+                <!--begin::Pagination-->
+                <nav aria-label="Search results pages" class="mt-3">
+                  <ul class="pagination justify-content-center mb-0">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item active" aria-current="page">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <!--end::Pagination-->
               </div>
-              <!--end::Col-->
-            </div>
-            <!--end::Row-->
-            <!--begin::Row-->
-            <div class="row">
-              <!-- Start col -->
-              <div class="col-lg-7 connectedSortable">
+              <!--end::Results-->
+
+              <!--begin::Sidebar-->
+              <div class="col-lg-4">
+                <!--begin::Refine-->
                 <div class="card mb-4">
                   <div class="card-header">
-                    <h3 class="card-title">Sales Value</h3>
+                    <div class="card-title">Refine</div>
                   </div>
-
                   <div class="card-body">
-                    <div id="revenue-chart"></div>
-                  </div>
-                </div>
-                <!-- /.card -->
-
-                <!-- DIRECT CHAT -->
-                <div class="card direct-chat direct-chat-primary mb-4">
-                  <div class="card-header">
-                    <h3 class="card-title">Direct Chat</h3>
-
-                    <div class="card-tools">
-                      <span title="3 New Messages" class="badge text-bg-primary"> 3 </span>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
-                      >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        title="Contacts"
-                        data-lte-toggle="chat-pane"
-                      >
-                        <i class="bi bi-chat-text-fill"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        aria-label="Remove card"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
+                    <div class="mb-3">
+                      <label for="refine-range" class="form-label"> Date range </label>
+                      <select class="form-select" id="refine-range">
+                        <option selected>Any time</option>
+                        <option>Past 24 hours</option>
+                        <option>Past week</option>
+                        <option>Past month</option>
+                      </select>
                     </div>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <!-- Conversations are loaded here -->
-                    <div
-                      class="direct-chat-messages"
-                      role="log"
-                      tabindex="0"
-                      aria-label="Chat messages"
-                    >
-                      <!-- Message. Default to the start -->
-                      <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-start"> Alexander Pierce </span>
-                          <span class="direct-chat-timestamp float-end"> 23 Jan 2:00 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          Is this template really for free? That's unbelievable!
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message to the end -->
-                      <div class="direct-chat-msg end">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-end"> Sarah Bullock </span>
-                          <span class="direct-chat-timestamp float-start"> 23 Jan 2:05 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">You better believe it!</div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message. Default to the start -->
-                      <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-start"> Alexander Pierce </span>
-                          <span class="direct-chat-timestamp float-end"> 23 Jan 5:37 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          Working with AdminLTE on a great new app! Wanna join?
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message to the end -->
-                      <div class="direct-chat-msg end">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-end"> Sarah Bullock </span>
-                          <span class="direct-chat-timestamp float-start"> 23 Jan 6:10 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">I would love to.</div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
+                    <div class="mb-3">
+                      <label for="refine-owner" class="form-label">Owner</label>
+                      <select class="form-select" id="refine-owner">
+                        <option selected>Anyone</option>
+                        <option>Me</option>
+                        <option>My team</option>
+                      </select>
                     </div>
-                    <!-- /.direct-chat-messages-->
-
-                    <!-- Contacts are loaded here -->
-                    <div class="direct-chat-contacts">
-                      <ul class="contacts-list">
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Count Dracula
-                                <small class="contacts-list-date float-end"> 2/28/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> How have you been? I was... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user7-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Sarah Doe
-                                <small class="contacts-list-date float-end"> 2/23/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> I will be waiting for... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Nadia Jolie
-                                <small class="contacts-list-date float-end"> 2/20/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> I'll call you back at... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user5-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Nora S. Vans
-                                <small class="contacts-list-date float-end"> 2/10/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Where is your new... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user6-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                John K.
-                                <small class="contacts-list-date float-end"> 1/27/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Can I take a look at... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user8-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Kenneth M.
-                                <small class="contacts-list-date float-end"> 1/4/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Never mind I found... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                      </ul>
-                      <!-- /.contacts-list -->
-                    </div>
-                    <!-- /.direct-chat-pane -->
+                    <fieldset>
+                      <legend class="form-label fs-6">Include</legend>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="refine-archived" />
+                        <label class="form-check-label" for="refine-archived">
+                          Archived items
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="refine-trashed" />
+                        <label class="form-check-label" for="refine-trashed"> Trashed items </label>
+                      </div>
+                    </fieldset>
                   </div>
-                  <!-- /.card-body -->
                   <div class="card-footer">
-                    <form action="#" method="post">
-                      <div class="input-group">
-                        <input
-                          type="text"
-                          name="message"
-                          placeholder="Type Message ..."
-                          class="form-control"
-                        />
-                        <span class="input-group-append">
-                          <button type="button" class="btn btn-primary">Send</button>
-                        </span>
-                      </div>
-                    </form>
+                    <button type="button" class="btn btn-primary btn-sm">Apply</button>
+                    <button type="button" class="btn btn-outline-dark btn-sm">Reset</button>
                   </div>
-                  <!-- /.card-footer-->
                 </div>
-                <!-- /.direct-chat -->
-              </div>
-              <!-- /.Start col -->
+                <!--end::Refine-->
 
-              <!-- Start col -->
-              <div class="col-lg-5 connectedSortable">
-                <div class="card text-white bg-primary bg-gradient border-primary mb-4">
-                  <div class="card-header border-0">
-                    <h3 class="card-title">Sales Value</h3>
-                    <div class="card-tools">
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-sm"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
-                      >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                    </div>
+                <!--begin::Related-->
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <div class="card-title">Related searches</div>
                   </div>
-                  <div class="card-body">
-                    <div id="world-map" style="height: 220px"></div>
-                  </div>
-                  <div class="card-footer border-0">
-                    <!--begin::Row-->
-                    <div class="row">
-                      <div class="col-4 text-center">
-                        <div id="sparkline-1" class="text-dark"></div>
-                        <div class="text-white">Visitors</div>
-                      </div>
-                      <div class="col-4 text-center">
-                        <div id="sparkline-2" class="text-dark"></div>
-                        <div class="text-white">Online</div>
-                      </div>
-                      <div class="col-4 text-center">
-                        <div id="sparkline-3" class="text-dark"></div>
-                        <div class="text-white">Sales</div>
-                      </div>
-                    </div>
-                    <!--end::Row-->
+                  <div class="card-body d-flex flex-wrap gap-2">
+                    <a href="#" class="badge text-bg-light text-decoration-none">
+                      invoice template
+                    </a>
+                    <a href="#" class="badge text-bg-light text-decoration-none">
+                      overdue invoices
+                    </a>
+                    <a href="#" class="badge text-bg-light text-decoration-none">
+                      invoice pdf export
+                    </a>
+                    <a href="#" class="badge text-bg-light text-decoration-none"> tax rate </a>
                   </div>
                 </div>
+                <!--end::Related-->
+
+                <!--begin::Empty State Example-->
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">No results state</div>
+                  </div>
+                  <div class="card-body text-center py-4">
+                    <i class="bi bi-search fs-1 text-secondary d-block mb-2" aria-hidden="true"></i>
+                    <p class="fw-semibold mb-1">Nothing matched &ldquo;quarterly forecast&rdquo;</p>
+                    <p class="text-secondary fs-7 mb-3">
+                      Check the spelling, use fewer words, or clear the filters on the left.
+                    </p>
+                    <button type="button" class="btn btn-sm btn-outline-primary">
+                      Clear filters
+                    </button>
+                  </div>
+                </div>
+                <!--end::Empty State Example-->
               </div>
-              <!-- /.Start col -->
+              <!--end::Sidebar-->
             </div>
-            <!-- /.row (main row) -->
+            <!--end::Row-->
           </div>
           <!--end::Container-->
         </div>
@@ -1726,198 +1594,6 @@
      in <head> stays inline, because it must run before first paint. -->
     <!--end::Color Mode Toggle-->
 
-    <!-- OPTIONAL SCRIPTS -->
-
-    <!-- sortablejs -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- sortablejs -->
-    <script>
-      new Sortable(document.querySelector('.connectedSortable'), {
-        group: 'shared',
-        handle: '.card-header',
-      });
-
-      const cardHeaders = document.querySelectorAll('.connectedSortable .card-header');
-      cardHeaders.forEach((cardHeader) => {
-        cardHeader.style.cursor = 'move';
-      });
-    </script>
-    <!-- apexcharts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
-      integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8="
-      crossorigin="anonymous"
-    ></script>
-    <!-- ChartJS -->
-    <script>
-      // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-      // IT'S ALL JUST JUNK FOR DEMO
-      // ++++++++++++++++++++++++++++++++++++++++++
-
-      const sales_chart_options = {
-        series: [
-          {
-            name: 'Digital Goods',
-            data: [28, 48, 40, 19, 86, 27, 90],
-          },
-          {
-            name: 'Electronics',
-            data: [65, 59, 80, 81, 56, 55, 40],
-          },
-        ],
-        chart: {
-          id: 'revenue-chart',
-          height: 300,
-          type: 'area',
-          toolbar: {
-            show: false,
-          },
-        },
-        legend: {
-          show: false,
-        },
-        colors: ['#0d6efd', '#20c997'],
-        dataLabels: {
-          enabled: false,
-        },
-        stroke: {
-          curve: 'smooth',
-        },
-        xaxis: {
-          type: 'datetime',
-          categories: [
-            '2023-01-01',
-            '2023-02-01',
-            '2023-03-01',
-            '2023-04-01',
-            '2023-05-01',
-            '2023-06-01',
-            '2023-07-01',
-          ],
-        },
-        tooltip: {
-          x: {
-            format: 'MMMM yyyy',
-          },
-        },
-      };
-
-      const sales_chart = new ApexCharts(
-        document.querySelector('#revenue-chart'),
-        sales_chart_options,
-      );
-      sales_chart.render();
-    </script>
-    <!-- jsvectormap -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"
-      integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"
-      integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY="
-      crossorigin="anonymous"
-    ></script>
-    <!-- jsvectormap -->
-    <script>
-      // World map by jsVectorMap
-      new jsVectorMap({
-        selector: '#world-map',
-        map: 'world',
-      });
-
-      // Sparkline charts
-      const option_sparkline1 = {
-        series: [
-          {
-            data: [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021],
-          },
-        ],
-        chart: {
-          id: 'sparkline-1',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline1 = new ApexCharts(document.querySelector('#sparkline-1'), option_sparkline1);
-      sparkline1.render();
-
-      const option_sparkline2 = {
-        series: [
-          {
-            data: [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921],
-          },
-        ],
-        chart: {
-          id: 'sparkline-2',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline2 = new ApexCharts(document.querySelector('#sparkline-2'), option_sparkline2);
-      sparkline2.render();
-
-      const option_sparkline3 = {
-        series: [
-          {
-            data: [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21],
-          },
-        ],
-        chart: {
-          id: 'sparkline-3',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
-      sparkline3.render();
-    </script>
     <!--end::Script-->
   </body>
   <!--end::Body-->

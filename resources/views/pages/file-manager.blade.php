@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
-  <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE v4 | Dashboard</title>
+    <title>AdminLTE 4 | File Manager</title>
 
     <!--begin::Theme Init (prevents flash of incorrect theme on load, #6043)-->
     <script>
@@ -54,7 +53,7 @@
     <!--end::Accessibility Meta Tags-->
 
     <!--begin::Primary Meta Tags-->
-    <meta name="title" content="AdminLTE v4 | Dashboard" />
+    <meta name="title" content="AdminLTE 4 | File Manager" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -102,27 +101,8 @@
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
-
-    <!-- apexcharts -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
-      integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0="
-      crossorigin="anonymous"
-    />
-
-    <!-- jsvectormap -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
-      integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
-      crossorigin="anonymous"
-    />
   </head>
-  <!--end::Head-->
-  <!--begin::Body-->
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-    <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->
       <nav class="app-header navbar navbar-expand bg-body">
@@ -149,7 +129,7 @@
               </a>
             </li>
             <li class="nav-item d-none d-md-block">
-              <a href="./docs/introduction.html" class="nav-link">
+              <a href="../docs/introduction.html" class="nav-link">
                 <i class="bi bi-book me-1" aria-hidden="true"></i>
                 Documentation
               </a>
@@ -161,7 +141,7 @@
           <form
             class="navbar-search d-none d-md-block ms-3"
             role="search"
-            action="./pages/search-results.html"
+            action="../pages/search-results.html"
           >
             <label for="navbar-search-input" class="visually-hidden">Search</label>
             <div class="navbar-search-field">
@@ -523,8 +503,8 @@
               data-accordion="false"
               id="navigation"
             >
-              <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Dashboard
@@ -533,7 +513,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link active">
+                    <a href="{{ route('dashboard') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Dashboard v1</p>
                     </a>
@@ -553,7 +533,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.starter') }}" class="nav-link">
+                <a href="{{ route('starter') }}" class="nav-link">
                   <i class="nav-icon bi bi-file-earmark"></i>
                   <p>Starter Page</p>
                 </a>
@@ -843,8 +823,8 @@
               </li>
 
               <li class="nav-header">PAGES</li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+              <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon bi bi-file-earmark-text"></i>
                   <p>
                     Pages
@@ -889,7 +869,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('pages.file-manager') }}" class="nav-link">
+                    <a href="{{ route('pages.file-manager') }}" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>File Manager</p>
                     </a>
@@ -1124,7 +1104,7 @@
             <!-- Docs CTA (bottom of sidebar) -->
             <div class="p-3 mt-3 border-top border-secondary border-opacity-25">
               <a
-                href="./docs/introduction.html"
+                href="../docs/introduction.html"
                 class="btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2"
               >
                 <i class="bi bi-book" aria-hidden="true"></i>
@@ -1136,492 +1116,769 @@
         <!--end::Sidebar Wrapper-->
       </aside>
       <!--end::Sidebar-->
-      <!--begin::App Main-->
       <main class="app-main">
-        <!--begin::App Content Header-->
         <div class="app-content-header">
-          <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
             <div class="row">
               <div class="col-sm-6">
-                <h1 class="mb-0 fs-3">Dashboard</h1>
+                <h1 class="mb-0 fs-3">File Manager</h1>
               </div>
               <div class="col-sm-6">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item active" aria-current="page">Files</li>
                   </ol>
                 </nav>
               </div>
             </div>
-            <!--end::Row-->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content Header-->
-        <!--begin::App Content-->
         <div class="app-content">
-          <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
-              <!--begin::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 1-->
-                <div class="small-box text-bg-primary">
-                  <div class="inner">
-                    <h3>150</h3>
-
-                    <p>New Orders</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
+            <div class="row g-3">
+              <!-- Folder tree -->
+              <div class="col-lg-3">
+                <div class="d-grid gap-2 mb-3">
+                  <button class="btn btn-primary" type="button">
+                    <i class="bi bi-cloud-upload me-1" aria-hidden="true"></i>
+                    Upload files
+                  </button>
+                  <button class="btn btn-outline-secondary" type="button">
+                    <i class="bi bi-folder-plus me-1" aria-hidden="true"></i>
+                    New folder
+                  </button>
                 </div>
-                <!--end::Small Box Widget 1-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 2-->
-                <div class="small-box text-bg-success">
-                  <div class="inner">
-                    <h3>53<sup class="fs-5">%</sup></h3>
-
-                    <p>Bounce Rate</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 2-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 3-->
-                <div class="small-box text-bg-warning">
-                  <div class="inner">
-                    <h3>44</h3>
-
-                    <p>User Registrations</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 3-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 4-->
-                <div class="small-box text-bg-danger">
-                  <div class="inner">
-                    <h3>65</h3>
-
-                    <p>Unique Visitors</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
-                    ></path>
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 4-->
-              </div>
-              <!--end::Col-->
-            </div>
-            <!--end::Row-->
-            <!--begin::Row-->
-            <div class="row">
-              <!-- Start col -->
-              <div class="col-lg-7 connectedSortable">
-                <div class="card mb-4">
-                  <div class="card-header">
-                    <h3 class="card-title">Sales Value</h3>
-                  </div>
-
-                  <div class="card-body">
-                    <div id="revenue-chart"></div>
-                  </div>
-                </div>
-                <!-- /.card -->
-
-                <!-- DIRECT CHAT -->
-                <div class="card direct-chat direct-chat-primary mb-4">
-                  <div class="card-header">
-                    <h3 class="card-title">Direct Chat</h3>
-
-                    <div class="card-tools">
-                      <span title="3 New Messages" class="badge text-bg-primary"> 3 </span>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
-                      >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        title="Contacts"
-                        data-lte-toggle="chat-pane"
-                      >
-                        <i class="bi bi-chat-text-fill"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        aria-label="Remove card"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <!-- Conversations are loaded here -->
-                    <div
-                      class="direct-chat-messages"
-                      role="log"
-                      tabindex="0"
-                      aria-label="Chat messages"
+                <div class="card">
+                  <div class="list-group list-group-flush">
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active"
                     >
-                      <!-- Message. Default to the start -->
-                      <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-start"> Alexander Pierce </span>
-                          <span class="direct-chat-timestamp float-end"> 23 Jan 2:00 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          Is this template really for free? That's unbelievable!
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
+                      <span>
+                        <i class="bi bi-house me-2" aria-hidden="true"></i>
+                        My Drive
+                      </span>
+                      <small class="opacity-75">24</small>
+                    </a>
 
-                      <!-- Message to the end -->
-                      <div class="direct-chat-msg end">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-end"> Sarah Bullock </span>
-                          <span class="direct-chat-timestamp float-start"> 23 Jan 2:05 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">You better believe it!</div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center ps-4"
+                    >
+                      <span>
+                        <i class="bi bi-folder me-2" aria-hidden="true"></i>
+                        Documents
+                      </span>
+                      <small class="opacity-75">12</small>
+                    </a>
 
-                      <!-- Message. Default to the start -->
-                      <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-start"> Alexander Pierce </span>
-                          <span class="direct-chat-timestamp float-end"> 23 Jan 5:37 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          Working with AdminLTE on a great new app! Wanna join?
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center ps-4 active"
+                    >
+                      <span>
+                        <i class="bi bi-folder me-2" aria-hidden="true"></i>
+                        Design
+                      </span>
+                      <small class="opacity-75">8</small>
+                    </a>
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center ps-5"
+                    >
+                      <span>
+                        <i class="bi bi-folder me-2" aria-hidden="true"></i>
+                        v2.4 candidates
+                      </span>
+                      <small class="opacity-75">4</small> </a
+                    ><a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center ps-5"
+                    >
+                      <span>
+                        <i class="bi bi-folder me-2" aria-hidden="true"></i>
+                        Archive
+                      </span>
+                      <small class="opacity-75">28</small>
+                    </a>
 
-                      <!-- Message to the end -->
-                      <div class="direct-chat-msg end">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-end"> Sarah Bullock </span>
-                          <span class="direct-chat-timestamp float-start"> 23 Jan 6:10 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">I would love to.</div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-                    </div>
-                    <!-- /.direct-chat-messages-->
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center ps-4"
+                    >
+                      <span>
+                        <i class="bi bi-folder me-2" aria-hidden="true"></i>
+                        Invoices
+                      </span>
+                      <small class="opacity-75">41</small>
+                    </a>
 
-                    <!-- Contacts are loaded here -->
-                    <div class="direct-chat-contacts">
-                      <ul class="contacts-list">
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                              alt="User Avatar"
-                            />
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    >
+                      <span>
+                        <i class="bi bi-people me-2" aria-hidden="true"></i>
+                        Shared with me
+                      </span>
+                      <small class="opacity-75">9</small>
+                    </a>
 
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Count Dracula
-                                <small class="contacts-list-date float-end"> 2/28/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> How have you been? I was... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user7-128x128.jpg"
-                              alt="User Avatar"
-                            />
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    >
+                      <span>
+                        <i class="bi bi-star me-2" aria-hidden="true"></i>
+                        Starred
+                      </span>
+                      <small class="opacity-75">6</small>
+                    </a>
 
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Sarah Doe
-                                <small class="contacts-list-date float-end"> 2/23/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> I will be waiting for... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                              alt="User Avatar"
-                            />
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    >
+                      <span>
+                        <i class="bi bi-clock-history me-2" aria-hidden="true"></i>
+                        Recent
+                      </span>
+                    </a>
 
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Nadia Jolie
-                                <small class="contacts-list-date float-end"> 2/20/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> I'll call you back at... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user5-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Nora S. Vans
-                                <small class="contacts-list-date float-end"> 2/10/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Where is your new... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user6-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                John K.
-                                <small class="contacts-list-date float-end"> 1/27/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Can I take a look at... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user8-128x128.jpg"
-                              alt="User Avatar"
-                            />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Kenneth M.
-                                <small class="contacts-list-date float-end"> 1/4/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Never mind I found... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                      </ul>
-                      <!-- /.contacts-list -->
-                    </div>
-                    <!-- /.direct-chat-pane -->
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    >
+                      <span>
+                        <i class="bi bi-trash me-2" aria-hidden="true"></i>
+                        Trash
+                      </span>
+                      <small class="opacity-75">3</small>
+                    </a>
                   </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
-                    <form action="#" method="post">
-                      <div class="input-group">
-                        <input
-                          type="text"
-                          name="message"
-                          placeholder="Type Message ..."
-                          class="form-control"
-                        />
-                        <span class="input-group-append">
-                          <button type="button" class="btn btn-primary">Send</button>
-                        </span>
-                      </div>
-                    </form>
-                  </div>
-                  <!-- /.card-footer-->
                 </div>
-                <!-- /.direct-chat -->
+                <div class="card mt-3">
+                  <div class="card-body">
+                    <p class="fw-semibold mb-2 small">
+                      <i class="bi bi-cloud me-1" aria-hidden="true"></i>
+                      Storage
+                    </p>
+                    <div class="progress mb-2" style="height: 8px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 62%"
+                        aria-valuenow="62"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small class="text-secondary"> 6.2 GB of 10 GB used </small>
+                  </div>
+                </div>
               </div>
-              <!-- /.Start col -->
 
-              <!-- Start col -->
-              <div class="col-lg-5 connectedSortable">
-                <div class="card text-white bg-primary bg-gradient border-primary mb-4">
-                  <div class="card-header border-0">
-                    <h3 class="card-title">Sales Value</h3>
-                    <div class="card-tools">
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-sm"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
-                      >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
+              <!-- File browser -->
+              <div class="col-lg-9">
+                <div class="card">
+                  <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+                    <nav aria-label="breadcrumb" class="flex-grow-1">
+                      <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">
+                          <a href="#">
+                            <i class="bi bi-house" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                          <a href="#">My Drive</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Design</li>
+                      </ol>
+                    </nav>
+                    <div class="input-group input-group-sm" style="width: 14rem">
+                      <span class="input-group-text">
+                        <i class="bi bi-search" aria-hidden="true"></i>
+                      </span>
+                      <input
+                        type="search"
+                        class="form-control"
+                        placeholder="Search files&hellip;"
+                        aria-label="Search files"
+                      />
+                    </div>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="View">
+                      <input type="radio" class="btn-check" name="view" id="view-grid" checked />
+                      <label class="btn btn-outline-secondary" for="view-grid">
+                        <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>
+                      </label>
+                      <input type="radio" class="btn-check" name="view" id="view-list" />
+                      <label class="btn btn-outline-secondary" for="view-list">
+                        <i class="bi bi-list-ul" aria-hidden="true"></i>
+                      </label>
                     </div>
                   </div>
                   <div class="card-body">
-                    <div id="world-map" style="height: 220px"></div>
-                  </div>
-                  <div class="card-footer border-0">
-                    <!--begin::Row-->
-                    <div class="row">
-                      <div class="col-4 text-center">
-                        <div id="sparkline-1" class="text-dark"></div>
-                        <div class="text-white">Visitors</div>
+                    <!-- Grid view -->
+                    <div id="grid-view" class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-3">
+                      <div class="col">
+                        <a
+                          href="#"
+                          class="card text-center text-decoration-none text-body h-100 position-relative"
+                        >
+                          <div class="card-body d-flex flex-column justify-content-center pb-2">
+                            <i
+                              class="bi bi-folder-fill text-warning display-5 mb-3"
+                              aria-hidden="true"
+                            ></i>
+                            <p class="card-title fw-medium small text-break mb-0">
+                              Customer interviews
+                            </p>
+                          </div>
+                          <div class="card-footer bg-transparent small text-secondary py-2">
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+                              <span class="text-truncate" title="—">
+                                <i class="bi bi-folder me-1" aria-hidden="true"></i>
+                                Folder
+                              </span>
+                              <span class="text-truncate" title="Today"> Today </span>
+                            </div>
+                          </div>
+                        </a>
                       </div>
-                      <div class="col-4 text-center">
-                        <div id="sparkline-2" class="text-dark"></div>
-                        <div class="text-white">Online</div>
+                      <div class="col">
+                        <a
+                          href="#"
+                          class="card text-center text-decoration-none text-body h-100 position-relative"
+                        >
+                          <span class="badge text-bg-info position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-people-fill me-1" aria-hidden="true"></i>
+                            Shared
+                          </span>
+                          <div class="card-body d-flex flex-column justify-content-center pb-2">
+                            <i
+                              class="bi bi-folder-fill text-warning display-5 mb-3"
+                              aria-hidden="true"
+                            ></i>
+                            <p class="card-title fw-medium small text-break mb-0">Q2 planning</p>
+                          </div>
+                          <div class="card-footer bg-transparent small text-secondary py-2">
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+                              <span class="text-truncate" title="—">
+                                <i class="bi bi-folder me-1" aria-hidden="true"></i>
+                                Folder
+                              </span>
+                              <span class="text-truncate" title="Yesterday"> Yesterday </span>
+                            </div>
+                          </div>
+                        </a>
                       </div>
-                      <div class="col-4 text-center">
-                        <div id="sparkline-3" class="text-dark"></div>
-                        <div class="text-white">Sales</div>
+                      <div class="col">
+                        <a
+                          href="#"
+                          class="card text-center text-decoration-none text-body h-100 position-relative"
+                        >
+                          <div class="card-body d-flex flex-column justify-content-center pb-2">
+                            <i
+                              class="bi bi-file-earmark-pdf-fill text-danger display-5 mb-3"
+                              aria-hidden="true"
+                            ></i>
+                            <p class="card-title fw-medium small text-break mb-0">
+                              design-review.pdf
+                            </p>
+                          </div>
+                          <div class="card-footer bg-transparent small text-secondary py-2">
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+                              <span class="text-truncate" title="1.4 MB"> 1.4 MB </span>
+                              <span class="text-truncate" title="10:42 AM"> 10:42 AM </span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col">
+                        <a
+                          href="#"
+                          class="card text-center text-decoration-none text-body h-100 position-relative"
+                        >
+                          <div class="card-body d-flex flex-column justify-content-center pb-2">
+                            <i
+                              class="bi bi-file-earmark-image-fill text-primary display-5 mb-3"
+                              aria-hidden="true"
+                            ></i>
+                            <p class="card-title fw-medium small text-break mb-0">
+                              focus-ring-dark.png
+                            </p>
+                          </div>
+                          <div class="card-footer bg-transparent small text-secondary py-2">
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+                              <span class="text-truncate" title="320 KB"> 320 KB </span>
+                              <span class="text-truncate" title="10:38 AM"> 10:38 AM </span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col">
+                        <a
+                          href="#"
+                          class="card text-center text-decoration-none text-body h-100 position-relative"
+                        >
+                          <div class="card-body d-flex flex-column justify-content-center pb-2">
+                            <i
+                              class="bi bi-file-earmark-pdf-fill text-danger display-5 mb-3"
+                              aria-hidden="true"
+                            ></i>
+                            <p class="card-title fw-medium small text-break mb-0">
+                              INV-2026-00428.pdf
+                            </p>
+                          </div>
+                          <div class="card-footer bg-transparent small text-secondary py-2">
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+                              <span class="text-truncate" title="184 KB"> 184 KB </span>
+                              <span class="text-truncate" title="Yesterday"> Yesterday </span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col">
+                        <a
+                          href="#"
+                          class="card text-center text-decoration-none text-body h-100 position-relative"
+                        >
+                          <span class="badge text-bg-info position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-people-fill me-1" aria-hidden="true"></i>
+                            Shared
+                          </span>
+                          <div class="card-body d-flex flex-column justify-content-center pb-2">
+                            <i
+                              class="bi bi-file-earmark-word-fill text-info display-5 mb-3"
+                              aria-hidden="true"
+                            ></i>
+                            <p class="card-title fw-medium small text-break mb-0">roadmap.docx</p>
+                          </div>
+                          <div class="card-footer bg-transparent small text-secondary py-2">
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+                              <span class="text-truncate" title="47 KB"> 47 KB </span>
+                              <span class="text-truncate" title="Yesterday"> Yesterday </span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col">
+                        <a
+                          href="#"
+                          class="card text-center text-decoration-none text-body h-100 position-relative"
+                        >
+                          <div class="card-body d-flex flex-column justify-content-center pb-2">
+                            <i
+                              class="bi bi-file-earmark-spreadsheet-fill text-success display-5 mb-3"
+                              aria-hidden="true"
+                            ></i>
+                            <p class="card-title fw-medium small text-break mb-0">
+                              analytics-may.xlsx
+                            </p>
+                          </div>
+                          <div class="card-footer bg-transparent small text-secondary py-2">
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+                              <span class="text-truncate" title="92 KB"> 92 KB </span>
+                              <span class="text-truncate" title="May 16"> May 16 </span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col">
+                        <a
+                          href="#"
+                          class="card text-center text-decoration-none text-body h-100 position-relative"
+                        >
+                          <div class="card-body d-flex flex-column justify-content-center pb-2">
+                            <i
+                              class="bi bi-file-earmark-zip-fill text-secondary display-5 mb-3"
+                              aria-hidden="true"
+                            ></i>
+                            <p class="card-title fw-medium small text-break mb-0">
+                              site-export-2026-05.zip
+                            </p>
+                          </div>
+                          <div class="card-footer bg-transparent small text-secondary py-2">
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+                              <span class="text-truncate" title="12.3 MB"> 12.3 MB </span>
+                              <span class="text-truncate" title="May 14"> May 14 </span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col">
+                        <a
+                          href="#"
+                          class="card text-center text-decoration-none text-body h-100 position-relative"
+                        >
+                          <div class="card-body d-flex flex-column justify-content-center pb-2">
+                            <i
+                              class="bi bi-file-earmark-code-fill text-primary display-5 mb-3"
+                              aria-hidden="true"
+                            ></i>
+                            <p class="card-title fw-medium small text-break mb-0">main.tsx</p>
+                          </div>
+                          <div class="card-footer bg-transparent small text-secondary py-2">
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+                              <span class="text-truncate" title="8 KB"> 8 KB </span>
+                              <span class="text-truncate" title="May 12"> May 12 </span>
+                            </div>
+                          </div>
+                        </a>
                       </div>
                     </div>
-                    <!--end::Row-->
+                    <!-- List view -->
+                    <div id="list-view" class="d-none">
+                      <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Size</th>
+                              <th>Modified</th>
+                              <th class="text-end">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <i
+                                  class="bi bi-folder-fill text-warning me-2"
+                                  aria-hidden="true"
+                                ></i>
+                                Customer interviews
+                              </td>
+                              <td>—</td>
+                              <td>Today</td>
+                              <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Download"
+                                  >
+                                    <i class="bi bi-download" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Share"
+                                  >
+                                    <i class="bi bi-share" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-danger"
+                                    type="button"
+                                    title="Delete"
+                                  >
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <i
+                                  class="bi bi-folder-fill text-warning me-2"
+                                  aria-hidden="true"
+                                ></i>
+                                Q2 planning
+                                <span class="badge text-bg-info ms-2"> Shared </span>
+                              </td>
+                              <td>—</td>
+                              <td>Yesterday</td>
+                              <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Download"
+                                  >
+                                    <i class="bi bi-download" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Share"
+                                  >
+                                    <i class="bi bi-share" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-danger"
+                                    type="button"
+                                    title="Delete"
+                                  >
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <i
+                                  class="bi bi-file-earmark-pdf-fill text-danger me-2"
+                                  aria-hidden="true"
+                                ></i>
+                                design-review.pdf
+                              </td>
+                              <td>1.4 MB</td>
+                              <td>10:42 AM</td>
+                              <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Download"
+                                  >
+                                    <i class="bi bi-download" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Share"
+                                  >
+                                    <i class="bi bi-share" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-danger"
+                                    type="button"
+                                    title="Delete"
+                                  >
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <i
+                                  class="bi bi-file-earmark-image-fill text-primary me-2"
+                                  aria-hidden="true"
+                                ></i>
+                                focus-ring-dark.png
+                              </td>
+                              <td>320 KB</td>
+                              <td>10:38 AM</td>
+                              <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Download"
+                                  >
+                                    <i class="bi bi-download" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Share"
+                                  >
+                                    <i class="bi bi-share" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-danger"
+                                    type="button"
+                                    title="Delete"
+                                  >
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <i
+                                  class="bi bi-file-earmark-pdf-fill text-danger me-2"
+                                  aria-hidden="true"
+                                ></i>
+                                INV-2026-00428.pdf
+                              </td>
+                              <td>184 KB</td>
+                              <td>Yesterday</td>
+                              <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Download"
+                                  >
+                                    <i class="bi bi-download" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Share"
+                                  >
+                                    <i class="bi bi-share" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-danger"
+                                    type="button"
+                                    title="Delete"
+                                  >
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <i
+                                  class="bi bi-file-earmark-word-fill text-info me-2"
+                                  aria-hidden="true"
+                                ></i>
+                                roadmap.docx
+                                <span class="badge text-bg-info ms-2"> Shared </span>
+                              </td>
+                              <td>47 KB</td>
+                              <td>Yesterday</td>
+                              <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Download"
+                                  >
+                                    <i class="bi bi-download" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Share"
+                                  >
+                                    <i class="bi bi-share" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-danger"
+                                    type="button"
+                                    title="Delete"
+                                  >
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <i
+                                  class="bi bi-file-earmark-spreadsheet-fill text-success me-2"
+                                  aria-hidden="true"
+                                ></i>
+                                analytics-may.xlsx
+                              </td>
+                              <td>92 KB</td>
+                              <td>May 16</td>
+                              <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Download"
+                                  >
+                                    <i class="bi bi-download" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Share"
+                                  >
+                                    <i class="bi bi-share" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-danger"
+                                    type="button"
+                                    title="Delete"
+                                  >
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <i
+                                  class="bi bi-file-earmark-zip-fill text-secondary me-2"
+                                  aria-hidden="true"
+                                ></i>
+                                site-export-2026-05.zip
+                              </td>
+                              <td>12.3 MB</td>
+                              <td>May 14</td>
+                              <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Download"
+                                  >
+                                    <i class="bi bi-download" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Share"
+                                  >
+                                    <i class="bi bi-share" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-danger"
+                                    type="button"
+                                    title="Delete"
+                                  >
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <i
+                                  class="bi bi-file-earmark-code-fill text-primary me-2"
+                                  aria-hidden="true"
+                                ></i>
+                                main.tsx
+                              </td>
+                              <td>8 KB</td>
+                              <td>May 12</td>
+                              <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Download"
+                                  >
+                                    <i class="bi bi-download" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-secondary"
+                                    type="button"
+                                    title="Share"
+                                  >
+                                    <i class="bi bi-share" aria-hidden="true"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-outline-danger"
+                                    type="button"
+                                    title="Delete"
+                                  >
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
+                  <div class="card-footer text-secondary small">9 items</div>
                 </div>
               </div>
-              <!-- /.Start col -->
             </div>
-            <!-- /.row (main row) -->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content-->
       </main>
-      <!--end::App Main-->
       <!--begin::Footer-->
       <footer class="app-footer">
         <!--begin::To the end-->
@@ -1637,8 +1894,6 @@
       </footer>
       <!--end::Footer-->
     </div>
-    <!--end::App Wrapper-->
-    <!--begin::Script-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
@@ -1726,199 +1981,21 @@
      in <head> stays inline, because it must run before first paint. -->
     <!--end::Color Mode Toggle-->
 
-    <!-- OPTIONAL SCRIPTS -->
-
-    <!-- sortablejs -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- sortablejs -->
     <script>
-      new Sortable(document.querySelector('.connectedSortable'), {
-        group: 'shared',
-        handle: '.card-header',
-      });
-
-      const cardHeaders = document.querySelectorAll('.connectedSortable .card-header');
-      cardHeaders.forEach((cardHeader) => {
-        cardHeader.style.cursor = 'move';
+      document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.getElementById('view-grid');
+        const list = document.getElementById('view-list');
+        const gridView = document.getElementById('grid-view');
+        const listView = document.getElementById('list-view');
+        grid.addEventListener('change', () => {
+          gridView.classList.remove('d-none');
+          listView.classList.add('d-none');
+        });
+        list.addEventListener('change', () => {
+          listView.classList.remove('d-none');
+          gridView.classList.add('d-none');
+        });
       });
     </script>
-    <!-- apexcharts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
-      integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8="
-      crossorigin="anonymous"
-    ></script>
-    <!-- ChartJS -->
-    <script>
-      // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-      // IT'S ALL JUST JUNK FOR DEMO
-      // ++++++++++++++++++++++++++++++++++++++++++
-
-      const sales_chart_options = {
-        series: [
-          {
-            name: 'Digital Goods',
-            data: [28, 48, 40, 19, 86, 27, 90],
-          },
-          {
-            name: 'Electronics',
-            data: [65, 59, 80, 81, 56, 55, 40],
-          },
-        ],
-        chart: {
-          id: 'revenue-chart',
-          height: 300,
-          type: 'area',
-          toolbar: {
-            show: false,
-          },
-        },
-        legend: {
-          show: false,
-        },
-        colors: ['#0d6efd', '#20c997'],
-        dataLabels: {
-          enabled: false,
-        },
-        stroke: {
-          curve: 'smooth',
-        },
-        xaxis: {
-          type: 'datetime',
-          categories: [
-            '2023-01-01',
-            '2023-02-01',
-            '2023-03-01',
-            '2023-04-01',
-            '2023-05-01',
-            '2023-06-01',
-            '2023-07-01',
-          ],
-        },
-        tooltip: {
-          x: {
-            format: 'MMMM yyyy',
-          },
-        },
-      };
-
-      const sales_chart = new ApexCharts(
-        document.querySelector('#revenue-chart'),
-        sales_chart_options,
-      );
-      sales_chart.render();
-    </script>
-    <!-- jsvectormap -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"
-      integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"
-      integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY="
-      crossorigin="anonymous"
-    ></script>
-    <!-- jsvectormap -->
-    <script>
-      // World map by jsVectorMap
-      new jsVectorMap({
-        selector: '#world-map',
-        map: 'world',
-      });
-
-      // Sparkline charts
-      const option_sparkline1 = {
-        series: [
-          {
-            data: [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021],
-          },
-        ],
-        chart: {
-          id: 'sparkline-1',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline1 = new ApexCharts(document.querySelector('#sparkline-1'), option_sparkline1);
-      sparkline1.render();
-
-      const option_sparkline2 = {
-        series: [
-          {
-            data: [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921],
-          },
-        ],
-        chart: {
-          id: 'sparkline-2',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline2 = new ApexCharts(document.querySelector('#sparkline-2'), option_sparkline2);
-      sparkline2.render();
-
-      const option_sparkline3 = {
-        series: [
-          {
-            data: [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21],
-          },
-        ],
-        chart: {
-          id: 'sparkline-3',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
-      sparkline3.render();
-    </script>
-    <!--end::Script-->
   </body>
-  <!--end::Body-->
 </html>

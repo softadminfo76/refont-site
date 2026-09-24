@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
-  <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE v4 | Dashboard</title>
+    <title>AdminLTE 4 | Form Wizard</title>
 
     <!--begin::Theme Init (prevents flash of incorrect theme on load, #6043)-->
     <script>
@@ -54,7 +53,7 @@
     <!--end::Accessibility Meta Tags-->
 
     <!--begin::Primary Meta Tags-->
-    <meta name="title" content="AdminLTE v4 | Dashboard" />
+    <meta name="title" content="AdminLTE 4 | Form Wizard" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -103,26 +102,68 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
 
-    <!-- apexcharts -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
-      integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0="
-      crossorigin="anonymous"
-    />
-
-    <!-- jsvectormap -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
-      integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
-      crossorigin="anonymous"
-    />
+    <style>
+      .wizard-steps {
+        counter-reset: step;
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+      }
+      .wizard-steps::before {
+        content: '';
+        position: absolute;
+        top: 1rem;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--bs-border-color);
+        z-index: 0;
+      }
+      .wizard-steps li {
+        position: relative;
+        z-index: 1;
+        background: var(--bs-body-bg);
+        padding: 0 0.75rem;
+        text-align: center;
+        color: var(--bs-secondary-color);
+        font-size: 0.875rem;
+      }
+      .wizard-steps li::before {
+        counter-increment: step;
+        content: counter(step);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        margin: 0 auto 0.5rem;
+        border-radius: 50%;
+        background: var(--bs-body-tertiary-bg);
+        border: 2px solid var(--bs-border-color);
+        color: var(--bs-secondary-color);
+        font-weight: 600;
+      }
+      .wizard-steps li.active {
+        color: var(--bs-primary);
+        font-weight: 600;
+      }
+      .wizard-steps li.active::before {
+        background: var(--bs-primary);
+        border-color: var(--bs-primary);
+        color: #fff;
+      }
+      .wizard-steps li.completed::before {
+        background: var(--bs-success);
+        border-color: var(--bs-success);
+        color: #fff;
+        content: '\f633';
+        font-family: 'bootstrap-icons';
+      }
+    </style>
   </head>
-  <!--end::Head-->
-  <!--begin::Body-->
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-    <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->
       <nav class="app-header navbar navbar-expand bg-body">
@@ -149,7 +190,7 @@
               </a>
             </li>
             <li class="nav-item d-none d-md-block">
-              <a href="./docs/introduction.html" class="nav-link">
+              <a href="../docs/introduction.html" class="nav-link">
                 <i class="bi bi-book me-1" aria-hidden="true"></i>
                 Documentation
               </a>
@@ -161,7 +202,7 @@
           <form
             class="navbar-search d-none d-md-block ms-3"
             role="search"
-            action="./pages/search-results.html"
+            action="../pages/search-results.html"
           >
             <label for="navbar-search-input" class="visually-hidden">Search</label>
             <div class="navbar-search-field">
@@ -523,8 +564,8 @@
               data-accordion="false"
               id="navigation"
             >
-              <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Dashboard
@@ -533,7 +574,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link active">
+                    <a href="{{ route('dashboard') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Dashboard v1</p>
                     </a>
@@ -553,7 +594,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.starter') }}" class="nav-link">
+                <a href="{{ route('starter') }}" class="nav-link">
                   <i class="nav-icon bi bi-file-earmark"></i>
                   <p>Starter Page</p>
                 </a>
@@ -754,8 +795,8 @@
                 </ul>
               </li>
 
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+              <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon bi bi-pencil-square"></i>
                   <p>
                     Forms
@@ -782,7 +823,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('forms.wizard') }}" class="nav-link">
+                    <a href="{{ route('forms.wizard') }}" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Wizard</p>
                     </a>
@@ -1124,7 +1165,7 @@
             <!-- Docs CTA (bottom of sidebar) -->
             <div class="p-3 mt-3 border-top border-secondary border-opacity-25">
               <a
-                href="./docs/introduction.html"
+                href="../docs/introduction.html"
                 class="btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2"
               >
                 <i class="bi bi-book" aria-hidden="true"></i>
@@ -1136,492 +1177,210 @@
         <!--end::Sidebar Wrapper-->
       </aside>
       <!--end::Sidebar-->
-      <!--begin::App Main-->
       <main class="app-main">
-        <!--begin::App Content Header-->
         <div class="app-content-header">
-          <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
             <div class="row">
               <div class="col-sm-6">
-                <h1 class="mb-0 fs-3">Dashboard</h1>
+                <h1 class="mb-0 fs-3">Form Wizard</h1>
               </div>
               <div class="col-sm-6">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Wizard</li>
                   </ol>
                 </nav>
               </div>
             </div>
-            <!--end::Row-->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content Header-->
-        <!--begin::App Content-->
         <div class="app-content">
-          <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
-              <!--begin::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 1-->
-                <div class="small-box text-bg-primary">
-                  <div class="inner">
-                    <h3>150</h3>
+            <div class="row justify-content-center">
+              <div class="col-lg-10 col-xl-8">
+                <div class="card">
+                  <div class="card-body p-4">
+                    <!-- Step indicators -->
+                    <ol class="wizard-steps mb-4" id="wizard-steps">
+                      <li class="active" data-step="0">Account</li>
+                      <li data-step="1">Profile</li>
+                      <li data-step="2">Preferences</li>
+                      <li data-step="3">Review</li>
+                    </ol>
 
-                    <p>New Orders</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 1-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 2-->
-                <div class="small-box text-bg-success">
-                  <div class="inner">
-                    <h3>53<sup class="fs-5">%</sup></h3>
-
-                    <p>Bounce Rate</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 2-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 3-->
-                <div class="small-box text-bg-warning">
-                  <div class="inner">
-                    <h3>44</h3>
-
-                    <p>User Registrations</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 3-->
-              </div>
-              <!--end::Col-->
-              <div class="col-lg-3 col-6">
-                <!--begin::Small Box Widget 4-->
-                <div class="small-box text-bg-danger">
-                  <div class="inner">
-                    <h3>65</h3>
-
-                    <p>Unique Visitors</p>
-                  </div>
-                  <svg
-                    class="small-box-icon"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
-                    ></path>
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="#"
-                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                  >
-                    More info <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-                <!--end::Small Box Widget 4-->
-              </div>
-              <!--end::Col-->
-            </div>
-            <!--end::Row-->
-            <!--begin::Row-->
-            <div class="row">
-              <!-- Start col -->
-              <div class="col-lg-7 connectedSortable">
-                <div class="card mb-4">
-                  <div class="card-header">
-                    <h3 class="card-title">Sales Value</h3>
-                  </div>
-
-                  <div class="card-body">
-                    <div id="revenue-chart"></div>
-                  </div>
-                </div>
-                <!-- /.card -->
-
-                <!-- DIRECT CHAT -->
-                <div class="card direct-chat direct-chat-primary mb-4">
-                  <div class="card-header">
-                    <h3 class="card-title">Direct Chat</h3>
-
-                    <div class="card-tools">
-                      <span title="3 New Messages" class="badge text-bg-primary"> 3 </span>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
-                      >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        title="Contacts"
-                        data-lte-toggle="chat-pane"
-                      >
-                        <i class="bi bi-chat-text-fill"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        aria-label="Remove card"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <!-- Conversations are loaded here -->
-                    <div
-                      class="direct-chat-messages"
-                      role="log"
-                      tabindex="0"
-                      aria-label="Chat messages"
-                    >
-                      <!-- Message. Default to the start -->
-                      <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-start"> Alexander Pierce </span>
-                          <span class="direct-chat-timestamp float-end"> 23 Jan 2:00 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          Is this template really for free? That's unbelievable!
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message to the end -->
-                      <div class="direct-chat-msg end">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-end"> Sarah Bullock </span>
-                          <span class="direct-chat-timestamp float-start"> 23 Jan 2:05 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">You better believe it!</div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message. Default to the start -->
-                      <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-start"> Alexander Pierce </span>
-                          <span class="direct-chat-timestamp float-end"> 23 Jan 5:37 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          Working with AdminLTE on a great new app! Wanna join?
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-
-                      <!-- Message to the end -->
-                      <div class="direct-chat-msg end">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-end"> Sarah Bullock </span>
-                          <span class="direct-chat-timestamp float-start"> 23 Jan 6:10 pm </span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img
-                          class="direct-chat-img"
-                          src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                          alt="message user image"
-                        />
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">I would love to.</div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-                    </div>
-                    <!-- /.direct-chat-messages-->
-
-                    <!-- Contacts are loaded here -->
-                    <div class="direct-chat-contacts">
-                      <ul class="contacts-list">
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user1-128x128.jpg"
-                              alt="User Avatar"
+                    <!-- Form -->
+                    <form id="wizard-form" novalidate>
+                      <!-- Step 1 -->
+                      <fieldset class="wizard-step" data-step="0">
+                        <h2 class="h5 mb-3">Create your account</h2>
+                        <div class="row g-3">
+                          <div class="col-md-6">
+                            <label class="form-label" for="wz-email">Email</label>
+                            <input type="email" class="form-control" id="wz-email" required />
+                            <div class="invalid-feedback">Please enter a valid email.</div>
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label" for="wz-username"> Username </label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="wz-username"
+                              required
+                              minlength="3"
                             />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Count Dracula
-                                <small class="contacts-list-date float-end"> 2/28/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> How have you been? I was... </span>
+                            <div class="invalid-feedback">
+                              Username must be at least 3 characters.
                             </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user7-128x128.jpg"
-                              alt="User Avatar"
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label" for="wz-password"> Password </label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="wz-password"
+                              required
+                              minlength="8"
                             />
-
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Sarah Doe
-                                <small class="contacts-list-date float-end"> 2/23/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> I will be waiting for... </span>
+                            <div class="invalid-feedback">
+                              Password must be at least 8 characters.
                             </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user3-128x128.jpg"
-                              alt="User Avatar"
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label" for="wz-password2"> Confirm password </label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="wz-password2"
+                              required
                             />
+                            <div class="invalid-feedback">Passwords must match.</div>
+                          </div>
+                        </div>
+                      </fieldset>
 
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Nadia Jolie
-                                <small class="contacts-list-date float-end"> 2/20/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> I'll call you back at... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user5-128x128.jpg"
-                              alt="User Avatar"
-                            />
+                      <!-- Step 2 -->
+                      <fieldset class="wizard-step d-none" data-step="1">
+                        <h2 class="h5 mb-3">Tell us about yourself</h2>
+                        <div class="row g-3">
+                          <div class="col-md-6">
+                            <label class="form-label" for="wz-first"> First name </label>
+                            <input type="text" class="form-control" id="wz-first" required />
+                            <div class="invalid-feedback">First name is required.</div>
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label" for="wz-last"> Last name </label>
+                            <input type="text" class="form-control" id="wz-last" required />
+                            <div class="invalid-feedback">Last name is required.</div>
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label" for="wz-company"> Company </label>
+                            <input type="text" class="form-control" id="wz-company" />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label" for="wz-role"> Role </label>
+                            <select class="form-select" id="wz-role" required>
+                              <option value="">Choose&hellip;</option>
+                              <option>Founder / CEO</option>
+                              <option>Engineering</option>
+                              <option>Design</option>
+                              <option>Marketing</option>
+                              <option>Other</option>
+                            </select>
+                            <div class="invalid-feedback">Please select a role.</div>
+                          </div>
+                        </div>
+                      </fieldset>
 
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Nora S. Vans
-                                <small class="contacts-list-date float-end"> 2/10/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Where is your new... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user6-128x128.jpg"
-                              alt="User Avatar"
-                            />
+                      <!-- Step 3 -->
+                      <fieldset class="wizard-step d-none" data-step="2">
+                        <h2 class="h5 mb-3">Notification preferences</h2>
+                        <div class="form-check form-switch mb-2">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="wz-notif-product"
+                            role="switch"
+                            checked
+                          />
+                          <label class="form-check-label" for="wz-notif-product">
+                            Product updates &amp; releases
+                          </label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="wz-notif-security"
+                            role="switch"
+                            checked
+                          />
+                          <label class="form-check-label" for="wz-notif-security">
+                            Security alerts
+                          </label>
+                        </div>
+                        <div class="form-check form-switch mb-3">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="wz-notif-marketing"
+                            role="switch"
+                          />
+                          <label class="form-check-label" for="wz-notif-marketing">
+                            Marketing &amp; tips
+                          </label>
+                        </div>
+                        <label class="form-label" for="wz-frequency"> Digest frequency </label>
+                        <select class="form-select" id="wz-frequency">
+                          <option>Real time</option>
+                          <option selected>Daily</option>
+                          <option>Weekly</option>
+                          <option>Never</option>
+                        </select>
+                      </fieldset>
 
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                John K.
-                                <small class="contacts-list-date float-end"> 1/27/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Can I take a look at... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                        <li>
-                          <a href="#">
-                            <img
-                              class="contacts-list-img"
-                              src="{{ asset('vendor/adminlte/assets/img/') }}/user8-128x128.jpg"
-                              alt="User Avatar"
-                            />
+                      <!-- Step 4 -->
+                      <fieldset class="wizard-step d-none" data-step="3">
+                        <h2 class="h5 mb-3">Review &amp; confirm</h2>
+                        <dl class="row mb-3" id="wz-summary"></dl>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="wz-terms" required />
+                          <label class="form-check-label" for="wz-terms">
+                            I agree to the <a href="#">terms of service</a>.
+                          </label>
+                          <div class="invalid-feedback">You must accept the terms to continue.</div>
+                        </div>
+                      </fieldset>
 
-                            <div class="contacts-list-info">
-                              <span class="contacts-list-name">
-                                Kenneth M.
-                                <small class="contacts-list-date float-end"> 1/4/2023 </small>
-                              </span>
-                              <span class="contacts-list-msg"> Never mind I found... </span>
-                            </div>
-                            <!-- /.contacts-list-info -->
-                          </a>
-                        </li>
-                        <!-- End Contact Item -->
-                      </ul>
-                      <!-- /.contacts-list -->
-                    </div>
-                    <!-- /.direct-chat-pane -->
-                  </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
-                    <form action="#" method="post">
-                      <div class="input-group">
-                        <input
-                          type="text"
-                          name="message"
-                          placeholder="Type Message ..."
-                          class="form-control"
-                        />
-                        <span class="input-group-append">
-                          <button type="button" class="btn btn-primary">Send</button>
-                        </span>
+                      <!-- Navigation -->
+                      <div class="d-flex justify-content-between mt-4">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary"
+                          id="wz-prev"
+                          disabled
+                        >
+                          <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>
+                          Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="wz-next">
+                          Next
+                          <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+                        </button>
+                        <button type="submit" class="btn btn-success d-none" id="wz-submit">
+                          <i class="bi bi-check-lg me-1" aria-hidden="true"></i>
+                          Submit
+                        </button>
                       </div>
                     </form>
                   </div>
-                  <!-- /.card-footer-->
-                </div>
-                <!-- /.direct-chat -->
-              </div>
-              <!-- /.Start col -->
-
-              <!-- Start col -->
-              <div class="col-lg-5 connectedSortable">
-                <div class="card text-white bg-primary bg-gradient border-primary mb-4">
-                  <div class="card-header border-0">
-                    <h3 class="card-title">Sales Value</h3>
-                    <div class="card-tools">
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-sm"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
-                      >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div id="world-map" style="height: 220px"></div>
-                  </div>
-                  <div class="card-footer border-0">
-                    <!--begin::Row-->
-                    <div class="row">
-                      <div class="col-4 text-center">
-                        <div id="sparkline-1" class="text-dark"></div>
-                        <div class="text-white">Visitors</div>
-                      </div>
-                      <div class="col-4 text-center">
-                        <div id="sparkline-2" class="text-dark"></div>
-                        <div class="text-white">Online</div>
-                      </div>
-                      <div class="col-4 text-center">
-                        <div id="sparkline-3" class="text-dark"></div>
-                        <div class="text-white">Sales</div>
-                      </div>
-                    </div>
-                    <!--end::Row-->
-                  </div>
                 </div>
               </div>
-              <!-- /.Start col -->
             </div>
-            <!-- /.row (main row) -->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content-->
       </main>
-      <!--end::App Main-->
       <!--begin::Footer-->
       <footer class="app-footer">
         <!--begin::To the end-->
@@ -1637,8 +1396,6 @@
       </footer>
       <!--end::Footer-->
     </div>
-    <!--end::App Wrapper-->
-    <!--begin::Script-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
@@ -1726,199 +1483,94 @@
      in <head> stays inline, because it must run before first paint. -->
     <!--end::Color Mode Toggle-->
 
-    <!-- OPTIONAL SCRIPTS -->
-
-    <!-- sortablejs -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- sortablejs -->
     <script>
-      new Sortable(document.querySelector('.connectedSortable'), {
-        group: 'shared',
-        handle: '.card-header',
-      });
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('wizard-form');
+        const steps = form.querySelectorAll('.wizard-step');
+        const indicators = document.querySelectorAll('#wizard-steps li');
+        const prevBtn = document.getElementById('wz-prev');
+        const nextBtn = document.getElementById('wz-next');
+        const submitBtn = document.getElementById('wz-submit');
+        let current = 0;
 
-      const cardHeaders = document.querySelectorAll('.connectedSortable .card-header');
-      cardHeaders.forEach((cardHeader) => {
-        cardHeader.style.cursor = 'move';
+        const show = (i) => {
+          steps.forEach((s, idx) => s.classList.toggle('d-none', idx !== i));
+          indicators.forEach((li, idx) => {
+            li.classList.toggle('active', idx === i);
+            li.classList.toggle('completed', idx < i);
+          });
+          prevBtn.disabled = i === 0;
+          const last = i === steps.length - 1;
+          nextBtn.classList.toggle('d-none', last);
+          submitBtn.classList.toggle('d-none', !last);
+          if (last) renderSummary();
+        };
+
+        const validateStep = (i) => {
+          const step = steps[i];
+          const fields = step.querySelectorAll('input, select, textarea');
+          let valid = true;
+          fields.forEach((field) => {
+            field.classList.remove('is-invalid');
+            if (!field.checkValidity()) {
+              field.classList.add('is-invalid');
+              valid = false;
+            }
+          });
+          // Password match check on step 0
+          if (i === 0) {
+            const p1 = document.getElementById('wz-password');
+            const p2 = document.getElementById('wz-password2');
+            if (p1.value !== p2.value) {
+              p2.classList.add('is-invalid');
+              valid = false;
+            }
+          }
+          return valid;
+        };
+
+        const renderSummary = () => {
+          const summary = document.getElementById('wz-summary');
+          const get = (id) => document.getElementById(id);
+          const rows = [
+            ['Email', get('wz-email').value],
+            ['Username', get('wz-username').value],
+            ['Name', `${get('wz-first').value} ${get('wz-last').value}`],
+            ['Company', get('wz-company').value || '—'],
+            ['Role', get('wz-role').value || '—'],
+            ['Digest', get('wz-frequency').value],
+          ];
+          summary.innerHTML = rows
+            .map(
+              ([k, v]) =>
+                `<dt class="col-sm-4 text-secondary fw-normal">${k}</dt><dd class="col-sm-8 fw-semibold">${v}</dd>`,
+            )
+            .join('');
+        };
+
+        nextBtn.addEventListener('click', () => {
+          if (!validateStep(current)) return;
+          if (current < steps.length - 1) {
+            current++;
+            show(current);
+          }
+        });
+
+        prevBtn.addEventListener('click', () => {
+          if (current > 0) {
+            current--;
+            show(current);
+          }
+        });
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (!validateStep(current)) return;
+          alert('Wizard complete! Form would submit here.');
+        });
+
+        show(0);
       });
     </script>
-    <!-- apexcharts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
-      integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8="
-      crossorigin="anonymous"
-    ></script>
-    <!-- ChartJS -->
-    <script>
-      // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-      // IT'S ALL JUST JUNK FOR DEMO
-      // ++++++++++++++++++++++++++++++++++++++++++
-
-      const sales_chart_options = {
-        series: [
-          {
-            name: 'Digital Goods',
-            data: [28, 48, 40, 19, 86, 27, 90],
-          },
-          {
-            name: 'Electronics',
-            data: [65, 59, 80, 81, 56, 55, 40],
-          },
-        ],
-        chart: {
-          id: 'revenue-chart',
-          height: 300,
-          type: 'area',
-          toolbar: {
-            show: false,
-          },
-        },
-        legend: {
-          show: false,
-        },
-        colors: ['#0d6efd', '#20c997'],
-        dataLabels: {
-          enabled: false,
-        },
-        stroke: {
-          curve: 'smooth',
-        },
-        xaxis: {
-          type: 'datetime',
-          categories: [
-            '2023-01-01',
-            '2023-02-01',
-            '2023-03-01',
-            '2023-04-01',
-            '2023-05-01',
-            '2023-06-01',
-            '2023-07-01',
-          ],
-        },
-        tooltip: {
-          x: {
-            format: 'MMMM yyyy',
-          },
-        },
-      };
-
-      const sales_chart = new ApexCharts(
-        document.querySelector('#revenue-chart'),
-        sales_chart_options,
-      );
-      sales_chart.render();
-    </script>
-    <!-- jsvectormap -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"
-      integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"
-      integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY="
-      crossorigin="anonymous"
-    ></script>
-    <!-- jsvectormap -->
-    <script>
-      // World map by jsVectorMap
-      new jsVectorMap({
-        selector: '#world-map',
-        map: 'world',
-      });
-
-      // Sparkline charts
-      const option_sparkline1 = {
-        series: [
-          {
-            data: [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021],
-          },
-        ],
-        chart: {
-          id: 'sparkline-1',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline1 = new ApexCharts(document.querySelector('#sparkline-1'), option_sparkline1);
-      sparkline1.render();
-
-      const option_sparkline2 = {
-        series: [
-          {
-            data: [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921],
-          },
-        ],
-        chart: {
-          id: 'sparkline-2',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline2 = new ApexCharts(document.querySelector('#sparkline-2'), option_sparkline2);
-      sparkline2.render();
-
-      const option_sparkline3 = {
-        series: [
-          {
-            data: [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21],
-          },
-        ],
-        chart: {
-          id: 'sparkline-3',
-          type: 'area',
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        stroke: {
-          curve: 'straight',
-        },
-        fill: {
-          opacity: 0.3,
-        },
-        yaxis: {
-          min: 0,
-        },
-        colors: ['#DCE6EC'],
-      };
-
-      const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
-      sparkline3.render();
-    </script>
-    <!--end::Script-->
   </body>
-  <!--end::Body-->
 </html>

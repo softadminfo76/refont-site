@@ -307,90 +307,63 @@
     </section>
 
     <!-- MODAL PRENDRE RENDEZ-VOUS -->
-<div class="modal fade" id="contactModal" tabindex="-1" role="dialog"
-     aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog"
+        aria-labelledby="contactModalLabel" aria-hidden="true">
 
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
 
-            <div class="modal-header">
-                <div>
-                    <span class="ve-section-tag">CONTACTEZ-NOUS</span>
+                <div class="modal-header">
+                    <div>
+                        <span class="ve-section-tag">CONTACTEZ-NOUS</span>    
+                    </div>
 
-                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="modal-body">
+
+                    <form class="ve-contact-form" id="contactForm" action="{{ route('contact.store') }}" method="post">
+                        @csrf
+                        <div class="ve-form-row">
+                            <div class="ve-form-group">
+                                <label>Nom complet <span class="ve-required">*</span></label>
+                                <input type="text" id="cf-name" name="nom" placeholder="Votre nom complet" required>
+                            </div>
+                            <div class="ve-form-group">
+                                <label>Adresse email <span class="ve-required">*</span></label>
+                                <input type="email" id="cf-email" name="email" placeholder="Votre email" required>
+                            </div>
+                        </div>
+
+                        <div class="ve-form-row">
+                            <div class="ve-form-group">
+                                <label>Numéro de téléphone</label>
+                                <input type="tel" id="cf-phone" name="telephone" placeholder="Votre téléphone">
+                            </div>
+                        </div>
+
+                        <div class="ve-form-group">
+                            <label>Votre message <span class="ve-required">*</span></label>
+                            <textarea id="cf-message" name="message" rows="5" placeholder="Décrivez votre projet ou besoin..." required></textarea>
+                        </div>
+                        <div id="contactErrors" class="alert alert-danger d-none" role="alert"></div>
+                        <button type="submit" class="ve-btn-primary">
+                            Envoyer le message
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
-
-            <div class="modal-body">
-
-                <form class="ve-contact-form" action="#" method="post">
-
-                    <div class="ve-form-row">
-
-                        <div class="ve-form-group">
-                            <label>Nom complet</label>
-                            <input type="text"
-                                   placeholder="Votre nom complet"
-                                   required>
-                        </div>
-
-                        <div class="ve-form-group">
-                            <label>Adresse email</label>
-                            <input type="email"
-                                   placeholder="Votre email"
-                                   required>
-                        </div>
-
-                    </div>
-
-                    <div class="ve-form-row">
-
-                        <div class="ve-form-group">
-                            <label>Numéro de téléphone</label>
-                            <input type="tel"
-                                   placeholder="Votre téléphone">
-                        </div>
-
-                        <div class="ve-form-group">
-                            <label>Service concerné</label>
-
-                            <select>
-                                <option>Sélectionnez un service</option>
-                                <option>Développement web/mobile</option>
-                                <option>CRM et application métier</option>
-                                <option>Refonte web</option>
-                                <option>Marketing digital</option>
-                                <option>Formations</option>
-                                <option>Audits, études et conseils</option>
-                                <option>Assistance technique</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="ve-form-group">
-                        <label>Votre message</label>
-
-                        <textarea rows="5"
-                                  placeholder="Décrivez votre projet ou besoin..."></textarea>
-                    </div>
-
-                    <button type="submit" class="ve-btn-primary">
-                        Envoyer le message
-                        <i class="fa fa-paper-plane"></i>
-                    </button>
-
-                </form>
-
-            </div>
-
         </div>
     </div>
-</div>
+
+    <div id="contactToast" class="ve-toast">
+        <i class="fa fa-check-circle"></i>
+        <span>Votre message a bien été envoyé. Nous vous recontacterons rapidement !</span>
+    </div>
 
     @include('partials.footer')
 
@@ -401,5 +374,54 @@
     <script src="{{ asset('js/plugins/plugins.js') }}"></script>
     <script src="{{ asset('js/active.js') }}"></script>
     <script src="{{ asset('js/vaultedge.js') }}"></script>
+
+    <script>
+        (function () {
+            const form = document.getElementById('contactForm');
+            const errorsBox = document.getElementById('contactErrors');
+            const toast = document.getElementById('contactToast');
+
+            form.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                errorsBox.classList.add('d-none');
+                errorsBox.innerHTML = '';
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        body: new FormData(form)
+                    });
+
+                    const result = await response.json();
+                    if (!response.ok) {
+                        const messages = Object.values(result.errors || {}).flat();
+
+                        errorsBox.innerHTML = messages
+                            .map(message => `<div>${message}</div>`)
+                            .join('');
+
+                        errorsBox.classList.remove('d-none');
+                        return;
+                    }
+
+                    form.reset();
+                    $('#contactModal').modal('hide');
+
+                    toast.querySelector('span').textContent = result.message;
+                    toast.classList.add('show');
+
+                    setTimeout(() => toast.classList.remove('show'), 4000);
+                } catch (error) {
+                    errorsBox.textContent = 'Une erreur est survenue. Réessaie dans un instant.';
+                    errorsBox.classList.remove('d-none');
+                }
+            });
+        })();
+        </script>
+
 </body>
 </html>

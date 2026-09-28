@@ -1523,4 +1523,47 @@ body { padding-top:0; }
     }
 }
 
+.ve-toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #1fbf75;
+    color: #fff;
+    padding: 16px 22px;
+    border-radius: 8px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999;
+    box-shadow: 0 6px 20px rgba(0,0,0,.2);
+    font-size: 14px;
+}
+.ve-toast.show {
+    display: flex;
+    animation: ve-toast-in .3s ease;
+}
+@keyframes ve-toast-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.an{
+    color: #EFC53D;
+}
+
+.ve-required {
+    color: #e74c3c;
+    margin-left: 2px;
+}
+
+
+.ve-logo-text {
+    color: #7DAFD4;
+    font-weight: 700;
+}
+
+.ve-logo-text strong {
+    color: #EFC53D;
+    font-weight: 800;
+}
 

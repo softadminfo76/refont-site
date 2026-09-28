@@ -46,17 +46,28 @@
                         <p>Remplissez le formulaire et un membre de notre équipe vous recontactera sous un jour ouvré.</p>
                         <form class="ve-contact-form" action="#" method="post">
                             <div class="ve-form-row">
-                                <div class="ve-form-group"><label>Nom complet</label><input type="text" placeholder="Votre nom complet" required></div>
-                                <div class="ve-form-group"><label>Adresse email</label><input type="email" placeholder="Votre email" required></div>
-                            </div>
-                            <div class="ve-form-row">
-                                <div class="ve-form-group"><label>Numéro de téléphone</label><input type="tel" placeholder="Votre téléphone"></div>
-                                <div class="ve-form-group"><label>Service concerné</label>
-                                    <select><option>Sélectionnez un service</option><option>Développement web/mobile</option><option>CRM et application métier</option><option>Refonte web</option><option>Marketing digital</option><option>Formations</option><option>Audits, études et conseils</option><option>Assistance technique</option></select>
+                                <div class="ve-form-group">
+                                    <label>Nom complet <span class="ve-required">*</span></label>
+                                    <input type="text" id="cf-name" name="nom" placeholder="Votre nom complet" required>
+                                </div>
+                                <div class="ve-form-group">
+                                    <label>Adresse email <span class="ve-required">*</span></label>
+                                    <input type="email" id="cf-email" name="email" placeholder="Votre email" required>
                                 </div>
                             </div>
-                            <div class="ve-form-group"><label>Votre message</label><textarea rows="5" placeholder="Décrivez votre projet ou besoin..."></textarea></div>
-                            <button type="submit" class="ve-btn-primary">Envoyer le message <i class="fa fa-paper-plane"></i></button>
+                            <div class="ve-form-group">
+                                <label>Numéro de téléphone</label>
+                                <input type="tel" id="cf-phone" name="telephone" placeholder="Votre téléphone">
+                            </div>
+                            <div class="ve-form-group">
+                                <label>Votre message <span class="ve-required">*</span></label>
+                                <textarea id="cf-message" name="message" rows="5" placeholder="Décrivez votre projet ou besoin..." required></textarea>
+                            </div>
+                            <div id="contactErrors" class="alert alert-danger d-none" role="alert"></div>
+                                <button type="submit" class="ve-btn-primary">
+                                    Envoyer le message
+                                    <i class="fa fa-paper-plane"></i>
+                                </button>
                         </form>
                     </div>
                 </div>

@@ -19,6 +19,8 @@ return new class extends Migration
         $table->string('service')->nullable();
         $table->text('message');
         $table->boolean('est_lu')->default(false);
+        $table->text('reponse')->nullable();
+        $table->timestamp('repondu_le')->nullable();
         $table->timestamps();
     });
 }

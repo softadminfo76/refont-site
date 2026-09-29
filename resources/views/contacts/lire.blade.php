@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
-  <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE 4 | Sidebar Mini</title>
+    <title>AdminLTE 4 | Mailbox - Read</title>
 
     <!--begin::Theme Init (prevents flash of incorrect theme on load, #6043)-->
     <script>
@@ -54,7 +53,7 @@
     <!--end::Accessibility Meta Tags-->
 
     <!--begin::Primary Meta Tags-->
-    <meta name="title" content="AdminLTE 4 | Sidebar Mini" />
+    <meta name="title" content="AdminLTE 4 | Mailbox - Read" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -103,10 +102,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
   </head>
-  <!--end::Head-->
-  <!--begin::Body-->
-  <body class="layout-fixed sidebar-expand-lg sidebar-mini bg-body-tertiary">
-    <!--begin::App Wrapper-->
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
     <div class="app-wrapper">
       <!--begin::Header-->
       <nav class="app-header navbar navbar-expand bg-body">
@@ -168,7 +164,7 @@
           <ul class="navbar-nav ms-auto">
             <!--begin::Search (small screens: the field above is hidden, so link to the search page)-->
             <li class="nav-item d-md-none">
-              <a class="nav-link" href="{{ route('pages.search-results') }}" aria-label="Search">
+              <a class="nav-link" href="#" aria-label="Search">
                 <i class="bi bi-search" aria-hidden="true"></i>
               </a>
             </li>
@@ -465,181 +461,118 @@
         <!--begin::Sidebar Brand-->
         <div class="sidebar-brand">
           <!--begin::Brand Link-->
-          <a href="{{ route('dashboard') }}" class="brand-link logo-switch">
-            <!--begin::Brand Image Small-->
+          <a href="{{ route('dashboard') }}" class="brand-link">
+            <!--begin::Brand Image-->
             <img
               src="{{ asset('vendor/adminlte/assets/img/') }}/AdminLTELogo.png"
-              alt="AdminLTE Logo Small"
-              class="brand-image-xl logo-xs opacity-75 shadow"
+              alt="AdminLTE Logo"
+              class="brand-image opacity-75 shadow"
             />
-            <!--end::Brand Image Small-->
-            <!--begin::Brand Image Large-->
-            <img
-              src="{{ asset('vendor/adminlte/assets/img/') }}/AdminLTEFullLogo.png"
-              alt="AdminLTE Logo Large"
-              class="brand-image-xs logo-xl opacity-75"
-            />
-            <!--end::Brand Image Large-->
+            <!--end::Brand Image-->
+            <!--begin::Brand Text-->
+            <span class="brand-text fw-light">AdminLTE 4</span>
+            <!--end::Brand Text-->
           </a>
           <!--end::Brand Link-->
         </div>
-        <!-- Sidebar -->
+        <!--end::Sidebar Brand-->
+        <!--begin::Sidebar Search-->
+        <div class="sidebar-search" role="search">
+          <label for="sidebar-search-input" class="visually-hidden">Filter menu</label>
+          <input
+            type="search"
+            id="sidebar-search-input"
+            class="form-control form-control-sm"
+            placeholder="Filter menu…"
+            autocomplete="off"
+            data-lte-toggle="sidebar-search"
+            data-lte-target="#navigation"
+          />
+          <p class="fs-7 text-secondary mt-2 mb-0" data-lte-search-empty role="status" hidden>
+            No matching pages.
+          </p>
+        </div>
+        <!--end::Sidebar Search-->
         <!--begin::Sidebar Wrapper-->
         <div class="sidebar-wrapper">
-          <nav class="mt-2">
+          <nav class="mt-2" aria-label="Main navigation">
             <!--begin::Sidebar Menu-->
-            <ul
-              class="nav sidebar-menu flex-column"
-              data-lte-toggle="treeview"
-              role="menu"
-              data-accordion="false"
-            >
-              <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-circle-fill"></i>
-                  <p>Level 1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-circle-fill"></i>
-                  <p>
-                    Level 1
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Level 2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>
-                        Level 2
-                        <i class="nav-arrow bi bi-chevron-right"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i class="nav-icon bi bi-record-circle-fill"></i>
-                          <p>Level 3</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i class="nav-icon bi bi-record-circle-fill"></i>
-                          <p>Level 3</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i class="nav-icon bi bi-record-circle-fill"></i>
-                          <p>Level 3</p>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Level 2</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-circle-fill"></i>
-                  <p>Level 1</p>
-                </a>
-              </li>
-            </ul>
+            @include('partials.admin-sidebar')
             <!--end::Sidebar Menu-->
+
           </nav>
         </div>
         <!--end::Sidebar Wrapper-->
       </aside>
       <!--end::Sidebar-->
-      <!--begin::App Main-->
       <main class="app-main">
-        <!--begin::App Content Header-->
         <div class="app-content-header">
-          <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
             <div class="row">
               <div class="col-sm-6">
-                <h1 class="mb-0 fs-3">Logo Switch</h1>
+                <h1 class="mb-0 fs-3">Read Message</h1>
               </div>
               <div class="col-sm-6">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Logo Switch</li>
+                    <li class="breadcrumb-item">
+                      <a href="{{ route('contacts.liste') }}">Mailbox</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Read</li>
                   </ol>
                 </nav>
               </div>
             </div>
-            <!--end::Row-->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content Header-->
-        <!--begin::App Content-->
         <div class="app-content">
-          <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
-              <div class="col-12">
-                <!-- Default box -->
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Title</h3>
-
-                    <div class="card-tools">
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-collapse"
-                        aria-label="Collapse card"
-                        title="Collapse"
-                      >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        aria-label="Remove card"
-                        title="Remove"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
+            <div class="card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title">Message de {{ $contact->nom }}</h3>
+                <a href="{{ route('contacts.liste') }}" class="btn btn-sm btn-outline-secondary" title="Retour à la liste">
+                  <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="d-flex gap-3 align-items-start mb-4">
+                  <div
+                    class="flex-shrink-0 rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center"
+                    style="width: 48px; height: 48px"
+                    aria-hidden="true"
+                  >
+                    {{ Str::upper(Str::substr($contact->nom, 0, 2)) }}
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <p class="mb-0 fw-semibold">{{ $contact->nom }}</p>
+                        <small class="text-secondary">
+                          {{ $contact->email }}@if ($contact->telephone) &mdash; {{ $contact->telephone }}@endif
+                        </small>
+                      </div>
+                      <small class="text-secondary">{{ $contact->created_at->format('d/m/Y H:i') }}</small>
                     </div>
                   </div>
-                  <div class="card-body">Start creating your amazing application!</div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">Footer</div>
-                  <!-- /.card-footer-->
                 </div>
-                <!-- /.card -->
+
+                <div class="mb-2">
+                  {!! nl2br(e($contact->message)) !!}
+                </div>
+              </div>
+              <div class="card-footer d-flex gap-2">
+                <a href="{{ route('contacts.ecrire', $contact) }}" class="btn btn-primary">
+                  <i class="bi bi-reply me-1" aria-hidden="true"></i>Répondre
+                </a>
+                <button class="btn btn-outline-danger ms-auto" type="button">
+                  <i class="bi bi-trash me-1" aria-hidden="true"></i>Supprimer
+                </button>
               </div>
             </div>
-            <!--begin::Row-->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content-->
       </main>
-      <!--end::App Main-->
       <!--begin::Footer-->
       <footer class="app-footer">
         <!--begin::To the end-->
@@ -655,8 +588,6 @@
       </footer>
       <!--end::Footer-->
     </div>
-    <!--end::App Wrapper-->
-    <!--begin::Script-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
@@ -743,8 +674,5 @@
      module (since 4.1) — no page script needed. Only the no-flash snippet
      in <head> stays inline, because it must run before first paint. -->
     <!--end::Color Mode Toggle-->
-
-    <!--end::Script-->
   </body>
-  <!--end::Body-->
 </html>

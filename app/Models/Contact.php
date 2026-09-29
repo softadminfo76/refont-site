@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Reponse;
 
 class Contact extends Model
 {
@@ -11,6 +12,11 @@ class Contact extends Model
     ];
 
     protected $casts = [
-        'nom', 'email', 'telephone', 'service', 'message',
+        'est_lu' => 'boolean',
     ];
+
+    public function reponses()
+    {
+        return $this->hasMany(Reponse::class);
+    }
 }

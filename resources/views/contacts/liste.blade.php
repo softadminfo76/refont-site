@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE 4 | Data Tables</title>
+    <title>AdminLTE 4 | Mailbox</title>
 
     <!--begin::Theme Init (prevents flash of incorrect theme on load, #6043)-->
     <script>
@@ -54,7 +53,7 @@
     <!--end::Accessibility Meta Tags-->
 
     <!--begin::Primary Meta Tags-->
-    <meta name="title" content="AdminLTE 4 | Data Tables" />
+    <meta name="title" content="AdminLTE 4 | Mailbox" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -102,12 +101,6 @@
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/tabulator-tables@6.4.0/dist/css/tabulator_bootstrap5.min.css"
-      crossorigin="anonymous"
-    />
   </head>
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
     <div class="app-wrapper">
@@ -169,6 +162,13 @@
 
           <!--begin::End Navbar Links-->
           <ul class="navbar-nav ms-auto">
+            <!--begin::Search (small screens: the field above is hidden, so link to the search page)-->
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="#" aria-label="Search">
+                <i class="bi bi-search" aria-hidden="true"></i>
+              </a>
+            </li>
+            <!--end::Search-->
             <!--begin::Messages Dropdown Menu-->
             <li class="nav-item dropdown">
               <a
@@ -499,6 +499,7 @@
             <!--begin::Sidebar Menu-->
             @include('partials.admin-sidebar')
             <!--end::Sidebar Menu-->
+
           </nav>
         </div>
         <!--end::Sidebar Wrapper-->
@@ -509,14 +510,13 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-sm-6">
-                <h1 class="mb-0 fs-3">Data Tables</h1>
+                <h1 class="mb-0 fs-3">Mailbox</h1>
               </div>
               <div class="col-sm-6">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    <li class="breadcrumb-item active" aria-current="page">Inbox</li>
                   </ol>
                 </nav>
               </div>
@@ -525,45 +525,191 @@
         </div>
         <div class="app-content">
           <div class="container-fluid">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Contacts</h3>
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 16rem">
-                    <span class="input-group-text">
-                      <i class="bi bi-search" aria-hidden="true"></i>
-                    </span>
-                    <input
-                      id="table-filter"
-                      type="search"
-                      class="form-control"
-                      placeholder="Filter rows&hellip;"
-                      aria-label="Filter rows"
-                    />
+            <div class="row g-3">
+              <!-- Folder sidebar -->
+              <div class="col-lg-3">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Folders</h3>
+                  </div>
+                  <div class="card-body p-0">
+                    <ul class="nav nav-pills flex-column mb-0">
+                      <li class="nav-item">
+                        <a
+                          href="{{ route('contacts.liste') }}"
+                          class="nav-link active rounded-0 d-flex justify-content-between"
+                        >
+                          <span> <i class="bi bi-inbox me-2" aria-hidden="true"></i>Messages reçus </span>
+                          <span class="badge text-bg-primary">{{ $nonLus }}</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0">
+                          <i class="bi bi-send me-2" aria-hidden="true"></i>Sent
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0 d-flex justify-content-between">
+                          <span>
+                            <i class="bi bi-file-earmark me-2" aria-hidden="true"></i>
+                            Drafts
+                          </span>
+                          <span class="badge text-bg-secondary">2</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0">
+                          <i class="bi bi-star me-2" aria-hidden="true"></i>Starred
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0">
+                          <i class="bi bi-archive me-2" aria-hidden="true"></i>Archive
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0">
+                          <i class="bi bi-exclamation-octagon me-2" aria-hidden="true"></i>
+                          Spam
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link rounded-0">
+                          <i class="bi bi-trash me-2" aria-hidden="true"></i>Trash
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card mt-3">
+                  <div class="card-header">
+                    <h3 class="card-title">Labels</h3>
+                  </div>
+                  <div class="card-body p-0">
+                    <ul class="nav flex-column mb-0">
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i
+                            class="bi bi-circle-fill text-primary me-2"
+                            style="font-size: 0.6rem"
+                            aria-hidden="true"
+                          ></i>
+                          Customers
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i
+                            class="bi bi-circle-fill text-success me-2"
+                            style="font-size: 0.6rem"
+                            aria-hidden="true"
+                          ></i>
+                          Billing
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i
+                            class="bi bi-circle-fill text-warning me-2"
+                            style="font-size: 0.6rem"
+                            aria-hidden="true"
+                          ></i>
+                          Internal
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
-              <div class="card-body">
-                <div class="d-flex gap-2 mb-3">
-                  <button id="export-csv" type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class="bi bi-filetype-csv me-1" aria-hidden="true"></i>
-                    Export CSV
-                  </button>
-                  <button id="export-json" type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class="bi bi-filetype-json me-1" aria-hidden="true"></i>
-                    Export JSON
-                  </button>
-                  <button id="print-table" type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class="bi bi-printer me-1" aria-hidden="true"></i>
-                    Print
-                  </button>
+
+              <!-- Inbox list -->
+              <div class="col-lg-9">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Inbox</h3>
+                    <div class="card-tools">
+                      <div class="input-group input-group-sm" style="width: 16rem">
+                        <span class="input-group-text">
+                          <i class="bi bi-search" aria-hidden="true"></i>
+                        </span>
+                        <input
+                          type="search"
+                          class="form-control"
+                          placeholder="Search mail&hellip;"
+                          aria-label="Search mail"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body p-0">
+                    <div class="d-flex align-items-center px-3 py-2 border-bottom">
+                      <div class="form-check mb-0">
+                        <input class="form-check-input" type="checkbox" id="select-all" />
+                        <label class="form-check-label visually-hidden" for="select-all">
+                          Select all
+                        </label>
+                      </div>
+                      <div class="btn-group btn-group-sm ms-3">
+                        <button class="btn btn-outline-secondary" type="button" title="Refresh">
+                          <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary" type="button" title="Archive">
+                          <i class="bi bi-archive" aria-hidden="true"></i>
+                        </button>
+                        <button
+                          class="btn btn-outline-secondary"
+                          type="button"
+                          title="Mark as spam"
+                        >
+                          <i class="bi bi-exclamation-octagon" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary" type="button" title="Delete">
+                          <i class="bi bi-trash" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <span class="ms-auto text-secondary small">
+                        @if ($contacts->total())
+                          {{ $contacts->firstItem() }}&ndash;{{ $contacts->lastItem() }} sur {{ $contacts->total() }}
+                        @else
+                          0 message
+                        @endif
+                      </span>
+                    </div>
+                    <ul class="list-group list-group-flush mb-0">
+                  @forelse ($contacts as $contact)
+                    <li class="list-group-item d-flex align-items-center gap-2 {{ $contact->est_lu ? '' : 'fw-semibold bg-body-secondary' }}">
+                      <div class="form-check mb-0">
+                        <input class="form-check-input" type="checkbox" id="contact-{{ $contact->id }}" />
+                        <label class="form-check-label visually-hidden" for="contact-{{ $contact->id }}">
+                          Sélectionner le message de {{ $contact->nom }}
+                        </label>
+                      </div>
+                      <a href="{{ route('contacts.lire', $contact) }}" class="flex-grow-1 d-flex flex-column flex-md-row gap-md-3 text-decoration-none text-body" style="min-width: 0">
+                        <span class="text-truncate" style="min-width: 9rem">{{ $contact->nom }}</span>
+                        <span class="flex-grow-1 text-truncate" style="min-width: 0">
+                          @unless ($contact->est_lu)
+                            <span class="badge text-bg-primary me-2">Nouveau</span>
+                          @endunless
+                          <span class="fw-normal text-secondary">{{ Str::limit($contact->message, 90) }}</span>
+                        </span>
+                        <span class="text-secondary small text-md-end" style="min-width: 5rem">
+                          {{ $contact->created_at->format('d/m/Y H:i') }}
+                        </span>
+                      </a>
+                    </li>
+                  @empty
+                    <li class="list-group-item text-center text-secondary py-4">
+                      Aucun message reçu pour le moment.
+                    </li>
+                  @endforelse
+                </ul>
+                @if ($contacts->hasPages())
+                  <div class="p-3 d-flex justify-content-center">
+                    {{ $contacts->links() }}
+                  </div>
+                @endif
+                  </div>
                 </div>
-                <div id="users-table"></div>
-              </div>
-              <div class="card-footer text-secondary small">
-                Powered by
-                <a href="https://tabulator.info/" target="_blank" rel="noopener">Tabulator</a>
-                &mdash; vanilla JS, no jQuery required.
               </div>
             </div>
           </div>
@@ -670,526 +816,5 @@
      module (since 4.1) — no page script needed. Only the no-flash snippet
      in <head> stays inline, because it must run before first paint. -->
     <!--end::Color Mode Toggle-->
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/tabulator-tables@6.4.0/dist/js/tabulator.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      const csrf = document.querySelector('meta[name="csrf-token"]').content;
-      const baseUrl = "{{ url('/admin/contacts') }}";
-
-      async function envoyer(url, method, body = null) {
-        const response = await fetch(url, {
-          method: method,
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrf,
-          },
-          body: body ? JSON.stringify(body) : null,
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-          const erreurs = Object.values(result.errors || {}).flat();
-          throw new Error(erreurs.join('\n') || result.message || 'Erreur');
-        }
-        return result;
-      }
-
-      function afficherToast(message) {
-          const toastElement = document.getElementById('contactToast');
-          const toastMessage = document.getElementById('contactToastMessage');
-
-          toastMessage.textContent = message;
-
-          const toast = bootstrap.Toast.getOrCreateInstance(toastElement, {
-              delay: 3000
-          });
-
-          toast.show();
-      }
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const data = @json($contacts);
-
-        const table = new Tabulator('#users-table', {
-          data: data,
-          layout: 'fitColumns',
-          pagination: true,
-          paginationSize: 10,
-          paginationSizeSelector: [10, 25, 50, 100],
-          movableColumns: true,
-
-          columns: [
-          { title: '#', field: 'id', width: 60 },
-          { title: 'Nom', field: 'nom', headerFilter: 'input' },
-          { title: 'Email', field: 'email', headerFilter: 'input' },
-          { title: 'Téléphone', field: 'telephone', width: 150 },
-          { title: 'Message', field: 'message', headerFilter: 'input' },
-          {
-            title: 'Reçu le',
-            field: 'created_at',
-            width: 160,
-            formatter: (cell) => new Date(cell.getValue()).toLocaleString('fr-FR'),
-          },
-          {
-            title: 'Actions',
-            width: 145,
-            hozAlign: 'center',
-            headerSort: false,
-            formatter: () =>
-              `
-              <div class="d-flex justify-content-center gap-1">
-                  <button type="button"
-                          class="btn btn-sm btn-outline-primary btn-edit"
-                          title="Modifier">
-                      <i class="bi bi-pencil"></i>
-                  </button>
-
-                  <button type="button"
-                          class="btn btn-sm btn-outline-success btn-reply"
-                          title="Répondre">
-                      <i class="bi bi-reply"></i>
-                  </button>
-
-                  <button type="button"
-                          class="btn btn-sm btn-outline-danger btn-delete"
-                          title="Supprimer">
-                      <i class="bi bi-trash"></i>
-                  </button>
-              </div>
-              `,
-            cellClick: async (e, cell) => {
-            const row = cell.getRow();
-            const data = row.getData();
-
-            // Bouton Modifier
-            if (e.target.closest('.btn-edit')) {
-
-                document.getElementById('edit-id').value = data.id;
-                document.getElementById('edit-nom').value = data.nom;
-                document.getElementById('edit-email').value = data.email;
-                document.getElementById('edit-telephone').value = data.telephone ?? '';
-                document.getElementById('edit-message').value = data.message;
-
-                const modal = new bootstrap.Modal(
-                    document.getElementById('editContactModal')
-                );
-
-                modal.show();
-
-                return;
-            }
-
-            // Bouton Supprimer
-            if (e.target.closest('.btn-delete')) {
-              const { id, nom } = data;
-              contactToDelete = {
-                  id: id,
-                  nom: nom,
-                  row: row
-              };
-              document.getElementById('deleteContactName').textContent = nom;
-
-              const modal = new bootstrap.Modal(
-                  document.getElementById('deleteContactModal')
-              );
-
-              modal.show();
-          }
-
-          // Bouton Répondre
-          if (e.target.closest('.btn-reply')) {
-              const data = row.getData();
-
-              document.getElementById('reply-id').value = data.id;
-              document.getElementById('reply-nom').value = data.nom;
-              document.getElementById('reply-email').value = data.email;
-              document.getElementById('reply-message').value = data.message;
-
-              const modal = new bootstrap.Modal(
-                  document.getElementById('replyContactModal')
-              );
-
-              modal.show();
-              return;
-          }
-        },
-          },
-        ],
-        });
-
-        let contactToDelete = null;
-
-        document.getElementById('confirmDeleteContact').addEventListener('click', async function () {
-
-            if (!contactToDelete) return;
-
-            try {
-                await envoyer(`${baseUrl}/${contactToDelete.id}`, 'DELETE');
-
-                // Supprimer la ligne du tableau
-                contactToDelete.row.delete();
-
-                // Fermer le modal
-                const modalElement = document.getElementById('deleteContactModal');
-                const modal = bootstrap.Modal.getInstance(modalElement);
-
-                if (modal) {
-                    modal.hide();
-                }
-
-                // Afficher le toast de succès
-                afficherToast('Contact supprimé avec succès.');
-
-                // Réinitialiser
-                contactToDelete = null;
-
-            } catch (erreur) {
-                alert(erreur.message);
-            }
-        });
-
-        document.getElementById('editContactForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const id = document.getElementById('edit-id').value;
-
-    const donnees = {
-        nom: document.getElementById('edit-nom').value,
-        email: document.getElementById('edit-email').value,
-        telephone: document.getElementById('edit-telephone').value,
-        message: document.getElementById('edit-message').value
-    };
-
-    try {
-        await envoyer(`${baseUrl}/${id}`, 'PUT', donnees);
-
-        const row = table.getRow(id);
-
-        if (row) {
-            row.update(donnees);
-        }
-
-        const modalElement = document.getElementById('editContactModal');
-        const modal = bootstrap.Modal.getInstance(modalElement);
-
-        modal.hide();
-
-        afficherToast('Contact modifié avec succès.');
-
-    } catch (erreur) {
-        alert(erreur.message);
-    }
-});
-
-        document.getElementById('table-filter').addEventListener('input', (e) => {
-          const value = e.target.value;
-          if (value) {
-            table.setFilter([
-              [
-                { field: 'nom', type: 'like', value: value },
-                { field: 'email', type: 'like', value: value },
-                { field: 'message', type: 'like', value: value },
-              ],
-            ]);
-          } else {
-            table.clearFilter();
-          }
-        });
-
-        document.getElementById('replyContactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const id = document.getElementById('reply-id').value;
-            const message = document.getElementById('reply-response').value;
-
-            try {
-                await envoyer(`${baseUrl}/${id}/repondre`, 'PUT', {
-                    message: message
-                });
-
-                // Fermer le modal
-                const modalElement = document.getElementById('replyContactModal');
-                const modal = bootstrap.Modal.getInstance(modalElement);
-
-                if (modal) {
-                    modal.hide();
-                }
-
-                // Vider la réponse
-                document.getElementById('reply-response').value = '';
-
-                // Afficher le message de succès
-                afficherToast('Réponse enregistrée avec succès.');
-
-            } catch (erreur) {
-                alert(erreur.message);
-            }
-        });
-
-        document
-          .getElementById('export-csv')
-          .addEventListener('click', () => table.download('csv', 'users.csv'));
-        document
-          .getElementById('export-json')
-          .addEventListener('click', () => table.download('json', 'users.json'));
-        document
-          .getElementById('print-table')
-          .addEventListener('click', () => table.print(false, true));
-      });
-
-      
-
-    </script>
-
-    <!-- Modal Modification Contact -->
-<div class="modal fade" id="editContactModal" tabindex="-1"
-     aria-labelledby="editContactModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title" id="editContactModalLabel">
-                    Modifier le contact
-                </h5>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Fermer"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <form id="editContactForm">
-
-                    <input type="hidden" id="edit-id">
-
-                    <div class="mb-3">
-                        <label for="edit-nom" class="form-label">
-                            Nom complet
-                        </label>
-                        <input type="text"
-                               id="edit-nom"
-                               class="form-control"
-                               required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="edit-email" class="form-label">
-                            Adresse email
-                        </label>
-                        <input type="email"
-                               id="edit-email"
-                               class="form-control"
-                               required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="edit-telephone" class="form-label">
-                            Téléphone
-                        </label>
-                        <input type="text"
-                               id="edit-telephone"
-                               class="form-control">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="edit-message" class="form-label">
-                            Message
-                        </label>
-                        <textarea id="edit-message"
-                                  class="form-control"
-                                  rows="5"
-                                  required></textarea>
-                    </div>
-
-                </form>
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
-                    Annuler
-                </button>
-
-                <button type="submit"
-                        form="editContactForm"
-                        class="btn btn-primary">
-                    Enregistrer
-                </button>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;">
-    <div id="contactToast"
-         class="toast align-items-center text-bg-success border-0"
-         role="alert"
-         aria-live="assertive"
-         aria-atomic="true">
-
-        <div class="d-flex">
-            <div class="toast-body" id="contactToastMessage">
-                Opération réussie.
-            </div>
-
-            <button type="button"
-                    class="btn-close btn-close-white me-2 m-auto"
-                    data-bs-dismiss="toast"
-                    aria-label="Fermer"></button>
-        </div>
-
-    </div>
-</div>
-
-
-<!-- Modal Confirmation Suppression Contact -->
-<div class="modal fade" id="deleteContactModal" tabindex="-1"
-     aria-labelledby="deleteContactModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteContactModalLabel">
-                    Confirmer la suppression
-                </h5>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Fermer">
-                </button>
-            </div>
-
-            <div class="modal-body">
-                Êtes-vous sûr de vouloir supprimer le contact
-                « <strong id="deleteContactName"></strong> » ?
-            </div>
-
-            <div class="modal-footer">
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
-                    Annuler
-                </button>
-
-                <button type="button"
-                        class="btn btn-danger"
-                        id="confirmDeleteContact">
-                    Supprimer
-                </button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- MODAL RÉPONSE CONTACT -->
-<div class="modal fade" id="replyContactModal" tabindex="-1"
-    aria-labelledby="replyContactModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title" id="replyContactModalLabel">
-                    Répondre au contact
-                </h5>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Fermer"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <form id="replyContactForm">
-
-                    <input type="hidden" id="reply-id">
-
-                    <div class="mb-3">
-                        <label for="reply-nom" class="form-label">
-                            Nom du contact
-                        </label>
-
-                        <input type="text"
-                               id="reply-nom"
-                               class="form-control"
-                               readonly>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="reply-email" class="form-label">
-                            Adresse email
-                        </label>
-
-                        <input type="email"
-                               id="reply-email"
-                               class="form-control"
-                               readonly>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="reply-message" class="form-label">
-                            Message reçu
-                        </label>
-
-                        <textarea id="reply-message"
-                                  class="form-control"
-                                  rows="4"
-                                  readonly></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="reply-response" class="form-label">
-                            Votre réponse
-                        </label>
-
-                        <textarea id="reply-response"
-                                  class="form-control"
-                                  rows="6"
-                                  placeholder="Écrivez votre réponse..."
-                                  required></textarea>
-                    </div>
-
-                </form>
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
-                    Annuler
-                </button>
-
-                <button type="submit"
-                        form="replyContactForm"
-                        class="btn btn-success">
-                    <i class="bi bi-send me-1"></i>
-                    Envoyer la réponse
-                </button>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
   </body>
 </html>

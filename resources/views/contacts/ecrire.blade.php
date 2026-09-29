@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE 4 | Data Tables</title>
+    <title>HORINFO | Répondre à un message</title>
 
     <!--begin::Theme Init (prevents flash of incorrect theme on load, #6043)-->
     <script>
@@ -54,7 +53,7 @@
     <!--end::Accessibility Meta Tags-->
 
     <!--begin::Primary Meta Tags-->
-    <meta name="title" content="AdminLTE 4 | Data Tables" />
+    <meta name="title" content="HORINFO | Répondre à un message" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -102,12 +101,6 @@
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/tabulator-tables@6.4.0/dist/css/tabulator_bootstrap5.min.css"
-      crossorigin="anonymous"
-    />
   </head>
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
     <div class="app-wrapper">
@@ -169,6 +162,13 @@
 
           <!--begin::End Navbar Links-->
           <ul class="navbar-nav ms-auto">
+            <!--begin::Search (small screens: the field above is hidden, so link to the search page)-->
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="#" aria-label="Search">
+                <i class="bi bi-search" aria-hidden="true"></i>
+              </a>
+            </li>
+            <!--end::Search-->
             <!--begin::Messages Dropdown Menu-->
             <li class="nav-item dropdown">
               <a
@@ -497,8 +497,11 @@
         <div class="sidebar-wrapper">
           <nav class="mt-2" aria-label="Main navigation">
             <!--begin::Sidebar Menu-->
+            
             @include('partials.admin-sidebar')
+
             <!--end::Sidebar Menu-->
+
           </nav>
         </div>
         <!--end::Sidebar Wrapper-->
@@ -509,62 +512,102 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-sm-6">
-                <h1 class="mb-0 fs-3">Data Tables</h1>
+                <h1 class="mb-0 fs-3">Répondre à un message</h1>
               </div>
               <div class="col-sm-6">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb float-sm-end">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Accueil</a></li>
+                    <li class="breadcrumb-item">
+                      <a href="{{ route('contacts.liste') }}">Contacts-listes</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                      <a href="{{ route('contacts.lire', $contact) }}">Message</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Répondre</li>
                   </ol>
                 </nav>
               </div>
             </div>
           </div>
         </div>
+
         <div class="app-content">
           <div class="container-fluid">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Contacts</h3>
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 16rem">
-                    <span class="input-group-text">
-                      <i class="bi bi-search" aria-hidden="true"></i>
-                    </span>
-                    <input
-                      id="table-filter"
-                      type="search"
-                      class="form-control"
-                      placeholder="Filter rows&hellip;"
-                      aria-label="Filter rows"
-                    />
+                <h3 class="card-title">Répondre à {{ $contact->nom }}</h3>
+              </div>
+
+              <form action="{{ route('contacts.repondre', $contact) }}" method="POST">
+                @csrf
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label" for="mail-to">À</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="mail-to"
+                        value="{{ $contact->email }}"
+                        readonly
+                      />
+                    </div>
+
+                    {{-- POUR L'ÉTAPE EMAIL : décommenter Cc, Cci et Objet
+                    <div class="col-md-6">
+                      <label class="form-label" for="mail-cc">Cc</label>
+                      <input type="text" class="form-control" id="mail-cc" name="cc" value="{{ old('cc') }}" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="mail-bcc">Cci</label>
+                      <input type="text" class="form-control" id="mail-bcc" name="cci" value="{{ old('cci') }}" />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label" for="mail-subject">Objet</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="mail-subject"
+                        name="objet"
+                        value="{{ old('objet', 'Réponse à votre message - HORINFO') }}"
+                      />
+                    </div>
+                    --}}
+
+                    <div class="col-12">
+                      <label class="form-label">Message reçu</label>
+                      <div class="border rounded p-3 bg-body-secondary small">
+                        {!! nl2br(e($contact->message)) !!}
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label" for="mail-body">Votre réponse</label>
+                      <textarea
+                        id="mail-body"
+                        name="reponse"
+                        class="form-control @error('reponse') is-invalid @enderror"
+                        rows="12"
+                        placeholder="Écrivez votre réponse…"
+                        style="min-height: 16rem"
+                      >{{ old('reponse') }}</textarea>
+                      @error('reponse')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex gap-2 mb-3">
-                  <button id="export-csv" type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class="bi bi-filetype-csv me-1" aria-hidden="true"></i>
-                    Export CSV
+
+                <div class="card-footer d-flex gap-2">
+                  <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-send me-1" aria-hidden="true"></i>Envoyer la réponse
                   </button>
-                  <button id="export-json" type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class="bi bi-filetype-json me-1" aria-hidden="true"></i>
-                    Export JSON
-                  </button>
-                  <button id="print-table" type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class="bi bi-printer me-1" aria-hidden="true"></i>
-                    Print
-                  </button>
+                  <a href="{{ route('contacts.lire', $contact) }}" class="btn btn-outline-danger ms-auto">
+                    <i class="bi bi-x-lg me-1" aria-hidden="true"></i>Annuler
+                  </a>
                 </div>
-                <div id="users-table"></div>
-              </div>
-              <div class="card-footer text-secondary small">
-                Powered by
-                <a href="https://tabulator.info/" target="_blank" rel="noopener">Tabulator</a>
-                &mdash; vanilla JS, no jQuery required.
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -670,526 +713,5 @@
      module (since 4.1) — no page script needed. Only the no-flash snippet
      in <head> stays inline, because it must run before first paint. -->
     <!--end::Color Mode Toggle-->
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/tabulator-tables@6.4.0/dist/js/tabulator.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      const csrf = document.querySelector('meta[name="csrf-token"]').content;
-      const baseUrl = "{{ url('/admin/contacts') }}";
-
-      async function envoyer(url, method, body = null) {
-        const response = await fetch(url, {
-          method: method,
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrf,
-          },
-          body: body ? JSON.stringify(body) : null,
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-          const erreurs = Object.values(result.errors || {}).flat();
-          throw new Error(erreurs.join('\n') || result.message || 'Erreur');
-        }
-        return result;
-      }
-
-      function afficherToast(message) {
-          const toastElement = document.getElementById('contactToast');
-          const toastMessage = document.getElementById('contactToastMessage');
-
-          toastMessage.textContent = message;
-
-          const toast = bootstrap.Toast.getOrCreateInstance(toastElement, {
-              delay: 3000
-          });
-
-          toast.show();
-      }
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const data = @json($contacts);
-
-        const table = new Tabulator('#users-table', {
-          data: data,
-          layout: 'fitColumns',
-          pagination: true,
-          paginationSize: 10,
-          paginationSizeSelector: [10, 25, 50, 100],
-          movableColumns: true,
-
-          columns: [
-          { title: '#', field: 'id', width: 60 },
-          { title: 'Nom', field: 'nom', headerFilter: 'input' },
-          { title: 'Email', field: 'email', headerFilter: 'input' },
-          { title: 'Téléphone', field: 'telephone', width: 150 },
-          { title: 'Message', field: 'message', headerFilter: 'input' },
-          {
-            title: 'Reçu le',
-            field: 'created_at',
-            width: 160,
-            formatter: (cell) => new Date(cell.getValue()).toLocaleString('fr-FR'),
-          },
-          {
-            title: 'Actions',
-            width: 145,
-            hozAlign: 'center',
-            headerSort: false,
-            formatter: () =>
-              `
-              <div class="d-flex justify-content-center gap-1">
-                  <button type="button"
-                          class="btn btn-sm btn-outline-primary btn-edit"
-                          title="Modifier">
-                      <i class="bi bi-pencil"></i>
-                  </button>
-
-                  <button type="button"
-                          class="btn btn-sm btn-outline-success btn-reply"
-                          title="Répondre">
-                      <i class="bi bi-reply"></i>
-                  </button>
-
-                  <button type="button"
-                          class="btn btn-sm btn-outline-danger btn-delete"
-                          title="Supprimer">
-                      <i class="bi bi-trash"></i>
-                  </button>
-              </div>
-              `,
-            cellClick: async (e, cell) => {
-            const row = cell.getRow();
-            const data = row.getData();
-
-            // Bouton Modifier
-            if (e.target.closest('.btn-edit')) {
-
-                document.getElementById('edit-id').value = data.id;
-                document.getElementById('edit-nom').value = data.nom;
-                document.getElementById('edit-email').value = data.email;
-                document.getElementById('edit-telephone').value = data.telephone ?? '';
-                document.getElementById('edit-message').value = data.message;
-
-                const modal = new bootstrap.Modal(
-                    document.getElementById('editContactModal')
-                );
-
-                modal.show();
-
-                return;
-            }
-
-            // Bouton Supprimer
-            if (e.target.closest('.btn-delete')) {
-              const { id, nom } = data;
-              contactToDelete = {
-                  id: id,
-                  nom: nom,
-                  row: row
-              };
-              document.getElementById('deleteContactName').textContent = nom;
-
-              const modal = new bootstrap.Modal(
-                  document.getElementById('deleteContactModal')
-              );
-
-              modal.show();
-          }
-
-          // Bouton Répondre
-          if (e.target.closest('.btn-reply')) {
-              const data = row.getData();
-
-              document.getElementById('reply-id').value = data.id;
-              document.getElementById('reply-nom').value = data.nom;
-              document.getElementById('reply-email').value = data.email;
-              document.getElementById('reply-message').value = data.message;
-
-              const modal = new bootstrap.Modal(
-                  document.getElementById('replyContactModal')
-              );
-
-              modal.show();
-              return;
-          }
-        },
-          },
-        ],
-        });
-
-        let contactToDelete = null;
-
-        document.getElementById('confirmDeleteContact').addEventListener('click', async function () {
-
-            if (!contactToDelete) return;
-
-            try {
-                await envoyer(`${baseUrl}/${contactToDelete.id}`, 'DELETE');
-
-                // Supprimer la ligne du tableau
-                contactToDelete.row.delete();
-
-                // Fermer le modal
-                const modalElement = document.getElementById('deleteContactModal');
-                const modal = bootstrap.Modal.getInstance(modalElement);
-
-                if (modal) {
-                    modal.hide();
-                }
-
-                // Afficher le toast de succès
-                afficherToast('Contact supprimé avec succès.');
-
-                // Réinitialiser
-                contactToDelete = null;
-
-            } catch (erreur) {
-                alert(erreur.message);
-            }
-        });
-
-        document.getElementById('editContactForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const id = document.getElementById('edit-id').value;
-
-    const donnees = {
-        nom: document.getElementById('edit-nom').value,
-        email: document.getElementById('edit-email').value,
-        telephone: document.getElementById('edit-telephone').value,
-        message: document.getElementById('edit-message').value
-    };
-
-    try {
-        await envoyer(`${baseUrl}/${id}`, 'PUT', donnees);
-
-        const row = table.getRow(id);
-
-        if (row) {
-            row.update(donnees);
-        }
-
-        const modalElement = document.getElementById('editContactModal');
-        const modal = bootstrap.Modal.getInstance(modalElement);
-
-        modal.hide();
-
-        afficherToast('Contact modifié avec succès.');
-
-    } catch (erreur) {
-        alert(erreur.message);
-    }
-});
-
-        document.getElementById('table-filter').addEventListener('input', (e) => {
-          const value = e.target.value;
-          if (value) {
-            table.setFilter([
-              [
-                { field: 'nom', type: 'like', value: value },
-                { field: 'email', type: 'like', value: value },
-                { field: 'message', type: 'like', value: value },
-              ],
-            ]);
-          } else {
-            table.clearFilter();
-          }
-        });
-
-        document.getElementById('replyContactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const id = document.getElementById('reply-id').value;
-            const message = document.getElementById('reply-response').value;
-
-            try {
-                await envoyer(`${baseUrl}/${id}/repondre`, 'PUT', {
-                    message: message
-                });
-
-                // Fermer le modal
-                const modalElement = document.getElementById('replyContactModal');
-                const modal = bootstrap.Modal.getInstance(modalElement);
-
-                if (modal) {
-                    modal.hide();
-                }
-
-                // Vider la réponse
-                document.getElementById('reply-response').value = '';
-
-                // Afficher le message de succès
-                afficherToast('Réponse enregistrée avec succès.');
-
-            } catch (erreur) {
-                alert(erreur.message);
-            }
-        });
-
-        document
-          .getElementById('export-csv')
-          .addEventListener('click', () => table.download('csv', 'users.csv'));
-        document
-          .getElementById('export-json')
-          .addEventListener('click', () => table.download('json', 'users.json'));
-        document
-          .getElementById('print-table')
-          .addEventListener('click', () => table.print(false, true));
-      });
-
-      
-
-    </script>
-
-    <!-- Modal Modification Contact -->
-<div class="modal fade" id="editContactModal" tabindex="-1"
-     aria-labelledby="editContactModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title" id="editContactModalLabel">
-                    Modifier le contact
-                </h5>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Fermer"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <form id="editContactForm">
-
-                    <input type="hidden" id="edit-id">
-
-                    <div class="mb-3">
-                        <label for="edit-nom" class="form-label">
-                            Nom complet
-                        </label>
-                        <input type="text"
-                               id="edit-nom"
-                               class="form-control"
-                               required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="edit-email" class="form-label">
-                            Adresse email
-                        </label>
-                        <input type="email"
-                               id="edit-email"
-                               class="form-control"
-                               required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="edit-telephone" class="form-label">
-                            Téléphone
-                        </label>
-                        <input type="text"
-                               id="edit-telephone"
-                               class="form-control">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="edit-message" class="form-label">
-                            Message
-                        </label>
-                        <textarea id="edit-message"
-                                  class="form-control"
-                                  rows="5"
-                                  required></textarea>
-                    </div>
-
-                </form>
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
-                    Annuler
-                </button>
-
-                <button type="submit"
-                        form="editContactForm"
-                        class="btn btn-primary">
-                    Enregistrer
-                </button>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;">
-    <div id="contactToast"
-         class="toast align-items-center text-bg-success border-0"
-         role="alert"
-         aria-live="assertive"
-         aria-atomic="true">
-
-        <div class="d-flex">
-            <div class="toast-body" id="contactToastMessage">
-                Opération réussie.
-            </div>
-
-            <button type="button"
-                    class="btn-close btn-close-white me-2 m-auto"
-                    data-bs-dismiss="toast"
-                    aria-label="Fermer"></button>
-        </div>
-
-    </div>
-</div>
-
-
-<!-- Modal Confirmation Suppression Contact -->
-<div class="modal fade" id="deleteContactModal" tabindex="-1"
-     aria-labelledby="deleteContactModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteContactModalLabel">
-                    Confirmer la suppression
-                </h5>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Fermer">
-                </button>
-            </div>
-
-            <div class="modal-body">
-                Êtes-vous sûr de vouloir supprimer le contact
-                « <strong id="deleteContactName"></strong> » ?
-            </div>
-
-            <div class="modal-footer">
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
-                    Annuler
-                </button>
-
-                <button type="button"
-                        class="btn btn-danger"
-                        id="confirmDeleteContact">
-                    Supprimer
-                </button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- MODAL RÉPONSE CONTACT -->
-<div class="modal fade" id="replyContactModal" tabindex="-1"
-    aria-labelledby="replyContactModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title" id="replyContactModalLabel">
-                    Répondre au contact
-                </h5>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Fermer"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <form id="replyContactForm">
-
-                    <input type="hidden" id="reply-id">
-
-                    <div class="mb-3">
-                        <label for="reply-nom" class="form-label">
-                            Nom du contact
-                        </label>
-
-                        <input type="text"
-                               id="reply-nom"
-                               class="form-control"
-                               readonly>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="reply-email" class="form-label">
-                            Adresse email
-                        </label>
-
-                        <input type="email"
-                               id="reply-email"
-                               class="form-control"
-                               readonly>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="reply-message" class="form-label">
-                            Message reçu
-                        </label>
-
-                        <textarea id="reply-message"
-                                  class="form-control"
-                                  rows="4"
-                                  readonly></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="reply-response" class="form-label">
-                            Votre réponse
-                        </label>
-
-                        <textarea id="reply-response"
-                                  class="form-control"
-                                  rows="6"
-                                  placeholder="Écrivez votre réponse..."
-                                  required></textarea>
-                    </div>
-
-                </form>
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
-                    Annuler
-                </button>
-
-                <button type="submit"
-                        form="replyContactForm"
-                        class="btn btn-success">
-                    <i class="bi bi-send me-1"></i>
-                    Envoyer la réponse
-                </button>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
   </body>
 </html>

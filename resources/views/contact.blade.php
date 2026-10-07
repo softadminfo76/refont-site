@@ -44,30 +44,33 @@
                         <span class="ve-section-tag">Envoyez-nous un message</span>
                         <h2>Demandez un <span>devis gratuit</span></h2>
                         <p>Remplissez le formulaire et un membre de notre équipe vous recontactera sous un jour ouvré.</p>
-                        <form class="ve-contact-form" action="#" method="post">
+                        <form class="ve-contact-form js-contact-form" action="{{ route('contact.store') }}" method="post">
+                            @csrf
                             <div class="ve-form-row">
                                 <div class="ve-form-group">
                                     <label>Nom complet <span class="ve-required">*</span></label>
-                                    <input type="text" id="cf-name" name="nom" placeholder="Votre nom complet" required>
+                                    <input type="text" name="nom" placeholder="Votre nom complet" required>
                                 </div>
                                 <div class="ve-form-group">
                                     <label>Adresse email <span class="ve-required">*</span></label>
-                                    <input type="email" id="cf-email" name="email" placeholder="Votre email" required>
+                                    <input type="email" name="email" placeholder="Votre email" required>
                                 </div>
                             </div>
                             <div class="ve-form-group">
                                 <label>Numéro de téléphone</label>
-                                <input type="tel" id="cf-phone" name="telephone" placeholder="Votre téléphone">
+                                <input type="tel" name="telephone" placeholder="Votre téléphone">
                             </div>
                             <div class="ve-form-group">
                                 <label>Votre message <span class="ve-required">*</span></label>
-                                <textarea id="cf-message" name="message" rows="5" placeholder="Décrivez votre projet ou besoin..." required></textarea>
+                                <textarea name="message" rows="5" placeholder="Décrivez votre projet ou besoin..." required></textarea>
                             </div>
-                            <div id="contactErrors" class="alert alert-danger d-none" role="alert"></div>
-                                <button type="submit" class="ve-btn-primary">
-                                    Envoyer le message
-                                    <i class="fa fa-paper-plane"></i>
-                                </button>
+
+                            <div class="alert alert-danger d-none js-errors" role="alert"></div>
+
+                            <button type="submit" class="ve-btn-primary">
+                                Envoyer le message
+                                <i class="fa fa-paper-plane"></i>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -91,12 +94,12 @@
                                 <li><span>Dimanche</span><strong>Fermé</strong></li>
                             </ul>
                         </div>
-                        <div class="ve-ca-social">
+                        <div class="contact-ve-ca-social">
                             <h5>Suivez-nous</h5>
-                            <div class="ve-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-youtube"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <div class="contact-ve-social">
+                                <a href="https://web.facebook.com/HorinfoBurkinaFaso" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.youtube.com/@Horinfo" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa fa-youtube"></i></a>
+                                <a href="https://www.linkedin.com/company/horinfo/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
                             </div>
                         </div>
                     </div>
@@ -110,6 +113,7 @@
     </div>
 
     @include('partials.footer')
+    @include('partials.modal-rendez-vous')
 
     <script src="{{ asset('js/jquery/jquery-2.2.4.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/popper.min.js') }}"></script>

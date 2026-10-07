@@ -11,9 +11,9 @@
                         </a>
                         <p>Des solutions informatiques sur mesure pour accompagner la transformation numérique des organisations depuis 1999.</p>
                         <div class="ve-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-youtube"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://web.facebook.com/HorinfoBurkinaFaso" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.youtube.com/@Horinfo" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa fa-youtube"></i></a>
+                            <a href="https://www.linkedin.com/company/horinfo/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         <ul class="ve-footer-contact">
                             <li><i class="fa fa-map-marker"></i> 178 rue 30.131, Sanyiri, Ouagadougou, Burkina Faso</li>
                             <li><i class="fa fa-phone"></i> +226 61 60 15 15</li>
-                            <li><i class="fa fa-envelope"></i> contact@horinfo.bf</li>
+                            <li><i class="fa fa-envelope"></i> horinfo@horinfo.com</li>
                             <li><i class="fa fa-clock-o"></i> Lun–Ven, 8h – 17h</li>
                         </ul>
                 </div>

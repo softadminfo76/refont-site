@@ -61,6 +61,85 @@
         </div>
     </section>
 
+    <!-- ===== SERVICES GRID (new card layout) ===== -->
+    <section class="ve-section ve-services-section">
+    <div class="container">
+        <div class="ve-section-header text-center">
+            <span class="ve-section-tag">NOS DOMAINES D'INTERVENTION</span>
+            <h2>Notre expertise au service de <span>vos projets</span></h2>
+            <p>Nous vous accompagnons dans la réalisation complète de vos projets</p>
+        </div>
+
+        <div class="ve-services-grid">
+
+            {{-- INGÉNIERIE LOGICIELLE (inchangée) --}}
+            <div class="ve-service-card wow fadeInUp" data-wow-delay="100ms">
+                <div class="ve-service-icon"><i class="fa fa-code"></i></div>
+                <h4>Département Ingénierie Logicielle</h4>
+                <p>
+                    Le Département Ingénierie Logicielle accompagne les entreprises dans la conception et la mise en place de solutions informatiques adaptées à leurs besoins.
+                </p>
+                <ul>
+                    <li>Conception et développement d'applications web et mobiles sur mesure.</li>
+                    <li>Développement de plateformes et logiciels adaptés aux processus métiers.</li>
+                    <li>Maintenance, évolution et amélioration des applications.</li>
+                    <li>Mise en place de solutions performantes, sécurisées et évolutives.</li>
+                    <li>Accompagnement et conseil technique tout au long des projets.</li>
+                </ul>
+                <a href="{{ route('services.show', 1) }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
+            </div>
+
+            {{-- TRANSFORMATION DIGITALE (remplace Marketing Digital) --}}
+            <div class="ve-service-card wow fadeInUp" data-wow-delay="200ms">
+                <div class="ve-service-icon"><i class="fa fa-bullhorn"></i></div>
+                <h4>Département Transformation Digitale</h4>
+                <p>
+                    Le Département Transformation Digitale accompagne les organisations publiques et privées dans leur transition numérique, à travers une communication digitale performante et des outils modernes.
+                </p>
+                <ul>
+                    <li>Élaboration de stratégies digitales et de plans éditoriaux adaptés à vos objectifs.</li>
+                    <li>Gestion des réseaux sociaux et animation de vos communautés en ligne.</li>
+                    <li>Production de contenus : visuels, vidéos, infographies et articles.</li>
+                    <li>Campagnes publicitaires en ligne et optimisation de votre site web (SEO).</li>
+                    <li>Analyse des performances et reporting régulier.</li>
+                    <li>Diagnostic digital et accompagnement de votre transformation, avec formation des équipes.</li>
+                </ul>
+                <a href="{{ route('services.show', 2) }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
+            </div>
+
+            {{-- MARKETING & COMMERCIAL --}}
+<div class="ve-service-card wow fadeInUp" data-wow-delay="300ms">
+    <div class="ve-service-icon">
+        <i class="fa fa-line-chart"></i>
+    </div>
+
+    <h4>Département Marketing & Commercial</h4>
+
+    <p>
+        Le Département Marketing & Commercial est le moteur de croissance
+        d’HORINFO. Il développe la notoriété de la marque, génère des leads
+        qualifiés et accompagne leur conversion en clients durables.
+    </p>
+
+    <ul>
+        <li>Stratégie marketing et communication digitale.</li>
+        <li>Production de contenus et gestion des réseaux sociaux.</li>
+        <li>Prospection B2B et qualification des leads.</li>
+        <li>Démonstrations des solutions Dolibarr, Yeele et Immobilier.</li>
+        <li>Élaboration des offres commerciales et réponses aux appels d’offres.</li>
+        <li>Développement de partenariats et expansion commerciale régionale.</li>
+    </ul>
+
+    <a href="{{ route('services.show', 3) }}" class="ve-card-link">
+        En savoir plus <i class="fa fa-long-arrow-right"></i>
+    </a>
+</div>
+
+        </div>
+    </div>
+</section>
+
+
     <!-- MISSION / VISION / VALUES -->
     <section class="ve-mvv-section">
         <div class="container">
@@ -72,17 +151,36 @@
                 <div class="ve-mvv-card wow fadeInUp" data-wow-delay="100ms">
                     <div class="ve-mvv-icon"><i class="fa fa-bullseye"></i></div>
                     <h4>Notre Mission</h4>
-                    <p>Démocratiser l'accès à des solutions numériques fiables et sur mesure, pour accompagner la croissance des organisations que nous servons.</p>
+                    <ul>
+                        <li>Démocratiser l’accès à des solutions numériques fiables, accessibles et adaptées aux besoins de chaque organisation.</li>
+                        <li>Accompagner les entreprises dans leur transformation digitale et l’optimisation de leurs activités.</li>
+                        <li>Concevoir des solutions innovantes permettant d’améliorer la performance et la productivité.</li>
+                        <li>Mettre notre expertise technologique au service des projets et des objectifs de nos clients.</li>
+                        <li>Proposer des solutions durables, évolutives et adaptées aux réalités de nos partenaires.</li>
+                    </ul>
                 </div>
                 <div class="ve-mvv-card wow fadeInUp" data-wow-delay="250ms">
                     <div class="ve-mvv-icon"><i class="fa fa-eye"></i></div>
                     <h4>Notre Vision</h4>
-                    <p>Devenir la référence des services IT en Afrique de l'Ouest, reconnue pour son exigence technique et son engagement client.</p>
+                    <ul>
+                        <li>Devenir un acteur de référence dans le domaine des solutions numériques en Afrique.</li>
+                        <li>Contribuer à la transformation digitale des entreprises et des organisations.</li>
+                        <li>Promouvoir l’innovation technologique et l’utilisation des outils numériques.</li>
+                        <li>Développer des solutions modernes, accessibles et adaptées aux réalités locales.</li>
+                        <li>Construire des partenariats durables fondés sur la confiance et la performance.</li>
+                        <li>Participer à la création d’un écosystème numérique dynamique et compétitif.</li>
+                    </ul>
                 </div>
                 <div class="ve-mvv-card wow fadeInUp" data-wow-delay="400ms">
                     <div class="ve-mvv-icon"><i class="fa fa-heart"></i></div>
                     <h4>Nos Valeurs</h4>
-                    <p>Rigueur, proximité client, innovation continue, transparence.</p>
+                    <ul>
+                        <li><strong>Innovation :</strong> encourager la créativité et proposer des solutions adaptées aux évolutions technologiques.</li>
+                        <li><strong>Excellence :</strong> rechercher la qualité et la performance dans chacune de nos réalisations.</li>
+                        <li><strong>Intégrité :</strong> agir avec transparence, responsabilité et respect envers nos clients et partenaires.</li>
+                        <li><strong>Écoute :</strong> comprendre les besoins de nos clients afin de leur apporter des réponses pertinentes et personnalisées.</li>
+                        <li><strong>Engagement :</strong> nous investir pleinement dans chaque projet pour contribuer à la réussite de nos clients.</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -168,21 +266,30 @@
                 <div class="ve-nl-left">
                     <i class="fa fa-envelope-o"></i>
                     <div>
-                        <h3>Stay Ahead of the Markets</h3>
-                        <p>Weekly insights, tips, and exclusive offers — straight to your inbox.</p>
+                        <h3>Restez informé de nos actualités</h3>
+                        <p>Recevez nos actualitéset directement dans votre boîte mail.</p>
                     </div>
                 </div>
                 <div class="ve-nl-right">
-                    <form class="ve-nl-form" action="#" method="post">
-                        <input type="email" placeholder="Enter your email address" required>
-                        <button type="submit">Subscribe</button>
+                    <form class="ve-nl-form" id="abonnementForm" action="{{ route('abonnement.actualites') }}" method="POST">
+                        @csrf
+                        <input 
+                            type="email" name="email" placeholder="Votre adresse e-mail" required>
+                        <button type="submit">S’abonner</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
+    <div id="abonnementToast" class="ve-toast">
+        <i class="fa fa-check-circle"></i>
+        <span>Merci pour votre abonnement !</span>
+    </div>
+
     @include('partials.footer')
+    @include('partials.modal-rendez-vous')
+
 
     <script src="{{ asset('js/jquery/jquery-2.2.4.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/popper.min.js') }}"></script>
@@ -190,5 +297,43 @@
     <script src="{{ asset('js/plugins/plugins.js') }}"></script>
     <script src="{{ asset('js/active.js') }}"></script>
     <script src="{{ asset('js/vaultedge.js') }}"></script>
+
+<script>
+    (function () {
+        const form = document.getElementById('abonnementForm');
+        const toast = document.getElementById('abonnementToast');
+
+        if (!form || !toast) { return; }
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(form)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    const messages = Object.values(result.errors || {}).flat();
+                    alert(messages.join('\n') || result.message || 'Une erreur est survenue.');
+                    return;
+                }
+
+                form.reset();
+                toast.querySelector('span').textContent = result.message || 'Merci pour votre abonnement !';
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 4000);
+
+            } catch (error) {
+                console.error(error);
+                alert('Une erreur est survenue. Réessaie dans un instant.');
+            }
+        });
+    })();
+</script>
 </body>
 </html>

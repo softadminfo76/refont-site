@@ -33,7 +33,7 @@
                 <a href="#" class="ve-btn-primary" data-toggle="modal" data-target="#contactModal">
                     Prendre rendez-vous
                 </a>
-                <a href="{{ route('about') }}" class="ve-btn-ghost">Découvrir nos services</a>
+                <a href="{{ route('services') }}" class="ve-btn-ghost">Découvrir nos services</a>
             </div>
             <!-- Quick Stats Row -->
             <div class="ve-hero-stats">
@@ -60,7 +60,7 @@
         </div>
     </section>
 
-    <!-- ===== MARQUEE TRUST BAR ===== -->
+        <!-- ===== MARQUEE TRUST BAR ===== -->
     <div class="ve-trust-bar">
         <div class="ve-trust-inner">
             <span><i class="fa fa-code"></i> Développement d'application web et mobile</span>
@@ -84,38 +84,7 @@
         </div>
     </div>
 
-    <!-- ===== SERVICES GRID (new card layout) ===== -->
-    <section class="ve-section ve-services-section">
-        <div class="container">
-            <div class="ve-section-header text-center">
-                <span class="ve-section-tag">NOS DOMAINES D'INTERVENTION</span>
-                <h2>Nos solutions informatique <span>Complète et Evolutive</span></h2>
-                <p>Nous vous accompagnons dans la réalisation complète de vos projets</p>
-            </div>
-            <div class="ve-services-grid">
-                <div class="ve-service-card wow fadeInUp" data-wow-delay="100ms">
-                    <div class="ve-service-icon"><i class="fa fa-code"></i></div>
-                    <h4>DIL</h4>
-                    <p>Département Ingénierie Logicielle — conception et développement de solutions logicielles sur mesure.</p>
-                    <a href="{{ route('services') }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
-                </div>
-                <div class="ve-service-card wow fadeInUp" data-wow-delay="200ms">
-                    <div class="ve-service-icon"><i class="fa fa-bullhorn"></i></div>
-                    <h4>DMD</h4>
-                    <p>Département Marketing Digital — stratégie, communication et présence digitale pour votre marque.</p>
-                    <a href="{{ route('services') }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
-                </div>
-                <div class="ve-service-card wow fadeInUp" data-wow-delay="300ms">
-                    <div class="ve-service-icon"><i class="fa fa-handshake-o"></i></div>
-                    <h4>DMC</h4>
-                    <p>Département Marketing Commercial — développement commercial et relation client.</p>
-                    <a href="{{ route('services') }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== WHY US (two-column: image left, content right) ===== -->
+        <!-- ===== WHY US (two-column: image left, content right) ===== -->
     <section class="ve-section ve-whyus-section">
         <div class="container">
             <div class="row align-items-center">
@@ -154,6 +123,7 @@
         </div>
     </section>
 
+
     <!-- ===== COUNTERS ===== -->
     <section class="ve-counter-section">
         <div class="container">
@@ -182,8 +152,138 @@
         </div>
     </section>
 
+    @if ($realisations->isNotEmpty())
+    <section class="ve-section">
+        <div class="container">
+
+            <div class="ve-section-header text-center">
+                <span class="ve-section-tag">Nos réalisations</span>
+                <h2>ce que nous avons <span>déjà construit</span></h2>
+                <p>
+                    Des exemples concrets de solutions imaginées, conçues et développées par nos équipes.
+                </p>
+            </div>
+
+            <div class="ve-services-grid">
+                @foreach ($realisations as $realisation)
+                    <div class="ve-service-card ve-realisation-card wow fadeInUp" data-wow-delay="{{ (($loop->index % 3) + 1) * 100 }}ms">
+                        <div class="ve-service-icon">
+                            @if ($realisation->logo)
+                                <img src="{{ asset('storage/' . $realisation->logo) }}" alt="{{ $realisation->titre }}">
+                            @endif
+                        </div>
+
+                        <h4>{{ $realisation->titre }}</h4>
+
+                        <p>{{ $realisation->description }}</p>
+
+                        @if (count($realisation->liste_fonctionnalites))
+                            <ul class="ve-af-features">
+                                @foreach ($realisation->liste_fonctionnalites as $fonctionnalite)
+                                    <li>
+                                        <i class="fa fa-check"></i>
+                                        {{ $fonctionnalite }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+
+                        @if ($realisation->lien)
+                            <a href="{{ $realisation->lien }}"
+                            class="ve-card-link"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                                En savoir plus
+                                <i class="fa fa-long-arrow-right"></i>
+                            </a>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
+    <!-- ===== SERVICES GRID (new card layout) ===== -->
+    <section class="ve-section ve-services-section">
+    <div class="container">
+        <div class="ve-section-header text-center">
+            <span class="ve-section-tag">NOS DOMAINES D'INTERVENTION</span>
+            <h2>Notre expertise au service de <span>vos projets</span></h2>
+            <p>Nous vous accompagnons dans la réalisation complète de vos projets</p>
+        </div>
+
+        <div class="ve-services-grid">
+
+            {{-- INGÉNIERIE LOGICIELLE (inchangée) --}}
+            <div class="ve-service-card wow fadeInUp" data-wow-delay="100ms">
+                <div class="ve-service-icon"><i class="fa fa-code"></i></div>
+                <h4>Département Ingénierie Logicielle</h4>
+                <p>
+                    Le Département Ingénierie Logicielle accompagne les entreprises dans la conception et la mise en place de solutions informatiques adaptées à leurs besoins.
+                </p>
+                <ul>
+                    <li>Conception et développement d'applications web et mobiles sur mesure.</li>
+                    <li>Développement de plateformes et logiciels adaptés aux processus métiers.</li>
+                    <li>Maintenance, évolution et amélioration des applications.</li>
+                    <li>Mise en place de solutions performantes, sécurisées et évolutives.</li>
+                    <li>Accompagnement et conseil technique tout au long des projets.</li>
+                </ul>
+                <a href="{{ route('services.show', 1) }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
+            </div>
+
+            {{-- TRANSFORMATION DIGITALE --}}
+            <div class="ve-service-card wow fadeInUp" data-wow-delay="200ms">
+                <div class="ve-service-icon"><i class="fa fa-bullhorn"></i></div>
+                <h4>Département Transformation Digitale</h4>
+                <p>
+                    Le Département Transformation Digitale accompagne les organisations publiques et privées dans leur transition numérique, à travers une communication digitale performante et des outils modernes.
+                </p>
+                <ul>
+                    <li>Élaboration de stratégies digitales et de plans éditoriaux adaptés à vos objectifs.</li>
+                    <li>Gestion des réseaux sociaux et animation de vos communautés en ligne.</li>
+                    <li>Production de contenus : visuels, vidéos, infographies et articles.</li>
+                    <li>Campagnes publicitaires en ligne et optimisation de votre site web (SEO).</li>
+                    <li>Analyse des performances et reporting régulier.</li>
+                    <li>Diagnostic digital et accompagnement de votre transformation, avec formation des équipes.</li>
+                </ul>
+                <a href="{{ route('services.show', 2) }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
+            </div>
+
+            {{-- MARKETING & COMMERCIAL --}}
+<div class="ve-service-card wow fadeInUp" data-wow-delay="300ms">
+    <div class="ve-service-icon">
+        <i class="fa fa-line-chart"></i>
+    </div>
+
+    <h4>Département Marketing & Commercial</h4>
+
+    <p>
+        Le Département Marketing & Commercial est le moteur de croissance
+        d’HORINFO. Il développe la notoriété de la marque, génère des leads
+        qualifiés et accompagne leur conversion en clients durables.
+    </p>
+
+    <ul>
+        <li>Stratégie marketing et communication digitale.</li>
+        <li>Production de contenus et gestion des réseaux sociaux.</li>
+        <li>Prospection B2B et qualification des leads.</li>
+        <li>Démonstrations des solutions Dolibarr, Yeele et Immobilier.</li>
+        <li>Élaboration des offres commerciales et réponses aux appels d’offres.</li>
+        <li>Développement de partenariats et expansion commerciale régionale.</li>
+    </ul>
+
+    <a href="{{ route('services.show', 3) }}" class="ve-card-link">
+        En savoir plus <i class="fa fa-long-arrow-right"></i>
+    </a>
+</div>
+
+        </div>
+    </div>
+</section>
+
     <!-- ===== TESTIMONIALS ===== -->
-    <section class="ve-section ve-testimonials-section">
+    <section class="ve-section ve-partners-section">
     <div class="container">
         <div class="ve-section-header text-center">
             <span class="ve-section-tag">Ils Nous Font Confiance</span>
@@ -216,6 +316,41 @@
     </div>
 </section>
 
+<section class="ve-section ve-testimonials-section">
+    <div class="container">
+        <div class="ve-section-header text-center">
+            <span class="ve-section-tag">Témoignages</span>
+            <h2>Ce que disent nos <span>clients</span></h2>
+        </div>
+        <div class="ve-testi-grid">
+            <div class="ve-testi-card wow fadeInUp" data-wow-delay="100ms">
+                <div class="ve-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"HORINFO a livré notre plateforme web dans les délais, avec un vrai suivi à chaque étape. Une équipe sérieuse et à l'écoute."</p>
+                <div class="ve-testi-author">
+                    <div class="ve-testi-avatar bg-img" style="background-image:url(img/bg-img/32.jpg);"></div>
+                    <div><strong>Nom du client</strong><span>Fonction, Entreprise</span></div>
+                </div>
+            </div>
+            <div class="ve-testi-card wow fadeInUp" data-wow-delay="250ms">
+                <div class="ve-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Grâce à leur solution de gestion, nous suivons désormais nos activités en temps réel. Un gain de temps considérable pour toute l'équipe."</p>
+                <div class="ve-testi-author">
+                    <div class="ve-testi-avatar bg-img" style="background-image:url(img/bg-img/33.jpg);"></div>
+                    <div><strong>Nom du client</strong><span>Fonction, Entreprise</span></div>
+                </div>
+            </div>
+            <div class="ve-testi-card wow fadeInUp" data-wow-delay="400ms">
+                <div class="ve-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Un accompagnement sur mesure, de l'analyse du besoin jusqu'à la formation de nos équipes. Nous recommandons HORINFO sans hésiter."</p>
+                <div class="ve-testi-author">
+                    <div class="ve-testi-avatar bg-img" style="background-image:url(img/bg-img/14.jpg);"></div>
+                    <div><strong>Nom du client</strong><span>Fonction, Entreprise</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- ===== CTA BANNER ===== -->
     <section class="ve-cta-banner bg-img" style="background-image:url({{ asset('img/bg-img/horinfo-house.jpeg') }});">
         <div class="ve-cta-overlay"></div>
@@ -226,66 +361,42 @@
                     <p>Échangeons autour de vos besoins IT — 30 minutes suffisent pour poser les bases de votre projet.</p>
                 </div>
                 <div class="col-12 col-lg-4 text-lg-right">
-                    <a href="{{ route('contact') }}" class="ve-btn-white">Prendre Rendez-Vous</a>
+                    <a href="#" class="ve-btn-white" data-toggle="modal" data-target="#contactModal">Prendre un Rendez-Vous</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== LATEST INSIGHTS ===== -->
-    <section class="ve-section ve-insights-section">
-        <div class="container">
-            <div class="ve-section-header text-center">
-                <span class="ve-section-tag">Blog &amp; News</span>
-                <h2>Actualités & <span>Insights technologiques</span></h2>
-                <p>Restez informé grâce à nos analyses, conseils et actualités sur les technologies et les solutions numériques.</p>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-4 wow fadeInUp" data-wow-delay="100ms">
-                    <div class="ve-insight-card">
-                        <div class="ve-insight-img bg-img" style="background-image:url({{ asset('img/bg-img/10.jpg') }});"></div>
-                        <div class="ve-insight-body">
-                            <span class="ve-insight-cat">Développement</span>
-                            <h5><a href="{{ route('post.show') }}">Des solutions web adaptées à vos besoins</a></h5>
-                            <p>Nous concevons des applications et plateformes web modernes, performantes et adaptées aux besoins de votre entreprise.</p>
-                            <div class="ve-insight-meta">
-                                <span><i class="fa fa-calendar"></i> 17 Septembre</span>
-                                <a href="{{ route('post.show') }}">Lire plus <i class="fa fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+    @if ($articles->isNotEmpty())
+        <section class="ve-section ve-insights-section">
+            <div class="container">
+                <div class="ve-section-header text-center">
+                    <span class="ve-section-tag">Blog &amp; News</span>
+                    <h2>Actualités & <span>Insights technologiques</span></h2>
+                    <p>Restez informé grâce à nos analyses, conseils et actualités sur les technologies et les solutions numériques.</p>
                 </div>
-                <div class="col-12 col-md-4 wow fadeInUp" data-wow-delay="250ms">
-                    <div class="ve-insight-card">
-                        <div class="ve-insight-img bg-img" style="background-image:url({{ asset('img/bg-img/11.jpg') }});"></div>
-                        <div class="ve-insight-body">
-                            <span class="ve-insight-cat">DIGITAL</span>
-                            <h5><a href="{{ route('post.show') }}">Accompagner les entreprises dans leur transformation numérique</a></h5>
-                            <p>HORINFO accompagne les organisations dans la modernisation de leurs outils et processus grâce aux technologies numériques.</p>
-                            <div class="ve-insight-meta">
-                                <span><i class="fa fa-calendar"></i>17 Septembre</span>
-                                <a href="{{ route('post.show') }}">Lire plus <i class="fa fa-arrow-right"></i></a>
+                <div class="row">
+                    @foreach ($articles as $article)
+                        <div class="col-12 col-md-4 wow fadeInUp" data-wow-delay="{{ 100 + $loop->index * 150 }}ms">
+                            <div class="ve-insight-card">
+                                <div class="ve-insight-img bg-img" style="background-image:url({{ $article->image ? asset('storage/' . $article->image) : asset('img/bg-img/10.png') }});"></div>
+                                <div class="ve-insight-body">
+                                    <span class="ve-insight-cat">{{ $article->categorie }}</span>
+                                    <h5><a href="{{ route('post.show', $article->slug) }}">{{ $article->titre }}</a></h5>
+                                    <p>{{ Str::limit($article->extrait, 150) }}</p>
+                                    <div class="ve-insight-meta">
+                                        <span><i class="fa fa-calendar"></i> {{ $article->publie_le->translatedFormat('j F') }}</span>
+                                        <a href="{{ route('post.show', $article->slug) }}">Lire plus <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 wow fadeInUp" data-wow-delay="400ms">
-                    <div class="ve-insight-card">
-                        <div class="ve-insight-img bg-img" style="background-image:url({{ asset('img/bg-img/12.jpg') }});"></div>
-                        <div class="ve-insight-body">
-                            <span class="ve-insight-cat">TECHNOLOGIE</span>
-                            <h5><a href="{{ route('post.show') }}">Des technologies au service de votre entreprise</a></h5>
-                            <p>Découvrez nos solutions informatiques pour améliorer votre productivité, votre organisation et votre présence numérique.</p>
-                            <div class="ve-insight-meta">
-                                <span><i class="fa fa-calendar"></i> 17 Septembre</span>
-                                <a href="{{ route('post.show') }}">Lire plus <i class="fa fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <!-- ===== NEWSLETTER ===== -->
     <section class="ve-newsletter-section">
@@ -306,66 +417,8 @@
         </div>
     </section>
 
-    <!-- MODAL PRENDRE RENDEZ-VOUS -->
-    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog"
-        aria-labelledby="contactModalLabel" aria-hidden="true">
-
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <div>
-                        <span class="ve-section-tag">CONTACTEZ-NOUS</span>    
-                    </div>
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-
-                    <form class="ve-contact-form" id="contactForm" action="{{ route('contact.store') }}" method="post">
-                        @csrf
-                        <div class="ve-form-row">
-                            <div class="ve-form-group">
-                                <label>Nom complet <span class="ve-required">*</span></label>
-                                <input type="text" id="cf-name" name="nom" placeholder="Votre nom complet" required>
-                            </div>
-                            <div class="ve-form-group">
-                                <label>Adresse email <span class="ve-required">*</span></label>
-                                <input type="email" id="cf-email" name="email" placeholder="Votre email" required>
-                            </div>
-                        </div>
-
-                        <div class="ve-form-row">
-                            <div class="ve-form-group">
-                                <label>Numéro de téléphone</label>
-                                <input type="tel" id="cf-phone" name="telephone" placeholder="Votre téléphone">
-                            </div>
-                        </div>
-
-                        <div class="ve-form-group">
-                            <label>Votre message <span class="ve-required">*</span></label>
-                            <textarea id="cf-message" name="message" rows="5" placeholder="Décrivez votre projet ou besoin..." required></textarea>
-                        </div>
-                        <div id="contactErrors" class="alert alert-danger d-none" role="alert"></div>
-                        <button type="submit" class="ve-btn-primary">
-                            Envoyer le message
-                            <i class="fa fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="contactToast" class="ve-toast">
-        <i class="fa fa-check-circle"></i>
-        <span>Votre message a bien été envoyé. Nous vous recontacterons rapidement !</span>
-    </div>
-
     @include('partials.footer')
+    @include('partials.modal-rendez-vous')
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery/jquery-2.2.4.min.js') }}"></script>
@@ -374,54 +427,6 @@
     <script src="{{ asset('js/plugins/plugins.js') }}"></script>
     <script src="{{ asset('js/active.js') }}"></script>
     <script src="{{ asset('js/vaultedge.js') }}"></script>
-
-    <script>
-        (function () {
-            const form = document.getElementById('contactForm');
-            const errorsBox = document.getElementById('contactErrors');
-            const toast = document.getElementById('contactToast');
-
-            form.addEventListener('submit', async function (event) {
-                event.preventDefault();
-
-                errorsBox.classList.add('d-none');
-                errorsBox.innerHTML = '';
-
-                try {
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json'
-                        },
-                        body: new FormData(form)
-                    });
-
-                    const result = await response.json();
-                    if (!response.ok) {
-                        const messages = Object.values(result.errors || {}).flat();
-
-                        errorsBox.innerHTML = messages
-                            .map(message => `<div>${message}</div>`)
-                            .join('');
-
-                        errorsBox.classList.remove('d-none');
-                        return;
-                    }
-
-                    form.reset();
-                    $('#contactModal').modal('hide');
-
-                    toast.querySelector('span').textContent = result.message;
-                    toast.classList.add('show');
-
-                    setTimeout(() => toast.classList.remove('show'), 4000);
-                } catch (error) {
-                    errorsBox.textContent = 'Une erreur est survenue. Réessaie dans un instant.';
-                    errorsBox.classList.remove('d-none');
-                }
-            });
-        })();
-        </script>
 
 </body>
 </html>

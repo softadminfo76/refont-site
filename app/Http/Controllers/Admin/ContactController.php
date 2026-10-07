@@ -42,12 +42,12 @@ class ContactController extends Controller
             $contact->update(['est_lu' => true]);
         }
 
-        return view('contacts.lire', compact('contact'));
+        return view('admin.contacts.lire', compact('contact'));
     }
 
     public function ecrire(Contact $contact)
     {
-        return view('contacts.ecrire', compact('contact'));
+        return view('admin.contacts.ecrire', compact('contact'));
     }
 
     public function repondre(Request $request, Contact $contact)
@@ -62,16 +62,33 @@ class ContactController extends Controller
         ]);
 
         return redirect()
-            ->route('contacts.lire', $contact)
-            ->with('succes', 'Réponse enregistrée.');
-    }
+        ->route('contacts.liste')
+        ->with('succes', 'Réponse enregistrée.');
+        }
 
     public function liste()
     {
         $contacts = Contact::latest()->paginate(15);
         $nonLus   = Contact::where('est_lu', false)->count();
 
-        return view('contacts.liste', compact('contacts', 'nonLus'));
+        return view('admin.contacts.liste', compact('contacts', 'nonLus'));
+    }
+
+    public function sent()
+    {
+        $contacts = Contact::whereHas('reponses')
+            ->with('reponses')
+            ->latest()
+            ->paginate(15);
+
+        return view('admin.contacts.envoyes', compact('contacts'));
+    }
+
+    public function showSent(Contact $contact)
+    {
+        $contact->load('reponses');
+
+        return view('admin.contacts.envoyes-show', compact('contact'));
     }
 
     

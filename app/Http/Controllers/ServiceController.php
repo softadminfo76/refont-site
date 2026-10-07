@@ -2,38 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Service;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $services = Service::all();
 
-        return view('services.index', compact('services'));
+        return view('admin.services.index', compact('services'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('services.create');
+        return view('admin.services.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
-            'nom' => 'required|string|max:255',
+            'nom'         => 'required|string|max:255|unique:services,nom',
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'detail' => 'nullable|string',
+            'icone'       => ['nullable', Rule::in(array_keys(Service::ICONES))],
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            
         ]);
 
         $imagePath = null;
@@ -43,54 +39,58 @@ class ServiceController extends Controller
         }
 
         Service::create([
-            'nom' => $request->nom,
+            'nom'         => $request->nom,
             'description' => $request->description,
-            'image' => $imagePath,
+            'detail' => $request->detail,
+            'icone'       => $request->icone,
+            'image'       => $imagePath,
+            
         ]);
 
         return redirect()->route('services.index')
             ->with('success', 'Service ajouté avec succès.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Service $service)
     {
-        $service = Service::findOrFail($id);
+        $autresServices = Service::where('id', '!=', $service->id)
+            ->latest()
+            ->get();
 
-        return view('services.show', compact('service'));
+        return view('services.show', compact('service', 'autresServices'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $service = Service::findOrFail($id);
 
-        return view('services.edit', compact('service'));
+        return view('admin.services.edit', compact('service'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nom' => 'required|string|max:255',
+            'nom'         => ['required', 'string', 'max:255', Rule::unique('services', 'nom')->ignore($id)],
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'detail' => 'nullable|string',
+            'icone'       => ['nullable', Rule::in(array_keys(Service::ICONES))],
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            
         ]);
 
         $service = Service::findOrFail($id);
 
         $data = [
-            'nom' => $request->nom,
+            'nom'         => $request->nom,
             'description' => $request->description,
+            'detail' => $request->detail,
+            'icone'       => $request->icone,
         ];
 
         if ($request->hasFile('image')) {
+            if ($service->image) {
+                Storage::disk('public')->delete($service->image);
+            }
             $data['image'] = $request->file('image')->store('services', 'public');
         }
 
@@ -100,12 +100,13 @@ class ServiceController extends Controller
             ->with('success', 'Service modifié avec succès.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $service = Service::findOrFail($id);
+
+        if ($service->image) {
+            Storage::disk('public')->delete($service->image);
+        }
 
         $service->delete();
 

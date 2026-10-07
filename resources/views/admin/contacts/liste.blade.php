@@ -543,80 +543,17 @@
                           <span class="badge text-bg-primary">{{ $nonLus }}</span>
                         </a>
                       </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link rounded-0">
-                          <i class="bi bi-send me-2" aria-hidden="true"></i>Sent
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link rounded-0 d-flex justify-content-between">
-                          <span>
-                            <i class="bi bi-file-earmark me-2" aria-hidden="true"></i>
-                            Drafts
-                          </span>
-                          <span class="badge text-bg-secondary">2</span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link rounded-0">
-                          <i class="bi bi-star me-2" aria-hidden="true"></i>Starred
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link rounded-0">
-                          <i class="bi bi-archive me-2" aria-hidden="true"></i>Archive
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link rounded-0">
-                          <i class="bi bi-exclamation-octagon me-2" aria-hidden="true"></i>
-                          Spam
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link rounded-0">
-                          <i class="bi bi-trash me-2" aria-hidden="true"></i>Trash
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card mt-3">
-                  <div class="card-header">
-                    <h3 class="card-title">Labels</h3>
-                  </div>
-                  <div class="card-body p-0">
-                    <ul class="nav flex-column mb-0">
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i
-                            class="bi bi-circle-fill text-primary me-2"
-                            style="font-size: 0.6rem"
-                            aria-hidden="true"
-                          ></i>
-                          Customers
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i
-                            class="bi bi-circle-fill text-success me-2"
-                            style="font-size: 0.6rem"
-                            aria-hidden="true"
-                          ></i>
-                          Billing
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i
-                            class="bi bi-circle-fill text-warning me-2"
-                            style="font-size: 0.6rem"
-                            aria-hidden="true"
-                          ></i>
-                          Internal
-                        </a>
-                      </li>
+                      
+                        <li class="nav-item">
+                            <a href="{{ route('contacts.envoyes') }}"
+                              class="nav-link rounded-0">
+
+                                <i class="bi bi-send me-2" aria-hidden="true"></i>
+                                Messages envoyés
+
+                            </a>
+                        </li>
+                      
                     </ul>
                   </div>
                 </div>

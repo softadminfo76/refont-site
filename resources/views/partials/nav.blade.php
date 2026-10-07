@@ -20,6 +20,7 @@
                         <a href="{{ route('solutions') }}" class="{{ request()->routeIs('solutions') ? 'active' : '' }}">Solutions </i></a>
                     </li>
                     <li><a href="{{ route('services') }}" class="{{ request()->routeIs('services') ? 'active' : '' }}">Services</a></li>
+                    <li><a href="{{ route('projets.index') }}" class="{{ request()->routeIs('projets.*') ? 'active' : '' }}">Projets</a></li>
                     <li><a href="{{ route('post.index') }}" class="{{ request()->routeIs('post.index') ? 'active' : '' }}">Blog</a></li>
                     <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a></li>
                 </ul>
@@ -27,7 +28,7 @@
 
             <!-- CTA -->
             <div class="ve-nav-cta">
-                <a href="{{ route('contact') }}" class="ve-cta-btn">Prendre un rendez-vous</i></a>
+                <a href="#" class="ve-cta-btn" data-toggle="modal" data-target="#contactModal">Prendre un rendez-vous</i></a>
             </div>
 
             <!-- Mobile Toggle -->
@@ -55,6 +56,8 @@
             <a href="{{ route('services') }}">Services</a>
         </li>
 
+        <li><a href="{{ route('projets.index') }}" class="{{ request()->routeIs('projets.*') ? 'active' : '' }}">Projets</a></li>
+
         <li>
             <a href="{{ route('post.index') }}">Blog</a>
         </li>
@@ -64,4 +67,7 @@
         </li>
     </ul>
 </div>
+
+@include('partials.modal-rendez-vous')
+
     </header>

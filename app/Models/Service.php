@@ -12,7 +12,13 @@ class Service extends Model
         'image',
         'detail',
         'icone',
+        'departement_id',
     ];
+    
+    public function departement()
+{
+    return $this->belongsTo(Departement::class);
+}
 
     public const ICONES = [
     'fa fa-code'           => 'Code (développement)',

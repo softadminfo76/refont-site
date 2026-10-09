@@ -13,6 +13,7 @@ use App\Http\Controllers\DevisController;
 use App\Http\Controllers\ReponseDevisController;
 use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\ProjetAdminController;
+use App\Http\Controllers\DepartementController;
 
 // Contrôleur PUBLIC de l'abonnement (celui qui a la méthode enregistrer)
 use App\Http\Controllers\AbonnementActualitesController;
@@ -110,6 +111,8 @@ Route::get('/blog/{article:slug}', function (Article $article) {
     return view('show', compact('article', 'recents', 'categories'));
 })->name('post.show');
 
+Route::get('/departements/{departement}', [DepartementController::class, 'show'])
+    ->name('departements.show');
 
 /*
 |--------------------------------------------------------------------------

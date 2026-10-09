@@ -12,14 +12,38 @@
             <!-- Nav Links -->
             <nav class="ve-nav">
                 <ul>
-                    <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Accueil</a></li>
-                    <li>
-                        <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">L'entreprise </i></a>
+                    <li class="has-drop">
+                        <a href="{{ route('about') }}">A propos <i class="fa fa-angle-down"></i></a>
+                        <ul class="ve-dropdown">
+                            <li><a href="{{ route('about') }}#qui-sommes-nous">Qui sommes-nous</a></li>
+                            <li><a href="{{ route('about') }}#domaines">Domaines d'intervention</a></li>
+                            <li><a href="{{ route('about') }}#references">Nos références</a></li>
+                            <li><a href="{{ route('about') }}#mission-vision-valeurs">Mission, vision et valeurs</a></li>
+                            <li><a href="{{ route('about') }}#equipe">Notre équipe</a></li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="{{ route('solutions') }}" class="{{ request()->routeIs('solutions') ? 'active' : '' }}">Solutions </i></a>
+                    <li class="has-drop">
+                        <a href="{{ route('solutions') }}">Solutions <i class="fa fa-angle-down"></i></a>
+                        <ul class="ve-dropdown">
+                            <li><a href="https://digitimmo.horinfo.com/" target="_blank" rel="noopener noreferrer">Digitimmo</a></li>
+                            <li><a href="https://yeele-event.com/" target="_blank" rel="noopener noreferrer">Yeele</a></li>
+                            <li><a href="#" target="_blank" rel="noopener noreferrer">Dolibarr</a></li>
+                        </ul>
                     </li>
-                    <li><a href="{{ route('services') }}" class="{{ request()->routeIs('services') ? 'active' : '' }}">Services</a></li>
+                    <li class="has-drop">
+                        <a href="{{ route('services') }}">Services <i class="fa fa-angle-down"></i></a>
+                        <ul class="ve-dropdown">
+                            <li><a href="{{ route('services.show', 1) }}">Développement d'application web et mobile</a></li>
+                            <li><a href="{{ route('services.show', 2) }}">Développement CRM et application métier</a></li>
+                            <li><a href="{{ route('services.show', 3) }}">Développement de site web</a></li>
+                            <li><a href="{{ route('services.show', 4) }}">Marketing digital</a></li>
+                            <li><a href="{{ route('services.show', 5) }}">Refonte web</a></li>
+                            <li><a href="{{ route('services.show', 6) }}">Formations</a></li>
+                            <li><a href="{{ route('services.show', 7) }}">Audits, études et conseils</a></li>
+                            <li><a href="{{ route('services.show', 8) }}">Évènementiel</a></li>
+                            <li><a href="{{ route('services.show', 9) }}">Assistance technique</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{{ route('projets.index') }}" class="{{ request()->routeIs('projets.*') ? 'active' : '' }}">Projets</a></li>
                     <li><a href="{{ route('post.index') }}" class="{{ request()->routeIs('post.index') ? 'active' : '' }}">Blog</a></li>
                     <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a></li>
@@ -39,21 +63,37 @@
 
         <!-- Mobile Menu -->
 <div class="ve-mobile-menu" id="ve-mobile-menu">
-    <ul>
         <li>
-            <a href="{{ route('home') }}">Accueil</a>
+            <a href="{{ route('about') }}">A propos</a>
+            <ul class="ve-mobile-sub">
+                <li><a href="{{ route('about') }}#qui-sommes-nous">Qui sommes-nous</a></li>
+                <li><a href="{{ route('about') }}#domaines">Domaines d'intervention</a></li>
+                <li><a href="{{ route('about') }}#references">Nos références</a></li>
+                <li><a href="{{ route('about') }}#mission-vision-valeurs">Mission, vision et valeurs</a></li>
+                <li><a href="{{ route('about') }}#equipe">Notre équipe</a></li>
+            </ul>
         </li>
-
-        <li>
-            <a href="{{ route('about') }}">L'entreprise</a>
-        </li>
-
-        <li>
             <a href="{{ route('solutions') }}">Solutions</a>
+            <ul class="ve-mobile-sub">
+                <li><a href="https://digitimmo.horinfo.com/" target="_blank" rel="noopener noreferrer">Digitimmo</a></li>
+                <li><a href="https://yeele-event.com/" target="_blank" rel="noopener noreferrer">Yeele</a></li>
+                <li><a href="#" target="_blank" rel="noopener noreferrer">Dolibarr</a></li>
+            </ul>
         </li>
 
         <li>
             <a href="{{ route('services') }}">Services</a>
+            <ul class="ve-mobile-sub">
+                <li><a href="{{ route('services.show', 1) }}">Développement d'application web et mobile</a></li>
+                <li><a href="{{ route('services.show', 2) }}">Développement CRM et application métier</a></li>
+                <li><a href="{{ route('services.show', 3) }}">Développement de site web</a></li>
+                <li><a href="{{ route('services.show', 4) }}">Marketing digital</a></li>
+                <li><a href="{{ route('services.show', 5) }}">Refonte web</a></li>
+                <li><a href="{{ route('services.show', 6) }}">Formations</a></li>
+                <li><a href="{{ route('services.show', 7) }}">Audits, études et conseils</a></li>
+                <li><a href="{{ route('services.show', 8) }}">Évènementiel</a></li>
+                <li><a href="{{ route('services.show', 9) }}">Assistance technique</a></li>
+            </ul>
         </li>
 
         <li><a href="{{ route('projets.index') }}" class="{{ request()->routeIs('projets.*') ? 'active' : '' }}">Projets</a></li>

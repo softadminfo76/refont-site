@@ -11,9 +11,23 @@
                         </a>
                         <p>Des solutions informatiques sur mesure pour accompagner la transformation numérique des organisations depuis 1999.</p>
                         <div class="ve-social">
-                            <a href="https://web.facebook.com/HorinfoBurkinaFaso" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="https://www.youtube.com/@Horinfo" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa fa-youtube"></i></a>
-                            <a href="https://www.linkedin.com/company/horinfo/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://web.facebook.com/HorinfoBurkinaFaso"
+                            target="_blank" rel="noopener"
+                            aria-label="Facebook" class="ve-social-facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+
+                            <a href="https://www.youtube.com/@Horinfo"
+                            target="_blank" rel="noopener"
+                            aria-label="YouTube" class="ve-social-youtube">
+                                <i class="fa fa-youtube-play"></i>
+                            </a>
+
+                            <a href="https://www.linkedin.com/company/horinfo/posts/?feedView=all"
+                            target="_blank" rel="noopener"
+                            aria-label="LinkedIn" class="ve-social-linkedin">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -25,6 +39,7 @@
                         <li><a href="{{ route('about') }}">L'entreprise</a></li>
                         <li><a href="{{ route('services') }}">Services</a></li>
                         <li><a href="{{ route('solutions') }}">Solutions</a></li>
+                        <li><a href="{{ route('projets.index') }}">Projets</a></li>
                         <li><a href="{{ route('post.index') }}">Blog</a></li>
                         <li><a href="{{ route('contact') }}">Contact</a></li>
                     </ul>

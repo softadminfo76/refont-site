@@ -26,8 +26,8 @@
     <section class="ve-page-hero ve-page-hero-sm" style="background-image:url({{ asset('img/bg-img/10.jpg') }});">
         <div class="ve-page-hero-overlay"></div>
         <div class="container ve-page-hero-content">
-            <span class="ve-section-tag">Nos références</span>
-            <h1>Des projets qui <span>font leurs preuves</span></h1>
+            <span class="ve-section-tag">Nos Projets</span>
+            <h1>Construire ensemble <span>le numérique de demain</span></h1>
             <nav aria-label="breadcrumb">
                 <ol class="ve-breadcrumb">
                     <li><a href="{{ route('home') }}">Accueil</a></li>
@@ -36,28 +36,6 @@
             </nav>
         </div>
     </section>
-
-    {{-- CHIFFRES (calculés depuis la base) --}}
-    @if($projets->isNotEmpty())
-        <section class="ve-pj-stats">
-            <div class="container">
-                <div class="ve-pj-stats-row">
-                    <div class="ve-pj-stat">
-                        <strong>{{ $projets->count() }}</strong>
-                        <span>{{ Str::plural('projet réalisé', $projets->count()) }}</span>
-                    </div>
-                    <div class="ve-pj-stat">
-                        <strong>{{ $projets->pluck('client')->unique()->count() }}</strong>
-                        <span>institutions partenaires</span>
-                    </div>
-                    <div class="ve-pj-stat">
-                        <strong>{{ $secteurs->count() }}</strong>
-                        <span>secteurs d'intervention</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
 
     {{-- LISTE --}}
     <section class="ve-section">
@@ -98,6 +76,7 @@
                         Demander un devis
                     </a>
                 </div>
+            </div>
         </div>
     </section>
 

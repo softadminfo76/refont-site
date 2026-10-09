@@ -32,7 +32,7 @@
     </section>
 
     <!-- ABOUT SPLIT -->
-    <section class="ve-section">
+    <section class="ve-section" id="qui-sommes-nous">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-lg-6 wow fadeInLeft" data-wow-delay="100ms">
@@ -46,13 +46,16 @@
                     <div class="ve-about-text">
                         <span class="ve-section-tag">Qui sommes-nous</span>
                         <h2>Une entreprise bâtie sur l'<span>Expertise</span> et la Confiance</h2>
-                        <p class="ve-lead">Nous sommes une équipe d'ingénieurs, de consultants et de spécialistes du numérique dédiée à accompagner la transformation digitale des organisations en Afrique de l'Ouest.</p>
-                        <p>Fondée à Ouagadougou en 1999, HORINFO a commencé avec une mission simple : rendre les technologies de l'information accessibles et fiables pour les institutions et entreprises locales. Aujourd'hui, nous accompagnons des organisations internationales telles que la Banque mondiale, le PNUD, l'Union européenne et l'USAID.</p>
+                        <p class="ve-lead">Créée en 1999, HORINFO est une entreprise spécialisée dans les technologies de l'information, l'intégration de solutions numériques et l'accompagnement des organisations dans leur transformation digitale.</p>
+                        <p>Depuis plus de 25 ans, HORINFO accompagne les entreprises, administrations publiques, ONG, institutions et organisations privées dans l'amélioration de leur performance grâce à des solutions innovantes, fiables et adaptées aux réalités du marché.</p>
+                        <p>Notre expertise couvre notamment la gestion d'entreprise, la gestion immobilière, la gestion événementielle, le développement de solutions sur mesure ainsi que l'accompagnement à la transformation digitale.</p>
+                        <p>Grâce à une équipe engagée et à une approche centrée sur le client, HORINFO s'impose aujourd'hui comme un partenaire de confiance pour les organisations souhaitant accélérer leur modernisation et renforcer leur efficacité opérationnelle.</p>
                         <div class="ve-about-features">
-                            <div class="ve-af-item"><i class="fa fa-check"></i><span>Plus de 25 ans d'expertise IT en Afrique de l'Ouest</span></div>
-                            <div class="ve-af-item"><i class="fa fa-check"></i><span>Partenaire de confiance d'institutions internationales</span></div>
-                            <div class="ve-af-item"><i class="fa fa-check"></i><span>Équipe pluridisciplinaire : développement, marketing, conseil, formation</span></div>
-                            <div class="ve-af-item"><i class="fa fa-check"></i><span>Approche sur mesure, adaptée à chaque client</span></div>
+                            <div class="ve-af-item"><i class="fa fa-check"></i><span>ERP et gestion d'entreprise</span></div>
+                            <div class="ve-af-item"><i class="fa fa-check"></i><span>Gestion immobilière</span></div>
+                            <div class="ve-af-item"><i class="fa fa-check"></i><span>Gestion événementielle</span></div>
+                            <div class="ve-af-item"><i class="fa fa-check"></i><span>Développement spécifique</span></div>
+                            <div class="ve-af-item"><i class="fa fa-check"></i><span>Transformation digitale</span></div>
                         </div>
                         <a href="{{ route('services') }}" class="ve-btn-primary mt-30">Voir nos Services</a>
                     </div>
@@ -62,7 +65,7 @@
     </section>
 
     <!-- ===== SERVICES GRID (new card layout) ===== -->
-    <section class="ve-section ve-services-section">
+<section class="ve-section ve-services-section" id="domaines">
     <div class="container">
         <div class="ve-section-header text-center">
             <span class="ve-section-tag">NOS DOMAINES D'INTERVENTION</span>
@@ -139,12 +142,45 @@
     </div>
 </section>
 
+<section class="ve-section ve-partners-section" id="references">
+    <div class="container">
+        <div class="ve-section-header text-center">
+            <span class="ve-section-tag">Ils Nous Font Confiance</span>
+            <h2>Des Références Publiques et <span>Internationales Majeures</span></h2>
+        </div>
+    </div>
+
+    <div class="ve-partners-marquee">
+        <div class="ve-partners-track">
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/banque_mondiale.png') }}" alt="Banque Mondiale"><span>Banque Mondiale</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/pnud.png') }}" alt="PNUD"><span>PNUD</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/union_europeenne.png') }}" alt="Union Européenne"><span>Union Européenne</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/usaid.png') }}" alt="USAID"><span>USAID</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/cnss.png') }}" alt="CNSS"><span>CNSS</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/arcep.png') }}" alt="ARCEP"><span>ARCEP</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/institut_elevage.png') }}" alt="Institut Élevage"><span>Institut Élevage</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/expertise_france.png') }}" alt="Expertise France"><span>Expertise France</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/armoirie_du_burkina.png') }}" alt="Burkina Faso"><span>Burkina Faso</span></div>
+            <!-- dupliqué pour la boucle continue -->
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/banque_mondiale.png') }}" alt="Banque Mondiale"><span>Banque Mondiale</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/pnud.png') }}" alt="PNUD"><span>PNUD</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/union_europeenne.png') }}" alt="Union Européenne"><span>Union Européenne</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/usaid.png') }}" alt="USAID"><span>USAID</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/cnss.png') }}" alt="CNSS"><span>CNSS</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/arcep.png') }}" alt="ARCEP"><span>ARCEP</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/institut_elevage.png') }}" alt="Institut Élevage"><span>Institut Élevage</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/expertise_france.png') }}" alt="Expertise France"><span>Expertise France</span></div>
+            <div class="ve-partner-card"><img src="{{ asset('img/clients/armoirie_du_burkina.png') }}" alt="Burkina Faso"><span>Burkina Faso</span></div>
+        </div>
+    </div>
+</section>
+
 
     <!-- MISSION / VISION / VALUES -->
-    <section class="ve-mvv-section">
+    <section class="ve-mvv-section" id="mission-vision-valeurs">
         <div class="container">
             <div class="ve-section-header text-center">
-                <span class="ve-section-tag">Notre Foundation</span>
+                <span class="ve-section-tag">Notre Fondation</span>
                 <h2>Mission, Vision &amp; <span>Valeurs</span></h2>
             </div>
             <div class="ve-mvv-grid">
@@ -187,7 +223,7 @@
     </section>
 
     <!-- TEAM -->
-    <section class="ve-section ve-team-section">
+    <section class="ve-section ve-team-section" id="equipe">
         <div class="container">
             <div class="ve-section-header text-center">
                 <span class="ve-section-tag">Notre équipe</span>

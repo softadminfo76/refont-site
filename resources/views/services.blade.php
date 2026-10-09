@@ -5,8 +5,8 @@
     <meta name="description" content="VaultEdge offers investment, wealth management, retirement, tax, and risk services.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Our Services — VaultEdge</title>
-    <link rel="icon" href="{{ asset('img/core-img/favicon.ico') }}">
+    <title>Nos Services </title>
+    <link rel="icon" href="{{ asset('img/bg-img/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom-override.css') }}">
 </head>
@@ -21,7 +21,7 @@
         <div class="ve-page-hero-overlay"></div>
         <div class="container ve-page-hero-content">
             <span class="ve-section-tag">Ce que nous offrons</span>
-            <h1>Des solutions <span>numériques complètes</span></h1>
+            <h1>Des solutions <span>digitales complètes</span></h1>
             <nav aria-label="breadcrumb"><ol class="ve-breadcrumb"><li><a href="{{ route('home') }}">Accueil</a></li><li class="active">Services</li></ol></nav>
         </div>
     </section>

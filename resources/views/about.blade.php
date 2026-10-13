@@ -65,115 +65,40 @@
     </section>
 
     <!-- ===== SERVICES GRID (new card layout) ===== -->
-<section class="ve-section ve-services-section" id="domaines">
-    <div class="container">
-        <div class="ve-section-header text-center">
-            <span class="ve-section-tag">NOS DOMAINES D'INTERVENTION</span>
-            <h2>Notre expertise au service de <span>vos projets</span></h2>
-            <p>Nous vous accompagnons dans la réalisation complète de vos projets</p>
-        </div>
 
-        <div class="ve-services-grid">
+@if ($departements->isNotEmpty())
+    <section class="ve-section ve-services-section">
+        <div class="container">
 
-            {{-- INGÉNIERIE LOGICIELLE (inchangée) --}}
-            <div class="ve-service-card wow fadeInUp" data-wow-delay="100ms">
-                <div class="ve-service-icon"><i class="fa fa-code"></i></div>
-                <h4>Département Ingénierie Logicielle</h4>
-                <p>
-                    Le Département Ingénierie Logicielle accompagne les entreprises dans la conception et la mise en place de solutions informatiques adaptées à leurs besoins.
-                </p>
-                <ul>
-                    <li>Conception et développement d'applications web et mobiles sur mesure.</li>
-                    <li>Développement de plateformes et logiciels adaptés aux processus métiers.</li>
-                    <li>Maintenance, évolution et amélioration des applications.</li>
-                    <li>Mise en place de solutions performantes, sécurisées et évolutives.</li>
-                    <li>Accompagnement et conseil technique tout au long des projets.</li>
-                </ul>
-                <a href="{{ route('services.show', 1) }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
+            <div class="ve-section-header text-center">
+                <span class="ve-section-tag">NOS DOMAINES D'INTERVENTION</span>
+                <h2>Notre expertise au service de <span>vos projets</span></h2>
+                <p>Nous vous accompagnons dans la réalisation complète de vos projets</p>
             </div>
 
-            {{-- TRANSFORMATION DIGITALE (remplace Marketing Digital) --}}
-            <div class="ve-service-card wow fadeInUp" data-wow-delay="200ms">
-                <div class="ve-service-icon"><i class="fa fa-bullhorn"></i></div>
-                <h4>Département Transformation Digitale</h4>
-                <p>
-                    Le Département Transformation Digitale accompagne les organisations publiques et privées dans leur transition numérique, à travers une communication digitale performante et des outils modernes.
-                </p>
-                <ul>
-                    <li>Élaboration de stratégies digitales et de plans éditoriaux adaptés à vos objectifs.</li>
-                    <li>Gestion des réseaux sociaux et animation de vos communautés en ligne.</li>
-                    <li>Production de contenus : visuels, vidéos, infographies et articles.</li>
-                    <li>Campagnes publicitaires en ligne et optimisation de votre site web (SEO).</li>
-                    <li>Analyse des performances et reporting régulier.</li>
-                    <li>Diagnostic digital et accompagnement de votre transformation, avec formation des équipes.</li>
-                </ul>
-                <a href="{{ route('services.show', 2) }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
+            <div class="ve-services-grid">
+                @foreach ($departements as $departement)
+                    <div class="ve-service-card wow fadeInUp" data-wow-delay="{{ (($loop->index % 3) + 1) * 100 }}ms">
+                        <div class="ve-service-icon">
+                            @if ($departement->icone)
+                                <i class="{{ $departement->icone }}" aria-hidden="true"></i>
+                            @endif
+                        </div>
+
+                        <h4>Département {{ $departement->nom }}</h4>
+
+                        <p>{{ $departement->resume }}</p>
+
+                        <a href="{{ route('departements.show', $departement) }}" class="ve-card-link">
+                            En savoir plus
+                            <i class="fa fa-long-arrow-right"></i>
+                        </a>
+                    </div>
+                @endforeach
             </div>
-
-            {{-- MARKETING & COMMERCIAL --}}
-<div class="ve-service-card wow fadeInUp" data-wow-delay="300ms">
-    <div class="ve-service-icon">
-        <i class="fa fa-line-chart"></i>
-    </div>
-
-    <h4>Département Marketing & Commercial</h4>
-
-    <p>
-        Le Département Marketing & Commercial est le moteur de croissance
-        d’HORINFO. Il développe la notoriété de la marque, génère des leads
-        qualifiés et accompagne leur conversion en clients durables.
-    </p>
-
-    <ul>
-        <li>Stratégie marketing et communication digitale.</li>
-        <li>Production de contenus et gestion des réseaux sociaux.</li>
-        <li>Prospection B2B et qualification des leads.</li>
-        <li>Démonstrations des solutions Dolibarr, Yeele et Immobilier.</li>
-        <li>Élaboration des offres commerciales et réponses aux appels d’offres.</li>
-        <li>Développement de partenariats et expansion commerciale régionale.</li>
-    </ul>
-
-    <a href="{{ route('services.show', 3) }}" class="ve-card-link">
-        En savoir plus <i class="fa fa-long-arrow-right"></i>
-    </a>
-</div>
-
         </div>
-    </div>
-</section>
-
-<section class="ve-section ve-partners-section" id="references">
-    <div class="container">
-        <div class="ve-section-header text-center">
-            <span class="ve-section-tag">Ils Nous Font Confiance</span>
-            <h2>Des Références Publiques et <span>Internationales Majeures</span></h2>
-        </div>
-    </div>
-
-    <div class="ve-partners-marquee">
-        <div class="ve-partners-track">
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/banque_mondiale.png') }}" alt="Banque Mondiale"><span>Banque Mondiale</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/pnud.png') }}" alt="PNUD"><span>PNUD</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/union_europeenne.png') }}" alt="Union Européenne"><span>Union Européenne</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/usaid.png') }}" alt="USAID"><span>USAID</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/cnss.png') }}" alt="CNSS"><span>CNSS</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/arcep.png') }}" alt="ARCEP"><span>ARCEP</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/institut_elevage.png') }}" alt="Institut Élevage"><span>Institut Élevage</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/expertise_france.png') }}" alt="Expertise France"><span>Expertise France</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/armoirie_du_burkina.png') }}" alt="Burkina Faso"><span>Burkina Faso</span></div>
-            <!-- dupliqué pour la boucle continue -->
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/banque_mondiale.png') }}" alt="Banque Mondiale"><span>Banque Mondiale</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/pnud.png') }}" alt="PNUD"><span>PNUD</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/union_europeenne.png') }}" alt="Union Européenne"><span>Union Européenne</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/usaid.png') }}" alt="USAID"><span>USAID</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/cnss.png') }}" alt="CNSS"><span>CNSS</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/arcep.png') }}" alt="ARCEP"><span>ARCEP</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/institut_elevage.png') }}" alt="Institut Élevage"><span>Institut Élevage</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/expertise_france.png') }}" alt="Expertise France"><span>Expertise France</span></div>
-            <div class="ve-partner-card"><img src="{{ asset('img/clients/armoirie_du_burkina.png') }}" alt="Burkina Faso"><span>Burkina Faso</span></div>
-        </div>
-    </div>
-</section>
+    </section>
+@endif
 
 
     <!-- MISSION / VISION / VALUES -->

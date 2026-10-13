@@ -80,5 +80,13 @@
     <p>Projets</p>
   </a>
 </li>
+
+<li class="nav-item">
+  <a href="{{ route('departements.index') }}"
+     class="nav-link {{ request()->routeIs('departements.*') ? 'active' : '' }}">
+    <i class="nav-icon bi bi-diagram-3"></i>
+    <p>Départements</p>
+  </a>
+</li>
   
 </ul>

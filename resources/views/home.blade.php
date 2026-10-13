@@ -204,83 +204,39 @@
     </section>
     @endif
 
-    <!-- ===== SERVICES GRID (new card layout) ===== -->
+@if ($departements->isNotEmpty())
     <section class="ve-section ve-services-section">
-    <div class="container">
-        <div class="ve-section-header text-center">
-            <span class="ve-section-tag">NOS DOMAINES D'INTERVENTION</span>
-            <h2>Notre expertise au service de <span>vos projets</span></h2>
-            <p>Nous vous accompagnons dans la réalisation complète de vos projets</p>
-        </div>
+        <div class="container">
 
-        <div class="ve-services-grid">
-
-            {{-- INGÉNIERIE LOGICIELLE (inchangée) --}}
-            <div class="ve-service-card wow fadeInUp" data-wow-delay="100ms">
-                <div class="ve-service-icon"><i class="fa fa-code"></i></div>
-                <h4>Département Ingénierie Logicielle</h4>
-                <p>
-                    Le Département Ingénierie Logicielle accompagne les entreprises dans la conception et la mise en place de solutions informatiques adaptées à leurs besoins.
-                </p>
-                <ul>
-                    <li>Conception et développement d'applications web et mobiles sur mesure.</li>
-                    <li>Développement de plateformes et logiciels adaptés aux processus métiers.</li>
-                    <li>Maintenance, évolution et amélioration des applications.</li>
-                    <li>Mise en place de solutions performantes, sécurisées et évolutives.</li>
-                    <li>Accompagnement et conseil technique tout au long des projets.</li>
-                </ul>
-                <a href="{{ route('services.show', 1) }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
+            <div class="ve-section-header text-center">
+                <span class="ve-section-tag">NOS DOMAINES D'INTERVENTION</span>
+                <h2>Notre expertise au service de <span>vos projets</span></h2>
+                <p>Nous vous accompagnons dans la réalisation complète de vos projets</p>
             </div>
 
-            {{-- TRANSFORMATION DIGITALE --}}
-            <div class="ve-service-card wow fadeInUp" data-wow-delay="200ms">
-                <div class="ve-service-icon"><i class="fa fa-bullhorn"></i></div>
-                <h4>Département Transformation Digitale</h4>
-                <p>
-                    Le Département Transformation Digitale accompagne les organisations publiques et privées dans leur transition numérique, à travers une communication digitale performante et des outils modernes.
-                </p>
-                <ul>
-                    <li>Élaboration de stratégies digitales et de plans éditoriaux adaptés à vos objectifs.</li>
-                    <li>Gestion des réseaux sociaux et animation de vos communautés en ligne.</li>
-                    <li>Production de contenus : visuels, vidéos, infographies et articles.</li>
-                    <li>Campagnes publicitaires en ligne et optimisation de votre site web (SEO).</li>
-                    <li>Analyse des performances et reporting régulier.</li>
-                    <li>Diagnostic digital et accompagnement de votre transformation, avec formation des équipes.</li>
-                </ul>
-                <a href="{{ route('services.show', 2) }}" class="ve-card-link">En savoir plus <i class="fa fa-long-arrow-right"></i></a>
+            <div class="ve-services-grid">
+                @foreach ($departements as $departement)
+                    <div class="ve-service-card wow fadeInUp" data-wow-delay="{{ (($loop->index % 3) + 1) * 100 }}ms">
+                        <div class="ve-service-icon">
+                            @if ($departement->icone)
+                                <i class="{{ $departement->icone }}" aria-hidden="true"></i>
+                            @endif
+                        </div>
+
+                        <h4>Département {{ $departement->nom }}</h4>
+
+                        <p>{{ $departement->resume }}</p>
+
+                        <a href="{{ route('departements.show', $departement) }}" class="ve-card-link">
+                            En savoir plus
+                            <i class="fa fa-long-arrow-right"></i>
+                        </a>
+                    </div>
+                @endforeach
             </div>
-
-            {{-- MARKETING & COMMERCIAL --}}
-<div class="ve-service-card wow fadeInUp" data-wow-delay="300ms">
-    <div class="ve-service-icon">
-        <i class="fa fa-line-chart"></i>
-    </div>
-
-    <h4>Département Marketing & Commercial</h4>
-
-    <p>
-        Le Département Marketing & Commercial est le moteur de croissance
-        d’HORINFO. Il développe la notoriété de la marque, génère des leads
-        qualifiés et accompagne leur conversion en clients durables.
-    </p>
-
-    <ul>
-        <li>Stratégie marketing et communication digitale.</li>
-        <li>Production de contenus et gestion des réseaux sociaux.</li>
-        <li>Prospection B2B et qualification des leads.</li>
-        <li>Démonstrations des solutions Dolibarr, Yeele et Immobilier.</li>
-        <li>Élaboration des offres commerciales et réponses aux appels d’offres.</li>
-        <li>Développement de partenariats et expansion commerciale régionale.</li>
-    </ul>
-
-    <a href="{{ route('services.show', 3) }}" class="ve-card-link">
-        En savoir plus <i class="fa fa-long-arrow-right"></i>
-    </a>
-</div>
-
         </div>
-    </div>
-</section>
+    </section>
+@endif
 
     <!-- ===== TESTIMONIALS ===== -->
     <section class="ve-section ve-partners-section">

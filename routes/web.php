@@ -14,6 +14,7 @@ use App\Http\Controllers\ReponseDevisController;
 use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\ProjetAdminController;
 use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\DepartementAdminController;
 
 // Contrôleur PUBLIC de l'abonnement (celui qui a la méthode enregistrer)
 use App\Http\Controllers\AbonnementActualitesController;
@@ -35,6 +36,8 @@ use App\Models\Article;
 |--------------------------------------------------------------------------
 */
 
+use App\Models\Departement;
+
 Route::get('/', function () {
     $realisations = Realisation::where('actif', true)
         ->orderBy('ordre')
@@ -43,11 +46,19 @@ Route::get('/', function () {
 
     $articles = Article::publies()->take(3)->get();
 
-    return view('home', compact('realisations', 'articles'));
+    $departements = Departement::where('actif', true)
+        ->orderBy('ordre')
+        ->get();
+
+    return view('home', compact('realisations', 'articles', 'departements'));
 })->name('home');
 
 Route::get('/about', function () {
-    return view('about');
+    $departements = Departement::where('actif', true)
+        ->orderBy('ordre')
+        ->get();
+
+    return view('about', compact('departements'));
 })->name('about');
 
 Route::get('/services', function () {
@@ -195,6 +206,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('realisations', RealisationController::class)->except('show');
         Route::resource('services', ServiceController::class)->except('show');
         Route::resource('articles', ArticleController::class)->except('show');
+        Route::resource('departements', DepartementAdminController::class)->except('show');
     });
 
     // Envois d'actualités et projets (noms en admin.*)

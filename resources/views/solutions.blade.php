@@ -17,16 +17,39 @@
     
     @include('partials.nav')
 
-    <section class="ve-page-hero" style="background-image:url({{ asset('img/bg-img/20.jpg') }});">
-        <div class="ve-page-hero-overlay"></div>
-        <div class="container ve-page-hero-content">
-            <div class="container ve-page-hero-content">
-            <span class="ve-section-tag">Nos produits</span>
-            <h1>Des solutions <span>développées en interne</span></h1>
-            <p>Des outils conçus et développés par nos équipes, pensés pour répondre à des besoins métier concrets.</p>
-            <nav aria-label="breadcrumb"><ol class="ve-breadcrumb"><li><a href="{{ route('home') }}">Accueil</a></li><li class="active">Solutions</li></ol></nav>
-        </div>
-    </section>
+@php
+    $images = [
+        'img/bg-img/yeele.png',
+        'img/bg-img/digitimmo.jpg',   
+        'img/bg-img/dolibar.jpg',
+    ];
+@endphp
+
+<section class="ve-page-hero ve-hero-photos">
+
+    {{-- Photos qui défilent (arrière-plan) --}}
+    <div class="ve-hero-bg" aria-hidden="true">
+        @foreach ($images as $image)
+            <div class="ve-hero-bg-img"
+                 style="background-image:url({{ asset($image) }}); --i: {{ $loop->index }};"></div>
+        @endforeach
+    </div>
+
+    <div class="ve-page-hero-overlay"></div>
+
+    {{-- Texte fixe --}}
+    <div class="container ve-page-hero-content">
+        <span class="ve-section-tag">Nos produits</span>
+        <h1>Des solutions <span>développées en interne</span></h1>
+        <p>Des outils conçus et développés par nos équipes, pensés pour répondre à des besoins métier concrets.</p>
+        <nav aria-label="breadcrumb">
+            <ol class="ve-breadcrumb">
+                <li><a href="{{ route('home') }}">Accueil</a></li>
+                <li class="active">Solutions</li>
+            </ol>
+        </nav>
+    </div>
+</section>
 
     <section class="ve-section">
     <div class="container">

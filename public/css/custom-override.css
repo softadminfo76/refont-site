@@ -2061,7 +2061,16 @@ html, body { overflow-x: hidden; }
 .ve-svc-card p { color: #64748b; font-size: 14px; }
 .ve-svc-more { color: var(--svc-cyan); font-weight: 600; font-size: 14px; }
 
-.ve-svc-cta { background: linear-gradient(135deg, #0b1324, var(--svc-navy)); padding: 70px 0; }
+.ve-svc-cta {
+    background-color: #ffffff;
+    background-image: radial-gradient(
+        circle,
+        #f2b544 1.5px,
+        transparent 1.5px
+    );
+    background-size: 25px 25px;
+    padding: 70px 0;
+}
 .ve-svc-cta-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
 .ve-svc-cta h2 { color: #fff; font-weight: 800; }
 .ve-svc-cta h2 span { color: var(--svc-cyan); }
@@ -2258,38 +2267,32 @@ section[id] {
     border-color: #A8A9AD;
 }
 
-/* Textes plus foncés pour rester lisibles sur l'argent */
 .ve-service-card:hover h4 { color: #0f172a; }
 .ve-service-card:hover p,
 .ve-service-card:hover li { color: #1f2937; }
 .ve-service-card:hover .ve-card-link { color: #0f172a; }
 
-/* Facebook : bleu */
 .ve-social a.ve-social-facebook {
     background-color: #1877F2 !important;
     color: #FFFFFF !important;
 }
 
-/* YouTube : rouge */
 .ve-social a.ve-social-youtube {
     background-color: #FF0000 !important;
     color: #FFFFFF !important;
 }
 
-/* LinkedIn : bleu professionnel */
 .ve-social a.ve-social-linkedin {
     background-color: #0A66C2 !important;
     color: #FFFFFF !important;
 }
 
-/* Couleur des icônes */
 .ve-social a.ve-social-facebook i,
 .ve-social a.ve-social-youtube i,
 .ve-social a.ve-social-linkedin i {
     color: #FFFFFF !important;
 }
 
-/* Effet au survol */
 .ve-social a.ve-social-facebook:hover {
     background-color: #145DBF !important;
 }
@@ -2301,3 +2304,44 @@ section[id] {
 .ve-social a.ve-social-linkedin:hover {
     background-color: #004182 !important;
 }
+
+
+    .ve-hero-photos {
+        --duree: 10s;              
+        position: relative;
+        background: #0b1b3a;       
+        overflow: hidden;
+    }
+
+    .ve-hero-bg { position: absolute; inset: 0; z-index: 0; }
+
+    .ve-hero-bg-img {
+        position: absolute; inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: veFondu var(--duree) infinite;
+        animation-delay: calc(var(--i) * var(--duree) / 3);
+    }
+
+    @keyframes veFondu {
+        0%      { opacity: 1; z-index: 1; }
+        33.32%  { opacity: 1; z-index: 1; }
+        33.33%  { opacity: 1; z-index: 2; }
+        38.33%  { opacity: 0; z-index: 2; }
+        38.34%  { opacity: 0; z-index: 0; }
+        100%    { opacity: 0; z-index: 0; }
+    }
+
+    /* Pause quand le curseur est sur le hero */
+.ve-hero-photos:hover .ve-hero-bg-img {
+    animation-play-state: paused;
+}
+
+    .ve-hero-photos .ve-page-hero-overlay { position: absolute; inset: 0; z-index: 1; }
+    .ve-hero-photos .ve-page-hero-content { position: relative; z-index: 2; }
+
+    @media (prefers-reduced-motion: reduce) {
+        .ve-hero-bg-img { animation: none; }
+        .ve-hero-bg-img:first-child { opacity: 1; }
+    }

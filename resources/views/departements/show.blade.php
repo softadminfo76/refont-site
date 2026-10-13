@@ -162,7 +162,7 @@
         <div class="container">
             <div class="ve-svc-cta-inner">
                 <div>
-                    <h2>Un besoin dans ce <span>domaine ?</span></h2>
+                    <h2><span>Un besoin dans ce domaine ?</span></h2>
                     <p>Échangez gratuitement avec notre équipe pour discuter de votre projet.</p>
                 </div>
                 <button type="button" class="ve-btn-white" data-toggle="modal" data-target="#devisModal">
